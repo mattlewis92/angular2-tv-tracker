@@ -11,7 +11,8 @@ module.exports = {
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
     }, {
       test: /\.scss$/, loader: 'style!css!sass'
-    }]
+    }],
+    noParse: [ /zone\.js\/dist\/.+/ ]
   },
   resolve: {
     extensions: ['', '.ts', '.js']

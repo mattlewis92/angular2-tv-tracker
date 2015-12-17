@@ -1,10 +1,18 @@
 import {Component} from 'angular2/core';
+import {TVTracker} from './components/tvTracker';
 
 @Component({
-  selector: 'tv-tracker',
+  selector: 'app',
+  directives: [TVTracker],
   template: `
-    <h1>Hello world from the TV tracker</h1>
+    <div class="container">
+      <br>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <tv-tracker></tv-tracker>
+        </div>
+      </div>
+    </div>
   `
 })
-export class AppComponent {
-}
+export class AppComponent {}
