@@ -12,7 +12,7 @@ module.exports = {
     }, {
       test: /\.scss$/, loader: 'style!css!sass'
     }],
-    noParse: [ /zone\.js\/dist\/.+/ ]
+    noParse: [/zone\.js\/dist\/.+/]
   },
   resolve: {
     extensions: ['', '.ts', '.js']
