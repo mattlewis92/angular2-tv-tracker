@@ -22,7 +22,7 @@ import {ShowList} from './showList';
 })
 export class TVTracker {
 
-  public shows: Object;
+  public shows: Array<Object>;
 
   public error: string;
 

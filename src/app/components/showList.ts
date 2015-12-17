@@ -29,6 +29,6 @@ import {COMMON_DIRECTIVES} from 'angular2/common';
 })
 export class ShowList {
 
-  @Input() shows:Object[];
+  @Input() shows:Array<Object>;
 
 }
