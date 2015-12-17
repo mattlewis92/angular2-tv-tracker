@@ -9,6 +9,8 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
+    }, {
+      test: /\.scss$/, loader: 'style!css!sass'
     }]
   },
   resolve: {
