@@ -1,0 +1,13 @@
+{
+  "name": "angular2-tv-tracker",
+  "description": "Angular 2 TV tracker",
+  "repository": "NONE",
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "~2.0.0-beta.0",
+    "es6-shim": "~0.34.0",
+    "reflect-metadata": "~0.1.2",
+    "rxjs": "~5.0.0-beta.0",
+    "zone.js": "~0.5.10"
+  }
+}
