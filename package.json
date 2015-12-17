@@ -1,13 +1,22 @@
 {
   "name": "angular2-tv-tracker",
   "description": "Angular 2 TV tracker",
-  "repository": "NONE",
+  "repository": "git@github.com:mattlewis92/angular2-tv-tracker.git",
   "license": "MIT",
   "dependencies": {
     "angular2": "~2.0.0-beta.0",
-    "es6-shim": "~0.34.0",
+    "es6-shim": "~0.33.13",
     "reflect-metadata": "~0.1.2",
     "rxjs": "~5.0.0-beta.0",
     "zone.js": "~0.5.10"
+  },
+  "devDependencies": {
+    "ts-loader": "~0.7.2",
+    "typescript": "~1.7.5",
+    "webpack": "~1.12.9",
+    "webpack-dev-server": "~1.14.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server"
   }
 }
