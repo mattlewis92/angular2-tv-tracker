@@ -6,6 +6,7 @@ import {ShowList} from './showList';
 @Component({
   selector: 'tv-tracker',
   directives: [SearchBox, ShowList],
+  providers: [TVSearch],
   template: `
     <h1>TV tracker</h1>
     <form (submit)="searchShows(searchBox.searchText)">
