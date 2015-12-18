@@ -24,15 +24,18 @@ import {ShowList} from './showList';
 export class TVTracker {
 
   public shows:Array<Object>;
-
   public error:string;
 
   constructor(private tvSearch:TVSearch) {}
 
-  searchShows(text:string) {
-
+  resetSearch() {
     this.error = null;
     this.shows = null;
+  }
+
+  searchShows(text:string) {
+
+    this.resetSearch();
 
     this
       .tvSearch

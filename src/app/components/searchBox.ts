@@ -13,6 +13,6 @@ import {Component} from 'angular2/core';
 })
 export class SearchBox {
 
-  public searchText: string;
+  public searchText:string;
 
 }
