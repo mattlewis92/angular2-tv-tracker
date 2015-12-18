@@ -2,11 +2,11 @@ import {Injectable} from 'angular2/core';
 import {Http, RequestOptions, URLSearchParams} from 'angular2/http';
 
 @Injectable()
-export class TVSearch {
+export class TVMaze {
 
   static BASE_URL = 'http://api.tvmaze.com/';
 
-  constructor(public http:Http) {}
+  constructor(private http:Http) {}
 
   search(query:string) {
 
@@ -14,8 +14,12 @@ export class TVSearch {
     search.set('q', query);
 
     return this.http
-      .get(`${TVSearch.BASE_URL}search/shows`, new RequestOptions({search}))
+      .get(`${TVMaze.BASE_URL}search/shows`, new RequestOptions({search}))
       .map(res => res.json());
+  }
+
+  getEpisodes(id:number) {
+    return this.http.get(`${TVMaze.BASE_URL}shows/${id}/episodes`).map(res => res.json());
   }
 
 }
