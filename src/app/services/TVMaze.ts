@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Http, RequestOptions, URLSearchParams} from 'angular2/http';
 
 @Injectable()
-export class TVSearch {
+export class TVMaze {
 
   static BASE_URL = 'http://api.tvmaze.com/';
 
@@ -14,7 +14,7 @@ export class TVSearch {
     search.set('q', query);
 
     return this.http
-      .get(`${TVSearch.BASE_URL}search/shows`, new RequestOptions({search}))
+      .get(`${TVMaze.BASE_URL}search/shows`, new RequestOptions({search}))
       .map(res => res.json());
   }
 

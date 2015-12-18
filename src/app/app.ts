@@ -1,18 +1,22 @@
 import {Component} from 'angular2/core';
-import {TVTracker} from './components/tvTracker';
+import {ShowSearch} from './components/showSearch';
+import {ROUTER_DIRECTIVES, RouteConfig, Route} from 'angular2/router';
 
 @Component({
   selector: 'app',
-  directives: [TVTracker],
+  directives: [ROUTER_DIRECTIVES],
   template: `
     <div class="container">
       <br>
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <tv-tracker></tv-tracker>
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
   `
 })
+@RouteConfig([
+  new Route({path: '/', component: ShowSearch, name: 'Home'})
+])
 export class AppComponent {}

@@ -1,14 +1,14 @@
 import {Component} from 'angular2/core';
-import {TVSearch} from './../services/TVSearch';
+import {TVMaze} from './../services/tvMaze';
 import {SearchBox} from './searchBox';
 import {ShowList} from './showList';
 
 @Component({
   selector: 'tv-tracker',
   directives: [SearchBox, ShowList],
-  providers: [TVSearch],
+  providers: [TVMaze],
   template: `
-    <h1>TV tracker</h1>
+    <h1>Search for a show</h1>
     <form (submit)="searchShows(searchBox.searchText)">
       <search-box #searchBox></search-box>
     </form>
@@ -21,12 +21,12 @@ import {ShowList} from './showList';
     </div>
   `
 })
-export class TVTracker {
+export class ShowSearch {
 
   public shows:Array<Object>;
   public error:string;
 
-  constructor(private tvSearch:TVSearch) {}
+  constructor(private tvMaze:TVMaze) {}
 
   resetSearch() {
     this.error = null;
@@ -38,7 +38,7 @@ export class TVTracker {
     this.resetSearch();
 
     this
-      .tvSearch
+      .tvMaze
       .search(text)
       .subscribe(
         data => this.shows = data,
