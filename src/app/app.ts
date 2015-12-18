@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {ShowSearch} from './components/showSearch';
+import {Episodes} from './components/episodes';
 import {ROUTER_DIRECTIVES, RouteConfig, Route} from 'angular2/router';
 
 @Component({
@@ -17,6 +18,7 @@ import {ROUTER_DIRECTIVES, RouteConfig, Route} from 'angular2/router';
   `
 })
 @RouteConfig([
-  new Route({path: '/', component: ShowSearch, name: 'Home'})
+  new Route({path: '/', component: ShowSearch, name: 'Search'}),
+  new Route({path: '/episodes/:id', component: Episodes, name: 'Episodes'})
 ])
 export class AppComponent {}

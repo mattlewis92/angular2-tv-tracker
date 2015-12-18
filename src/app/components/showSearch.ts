@@ -5,7 +5,7 @@ import {ShowList} from './showList';
 
 @Component({
   selector: 'tv-tracker',
-  directives: [SearchBox, ShowList],
+  directives: [[SearchBox], [ShowList]], // make webstorm happy :/
   providers: [TVMaze],
   template: `
     <h1>Search for a show</h1>
