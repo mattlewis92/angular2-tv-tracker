@@ -8,6 +8,9 @@ module.exports = {
     filename: 'tv-tracker.js'
   },
   module: {
+    preLoaders: [{
+      test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/
+    }],
     loaders: [{
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
     }, {
