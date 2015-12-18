@@ -1,7 +1,8 @@
 const webpack = require('webpack');
+const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
-  devtool: 'eval',
+  devtool: IS_PROD ? 'source-map' : 'eval',
   entry: './src/entry.ts',
   output: {
     filename: 'tv-tracker.js'
@@ -25,6 +26,7 @@ module.exports = {
     contentBase: 'src/public'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.DedupePlugin()
   ]
 };
