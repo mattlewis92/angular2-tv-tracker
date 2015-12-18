@@ -6,7 +6,7 @@ export class TVSearch {
 
   static BASE_URL = 'http://api.tvmaze.com/';
 
-  constructor(public http:Http) {}
+  constructor(private http:Http) {}
 
   search(query:string) {
 

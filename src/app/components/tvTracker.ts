@@ -22,13 +22,13 @@ import {ShowList} from './showList';
 })
 export class TVTracker {
 
-  public shows: Array<Object>;
+  public shows:Array<Object>;
 
-  public error: string;
+  public error:string;
 
   constructor(private tvSearch:TVSearch) {}
 
-  searchShows(text) {
+  searchShows(text:string) {
 
     this.error = null;
     this.shows = null;
