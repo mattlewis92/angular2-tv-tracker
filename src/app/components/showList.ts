@@ -27,10 +27,13 @@ import {LocalStorage} from './../services/localStorage';
           </td>
           <td>{{ show.network?.name }}</td>
           <td [innerHtml]="show.summary"></td>
-          <td
-            [class.text-success]="show.status === 'Running'"
-            [class.text-danger]="show.status !== 'Running'">
-            {{ show.status }}
+          <td>
+            <span
+              class="label"
+              [class.label-success]="show.status === 'Running'"
+              [class.label-danger]="show.status !== 'Running'">
+               {{ show.status }}
+             </span>
           </td>
           <td style="width: 270px">
             <button class="btn btn-success" (click)="subscribe(show)" [hidden]="isSubscribed(show)">
