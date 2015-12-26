@@ -2,7 +2,7 @@ import {Component, Input, Output} from 'angular2/core';
 import {COMMON_DIRECTIVES} from 'angular2/common';
 
 @Component({
-  selector: 'th[sortable-header]',
+  selector: 'th[sortableHeader]',
   directives: [COMMON_DIRECTIVES],
   template: `
     <div (click)="headerClicked()">
@@ -21,7 +21,7 @@ import {COMMON_DIRECTIVES} from 'angular2/common';
 })
 export class SortableHeader {
 
-  @Input() fieldName: string;
+  @Input('sortableHeader') fieldName: string;
   @Input() sort: {field: string, desc: boolean};
 
   headerClicked(): void {

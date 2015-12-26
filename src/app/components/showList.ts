@@ -4,27 +4,29 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {LocalStorage} from './../services/localStorage';
 import {TVMaze} from '../services/tvMaze';
 import {ToDate} from './../pipes/toDate';
+import {OrderBy} from './../pipes/orderBy';
+import {SortableHeader} from './sortableHeader';
 
 @Component({
   selector: 'show-list',
-  directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES],
+  directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, [SortableHeader]],
   providers: [LocalStorage, TVMaze],
-  pipes: [[ToDate]],
+  pipes: [[ToDate, OrderBy]],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
         <tr>
-          <th>Name</th>
+          <th sortableHeader="name" [sort]="sort">Name</th>
           <th>Image</th>
-          <th>Network</th>
+          <th sortableHeader="network.name" [sort]="sort">Network</th>
           <th>Summary</th>
-          <th>Status</th>
-          <th>Next episode</th>
+          <th sortableHeader="status" [sort]="sort">Status</th>
+          <th sortableHeader="nextEpisode.airstamp" [sort]="sort">Next episode</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="#show of shows" [hidden]="!show.image?.medium">
+        <tr *ngFor="#show of shows | orderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium" width="60">
@@ -64,6 +66,7 @@ export class ShowList {
   @Input() public shows: Array<{id: number, nextEpisode: Object}>;
   @Output('unsubscribe') public unsubscribeCallback = new EventEmitter();
   public subscribedShows: Array<{id: number}>;
+  public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);

@@ -14,9 +14,9 @@ import {OrderBy} from './../pipes/orderBy';
     <table class="table">
       <thead>
         <tr>
-          <th sortable-header fieldName="name" [sort]="sort">Name</th>
-          <th sortable-header fieldName="season" [sort]="sort">Season</th>
-          <th sortable-header fieldName="number" [sort]="sort">Number</th>
+          <th sortableHeader="name" [sort]="sort">Name</th>
+          <th sortableHeader="season" [sort]="sort">Season</th>
+          <th sortableHeader="number" [sort]="sort">Number</th>
           <th>Air date</th>
           <th>Runtime</th>
           <th>Summary</th>
