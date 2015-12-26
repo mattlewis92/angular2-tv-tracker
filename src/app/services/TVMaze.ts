@@ -15,7 +15,8 @@ export class TVMaze {
 
     return this.http
       .get(`${TVMaze.BASE_URL}search/shows`, new RequestOptions({search}))
-      .map(res => res.json());
+      .map(res => res.json())
+      .map(shows => shows.map(show => show.show));
   }
 
   getEpisodes(id: number) {

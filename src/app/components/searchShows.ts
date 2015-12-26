@@ -4,11 +4,11 @@ import {ShowList} from './showList';
 import {SearchBox} from './searchBox';
 
 @Component({
-  selector: 'tv-tracker',
+  selector: 'search-shows',
   directives: [[ShowList, SearchBox]], // make webstorm happy
   providers: [TVMaze],
   template: `
-    <h1>Search for a show</h1>
+    <h1>Add a show</h1>
     <search-box (runSearch)="searchShows($event)"></search-box>
     <br>
     <show-list [shows]="shows"></show-list>
@@ -19,7 +19,7 @@ import {SearchBox} from './searchBox';
     </div>
   `
 })
-export class ShowSearch {
+export class SearchShows {
 
   public shows: Array<Object>;
   public error: string;
