@@ -34,6 +34,6 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 })
 export class ShowList {
 
-  @Input() shows:Array<Object>;
+  @Input() shows: Array<Object>;
 
 }

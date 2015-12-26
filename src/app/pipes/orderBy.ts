@@ -1,11 +1,11 @@
-import {Pipe} from 'angular2/core';
+import {Pipe, PipeTransform} from 'angular2/core';
 
 @Pipe({
   name: 'orderBy'
 })
-export class OrderBy {
+export class OrderBy implements PipeTransform {
 
-  transform(input:Object[], [field, desc = false]:[string, boolean]):Object[] {
+  transform(input: Object[], [field, desc = false]: [string, boolean]): Object[] {
     if (input && field) {
       return Array.from(input).sort((a, b) => {
         if (a[field] < b[field]) {

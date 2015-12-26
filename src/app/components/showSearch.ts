@@ -33,22 +33,22 @@ import {ShowList} from './showList';
 })
 export class ShowSearch {
 
-  public shows:Array<Object>;
-  public error:string;
-  private searchForm:ControlGroup;
+  public shows: Array<Object>;
+  public error: string;
+  private searchForm: ControlGroup;
 
-  constructor(private tvMaze:TVMaze, fb:FormBuilder) {
+  constructor(private tvMaze: TVMaze, fb: FormBuilder) {
     this.searchForm = fb.group({
       query: ['', Validators.required]
     });
   }
 
-  resetSearch() {
+  resetSearch(): void {
     this.error = null;
     this.shows = null;
   }
 
-  searchShows(text:string) {
+  searchShows(text: string): void {
 
     this.resetSearch();
 
