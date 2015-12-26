@@ -2,11 +2,14 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {COMMON_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {LocalStorage} from './../services/localStorage';
+import {TVMaze} from '../services/tvMaze';
+import {ToDate} from './../pipes/toDate';
 
 @Component({
   selector: 'show-list',
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES],
-  providers: [LocalStorage],
+  providers: [LocalStorage, TVMaze],
+  pipes: [[ToDate]],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
@@ -16,6 +19,7 @@ import {LocalStorage} from './../services/localStorage';
           <th>Network</th>
           <th>Summary</th>
           <th>Status</th>
+          <th>Next episode</th>
           <th></th>
         </tr>
       </thead>
@@ -34,6 +38,10 @@ import {LocalStorage} from './../services/localStorage';
               [class.label-danger]="show.status !== 'Running'">
                {{ show.status }}
              </span>
+          </td>
+          <td>
+            <span [hidden]="!show?.nextEpisode?.airstamp">{{ show?.nextEpisode?.airstamp | toDate | date:'fullDate' }}</span>
+            <span [hidden]="show?.nextEpisode?.airstamp">Unknown</span>
           </td>
           <td style="width: 270px">
             <button class="btn btn-success" (click)="subscribe(show)" [hidden]="isSubscribed(show)">
@@ -57,7 +65,7 @@ export class ShowList {
   @Output('unsubscribe') public unsubscribeCallback = new EventEmitter();
   public subscribedShows: Array<{id: number}>;
 
-  constructor(private localStorage: LocalStorage) {
+  constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);
   }
 
@@ -74,6 +82,18 @@ export class ShowList {
     this.subscribedShows = this.subscribedShows.filter(subscribedShow => subscribedShow.id !== show.id);
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
     this.unsubscribeCallback.next(show);
+  }
+
+  ngOnChanges(changeRecord) {
+    if (changeRecord.shows) {
+      const episodePromises = this.shows.map(show => this.tvMaze.getEpisodes(show.id).toPromise());
+
+      Promise.all(episodePromises).then(showEpisodes => {
+        showEpisodes.forEach((episodes, showIndex) => {
+          this.shows[showIndex].nextEpisode = episodes.find(episode => new Date(episode.airdate).getTime() > Date.now());
+        });
+      });
+    }
   }
 
 }
