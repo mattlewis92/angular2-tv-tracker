@@ -93,7 +93,9 @@ export class ShowList {
 
       Promise.all(episodePromises).then(showEpisodes => {
         showEpisodes.forEach((episodes, showIndex) => {
-          this.shows[showIndex].nextEpisode = episodes.find(episode => new Date(episode.airdate).getTime() > Date.now());
+          this.shows[showIndex].nextEpisode = episodes.find((episode: {airdate: string}) => {
+            return new Date(episode.airdate).getTime() > Date.now();
+          });
         });
       });
     }
