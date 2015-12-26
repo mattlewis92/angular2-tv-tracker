@@ -61,7 +61,7 @@ import {ToDate} from './../pipes/toDate';
 })
 export class ShowList {
 
-  @Input() public shows: Array<Object>;
+  @Input() public shows: Array<{id: number, nextEpisode: Object}>;
   @Output('unsubscribe') public unsubscribeCallback = new EventEmitter();
   public subscribedShows: Array<{id: number}>;
 
