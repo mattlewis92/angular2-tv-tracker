@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {COMMON_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {LocalStorage} from './../services/localStorage';
@@ -54,6 +54,7 @@ import {LocalStorage} from './../services/localStorage';
 export class ShowList {
 
   @Input() public shows: Array<Object>;
+  @Output('unsubscribe') public unsubscribeCallback = new EventEmitter();
   public subscribedShows: Array<{id: number}>;
 
   constructor(private localStorage: LocalStorage) {
@@ -72,6 +73,7 @@ export class ShowList {
   unsubscribe(show): void {
     this.subscribedShows = this.subscribedShows.filter(subscribedShow => subscribedShow.id !== show.id);
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
+    this.unsubscribeCallback.next(show);
   }
 
 }

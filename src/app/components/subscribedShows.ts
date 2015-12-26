@@ -7,7 +7,7 @@ import {ShowList} from './showList';
   selector: 'subscribed-shows',
   template: `
     <h1>Subscribed shows</h1>
-    <show-list [shows]="subscribedShows"></show-list>
+    <show-list [shows]="subscribedShows" (unsubscribe)="unsubscribe($event)"></show-list>
     <div
       class="alert alert-warning"
       [hidden]="subscribedShows.length > 0">
@@ -23,6 +23,10 @@ export class SubscribedShows {
 
   constructor(private localStorage: LocalStorage) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);
+  }
+
+  unsubscribe(show) {
+    this.subscribedShows = this.subscribedShows.filter(subscribedShow => subscribedShow.id !== show.id);
   }
 
 }
