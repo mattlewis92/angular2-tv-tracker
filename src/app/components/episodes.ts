@@ -40,10 +40,10 @@ import {OrderBy} from './../pipes/orderBy';
 })
 export class Episodes {
 
-  public episodes:Observable<Object[]>;
-  public sort:{field: string, desc: boolean} = {field: null, desc: false};
+  public episodes: Observable<Object[]>;
+  public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
-  constructor(routeParams:RouteParams, tvMaze:TVMaze) {
+  constructor(routeParams: RouteParams, tvMaze: TVMaze) {
     this.episodes = tvMaze.getEpisodes(+routeParams.get('id'));
   }
 
