@@ -8,8 +8,10 @@ import {SearchBox} from './searchBox';
   directives: [[ShowList, SearchBox]], // make webstorm happy
   providers: [TVMaze],
   template: `
-    <h1>Add a show</h1>
-    <search-box (runSearch)="searchShows($event)"></search-box>
+    <div class="row">
+      <h1 class="col-md-6">Add a show</h1>
+      <search-box class="col-md-6" (runSearch)="searchShows($event)"></search-box>
+    </div>
     <br>
     <show-list [shows]="shows"></show-list>
     <div
