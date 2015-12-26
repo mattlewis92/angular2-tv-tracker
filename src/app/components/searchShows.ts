@@ -1,7 +1,6 @@
 import {Component} from 'angular2/core';
-import {TVMaze} from './../services/tvMaze';
-import {ShowList} from './showList';
-import {SearchBox} from './searchBox';
+import {TVMaze} from './../providers/providers';
+import {ShowList, SearchBox} from './components';
 
 @Component({
   selector: 'search-shows',

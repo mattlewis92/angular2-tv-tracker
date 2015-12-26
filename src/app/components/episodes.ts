@@ -3,9 +3,8 @@ import {RouteParams, OnActivate} from 'angular2/router';
 import {COMMON_DIRECTIVES} from 'angular2/common';
 import {Observable} from 'rxjs/Observable';
 import {SortableHeader} from './sortableHeader';
-import {TVMaze} from './../services/tvMaze';
-import {ToDate} from './../pipes/toDate';
-import {OrderBy} from './../pipes/orderBy';
+import {TVMaze} from './../providers/providers';
+import {ToDate, OrderBy} from './../pipes/pipes';
 
 @Component({
   selector: 'episodes',

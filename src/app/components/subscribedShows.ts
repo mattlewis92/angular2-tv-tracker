@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {LocalStorage} from '../services/localStorage';
-import {ShowList} from './showList';
+import {LocalStorage} from '../providers/providers';
+import {ShowList} from './components';
 
 @Component({
   selector: 'subscribed-shows',
