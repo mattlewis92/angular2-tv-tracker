@@ -1,27 +1,15 @@
 import {Component} from 'angular2/core';
-import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
 import {TVMaze} from './../services/tvMaze';
 import {ShowList} from './showList';
+import {SearchBox} from './searchBox';
 
 @Component({
   selector: 'tv-tracker',
-  directives: [[ShowList], FORM_DIRECTIVES], // make webstorm happy
+  directives: [[ShowList, SearchBox]], // make webstorm happy
   providers: [TVMaze],
   template: `
     <h1>Search for a show</h1>
-    <form (submit)="$event.preventDefault(); searchShows(searchForm.value.query)" [ngFormModel]="searchForm">
-      <div class="input-group">
-        <input type="search" class="form-control" ngControl="query">
-        <span class="input-group-btn">
-          <button
-            class="btn btn-primary"
-            type="submit"
-            [disabled]="!searchForm.valid">
-            Search
-           </button>
-        </span>
-      </div>
-    </form>
+    <search-box (runSearch)="searchShows($event)"></search-box>
     <br>
     <show-list [shows]="shows"></show-list>
     <div
@@ -35,13 +23,8 @@ export class ShowSearch {
 
   public shows: Array<Object>;
   public error: string;
-  private searchForm: ControlGroup;
 
-  constructor(private tvMaze: TVMaze, fb: FormBuilder) {
-    this.searchForm = fb.group({
-      query: ['', Validators.required]
-    });
-  }
+  constructor(private tvMaze: TVMaze) {}
 
   resetSearch(): void {
     this.error = null;
