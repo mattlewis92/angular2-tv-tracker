@@ -85,7 +85,7 @@ export class ShowList {
   }
 
   ngOnChanges(changeRecord) {
-    if (changeRecord.shows) {
+    if (changeRecord.shows && this.shows) {
       const episodePromises = this.shows.map(show => this.tvMaze.getEpisodes(show.id).toPromise());
 
       Promise.all(episodePromises).then(showEpisodes => {
