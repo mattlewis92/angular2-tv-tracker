@@ -1,6 +1,6 @@
 # Angular2 TV tracker
 
-A simple app built with webpack for learning angular2 using several core features + concepts including:
+A simple app built with webpack for learning angular2, demonstrating several core features and concepts including:
 * http
 * routing
 * forms
@@ -10,6 +10,8 @@ A simple app built with webpack for learning angular2 using several core feature
 * observables
 * typescript
 * 3rd party typings from tsd
+
+_Feedback welcome!_
 
 ### Demo
 http://mattlewis.me/angular2-tv-tracker/
