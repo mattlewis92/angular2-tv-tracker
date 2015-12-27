@@ -4,6 +4,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {LocalStorage, TVMaze} from './../providers/providers';
 import {ToDate, OrderBy} from './../pipes/pipes';
 import {SortableHeader} from './sortableHeader';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'show-list',
@@ -87,9 +88,8 @@ export class ShowList {
 
   ngOnChanges(changeRecord) {
     if (changeRecord.shows && this.shows) {
-      const episodePromises = this.shows.map(show => this.tvMaze.getEpisodes(show.id).toPromise());
-
-      Promise.all(episodePromises).then(showEpisodes => {
+      const episodePromises = this.shows.map(show => this.tvMaze.getEpisodes(show.id));
+      Observable.forkJoin(episodePromises).subscribe(showEpisodes => {
         showEpisodes.forEach((episodes, showIndex) => {
           this.shows[showIndex].nextEpisode = episodes.find((episode: {airdate: string}) => {
             return new Date(episode.airdate).getTime() > Date.now();
