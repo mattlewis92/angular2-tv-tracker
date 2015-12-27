@@ -6,9 +6,9 @@ export class TVMaze {
 
   static BASE_URL = 'http://api.tvmaze.com/';
 
-  constructor(private http: Http) {}
+  constructor(private http:Http) {}
 
-  search(query: string) {
+  search(query:string) {
 
     const search = new URLSearchParams();
     search.set('q', query);
@@ -18,7 +18,7 @@ export class TVMaze {
       .map(res => res.json());
   }
 
-  getEpisodes(id: number) {
+  getEpisodes(id:number) {
     return this.http.get(`${TVMaze.BASE_URL}shows/${id}/episodes`).map(res => res.json());
   }
 
