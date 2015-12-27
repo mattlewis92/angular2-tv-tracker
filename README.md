@@ -11,7 +11,10 @@ A simple app built with webpack for learning angular2 using several core feature
 * typescript
 * 3rd party typings from tsd
 
-### Run / hack locally (assuming node + npm are installed)
+### Demo
+http://mattlewis.me/angular2-tv-tracker/
+
+### Run locally (assuming node + npm are installed)
 
 ```
 git clone git@github.com:mattlewis92/angular2-tv-tracker.git
