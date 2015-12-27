@@ -1,24 +1,28 @@
 import {Component} from 'angular2/core';
-import {ShowSearch} from './components/showSearch';
-import {Episodes} from './components/episodes';
 import {ROUTER_DIRECTIVES, RouteConfig, Route} from 'angular2/router';
+import {SearchShows} from './components/searchShows';
+import {Episodes} from './components/episodes';
+import {SubscribedShows} from './components/subscribedShows';
+import {Navbar} from './components/navbar';
 
 @Component({
   selector: 'app',
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, [Navbar]],
   template: `
+    <navbar></navbar>
     <div class="container">
-      <br>
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
+      <router-outlet></router-outlet>
     </div>
-  `
+  `,
+  styles: [`
+    .container {
+      padding-top: 70px;
+    }
+  `]
 })
 @RouteConfig([
-  new Route({path: '/', component: ShowSearch, name: 'Search'}),
-  new Route({path: '/episodes/:id', component: Episodes, name: 'Episodes'})
+  new Route({path: '/add', component: SearchShows, name: 'Search'}),
+  new Route({path: '/episodes/:id', component: Episodes, name: 'Episodes'}),
+  new Route({path: '/', component: SubscribedShows, name: 'Subscribed'})
 ])
 export class AppComponent {}

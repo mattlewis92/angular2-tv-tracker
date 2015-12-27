@@ -3,9 +3,8 @@ import {RouteParams, OnActivate} from 'angular2/router';
 import {COMMON_DIRECTIVES} from 'angular2/common';
 import {Observable} from 'rxjs/Observable';
 import {SortableHeader} from './sortableHeader';
-import {TVMaze} from './../services/tvMaze';
-import {ToDate} from './../pipes/toDate';
-import {OrderBy} from './../pipes/orderBy';
+import {TVMaze} from './../providers/providers';
+import {ToDate, OrderBy} from './../pipes/pipes';
 
 @Component({
   selector: 'episodes',
@@ -14,9 +13,9 @@ import {OrderBy} from './../pipes/orderBy';
     <table class="table">
       <thead>
         <tr>
-          <th sortable-header fieldName="name" [sort]="sort">Name</th>
-          <th sortable-header fieldName="season" [sort]="sort">Season</th>
-          <th sortable-header fieldName="number" [sort]="sort">Number</th>
+          <th sortableHeader="name" [sort]="sort">Name</th>
+          <th sortableHeader="season" [sort]="sort">Season</th>
+          <th sortableHeader="number" [sort]="sort">Number</th>
           <th>Air date</th>
           <th>Runtime</th>
           <th>Summary</th>
@@ -40,10 +39,10 @@ import {OrderBy} from './../pipes/orderBy';
 })
 export class Episodes {
 
-  public episodes:Observable<Object[]>;
-  public sort:{field: string, desc: boolean} = {field: null, desc: false};
+  public episodes: Observable<Object[]>;
+  public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
-  constructor(routeParams:RouteParams, tvMaze:TVMaze) {
+  constructor(routeParams: RouteParams, tvMaze: TVMaze) {
     this.episodes = tvMaze.getEpisodes(+routeParams.get('id'));
   }
 
