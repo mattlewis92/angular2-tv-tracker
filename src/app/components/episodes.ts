@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {SortableHeader} from './sortableHeader';
 import {TVMaze} from './../providers/providers';
 import {ToDate, OrderBy} from './../pipes/pipes';
+import {Episode} from '../interfaces/interfaces';
 
 @Component({
   selector: 'episodes',
@@ -39,7 +40,7 @@ import {ToDate, OrderBy} from './../pipes/pipes';
 })
 export class Episodes {
 
-  public episodes: Observable<Object[]>;
+  public episodes: Observable<Episode[]>;
   public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
   constructor(routeParams: RouteParams, tvMaze: TVMaze) {

@@ -5,6 +5,7 @@ import {LocalStorage, TVMaze} from './../providers/providers';
 import {ToDate, OrderBy} from './../pipes/pipes';
 import {SortableHeader} from './sortableHeader';
 import {Observable} from 'rxjs/Observable';
+import {Show, Episode} from './../interfaces/interfaces';
 
 @Component({
   selector: 'show-list',
@@ -62,41 +63,50 @@ import {Observable} from 'rxjs/Observable';
 })
 export class ShowList {
 
-  @Input() public shows: Array<{id: number, nextEpisode: Object}>;
-  @Output('unsubscribe') public unsubscribeCallback = new EventEmitter();
-  public subscribedShows: Array<{id: number}>;
+  @Input() public shows: Array<Show>;
+  @Output('unsubscribe') public unsubscribeCallback: EventEmitter<any> = new EventEmitter();
+  public subscribedShows: Array<Show>;
   public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);
   }
 
-  subscribe(show): void {
+  subscribe(show: Show): void {
     this.subscribedShows.push(show);
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
   }
 
-  isSubscribed(show): Object {
-    return this.subscribedShows.find(subscribedShow => subscribedShow.id === show.id);
+  isSubscribed(show: Show): Object {
+    return this.subscribedShows.find((subscribedShow: Show) => subscribedShow.id === show.id);
   }
 
-  unsubscribe(show): void {
-    this.subscribedShows = this.subscribedShows.filter(subscribedShow => subscribedShow.id !== show.id);
+  unsubscribe(show: Show): void {
+    this.subscribedShows = this.subscribedShows.filter((subscribedShow: Show) => subscribedShow.id !== show.id);
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
     this.unsubscribeCallback.next(show);
   }
 
-  ngOnChanges(changeRecord) {
+  ngOnChanges(changeRecord: any): void {
+
     if (changeRecord.shows && this.shows) {
-      const episodePromises = this.shows.map(show => this.tvMaze.getEpisodes(show.id));
-      Observable.forkJoin(episodePromises).subscribe(showEpisodes => {
-        showEpisodes.forEach((episodes, showIndex) => {
-          this.shows[showIndex].nextEpisode = episodes.find((episode: {airdate: string}) => {
+
+      const episodeRequests: Observable<any>[] = this.shows.map((show: Show) => this.tvMaze.getEpisodes(show.id));
+
+      Observable.forkJoin(episodeRequests).subscribe((showEpisodes: Episode[][]) => {
+
+        showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
+
+          this.shows[showIndex].nextEpisode = episodes.find((episode: Episode) => {
             return new Date(episode.airdate).getTime() > Date.now();
           });
+
         });
+
       });
+
     }
+
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {TVMaze} from './../providers/providers';
 import {ShowList, SearchBox} from './components';
+import {Show} from '../interfaces/interfaces';
 
 @Component({
   selector: 'search-shows',
@@ -22,7 +23,7 @@ import {ShowList, SearchBox} from './components';
 })
 export class SearchShows {
 
-  public shows: Array<Object>;
+  public shows: Show[];
   public error: string;
 
   constructor(private tvMaze: TVMaze) {}
@@ -40,8 +41,8 @@ export class SearchShows {
       .tvMaze
       .search(text)
       .subscribe(
-        data => this.shows = data,
-        err => this.error = err
+        (data: Show[]) => this.shows = data,
+        (err: string) => this.error = err
       );
 
   }

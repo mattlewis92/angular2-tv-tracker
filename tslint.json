@@ -50,6 +50,14 @@
       "check-operator",
       "check-separator",
       "check-type"
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration"
     ]
   }
 }
