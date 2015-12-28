@@ -15,7 +15,6 @@ import {Show} from '../interfaces/interfaces';
       You haven't yet subscribed to any shows. <a [routerLink]="['/Search']">Add some now.</a>
     </div>
   `,
-  providers: [LocalStorage],
   directives: [ShowList, ROUTER_DIRECTIVES]
 })
 export class SubscribedShows {

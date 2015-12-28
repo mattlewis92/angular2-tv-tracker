@@ -6,7 +6,6 @@ import {Show} from '../interfaces/interfaces';
 @Component({
   selector: 'search-shows',
   directives: [ShowList, SearchBox],
-  providers: [TVMaze],
   template: `
     <div class="row">
       <h1 class="col-md-6">Add a show</h1>

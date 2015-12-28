@@ -34,7 +34,6 @@ import {Episode} from '../interfaces/interfaces';
       </tbody>
     </table>
   `,
-  providers: [TVMaze],
   pipes: [ToDate, OrderBy],
   directives: [COMMON_DIRECTIVES, SortableHeader]
 })

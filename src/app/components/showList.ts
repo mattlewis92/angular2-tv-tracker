@@ -10,7 +10,6 @@ import {Show, Episode} from './../interfaces/interfaces';
 @Component({
   selector: 'show-list',
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader],
-  providers: [LocalStorage, TVMaze],
   pipes: [ToDate, OrderBy],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
