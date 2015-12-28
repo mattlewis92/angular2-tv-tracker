@@ -35,8 +35,8 @@ import {Episode} from '../interfaces/interfaces';
     </table>
   `,
   providers: [TVMaze],
-  pipes: [[ToDate, OrderBy]],
-  directives: [COMMON_DIRECTIVES, [SortableHeader]]
+  pipes: [ToDate, OrderBy],
+  directives: [COMMON_DIRECTIVES, SortableHeader]
 })
 export class Episodes {
 

@@ -16,7 +16,7 @@ import {Show} from '../interfaces/interfaces';
     </div>
   `,
   providers: [LocalStorage],
-  directives: [[ShowList], ROUTER_DIRECTIVES]
+  directives: [ShowList, ROUTER_DIRECTIVES]
 })
 export class SubscribedShows {
 

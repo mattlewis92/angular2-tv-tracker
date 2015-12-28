@@ -5,7 +5,7 @@ import {Show} from '../interfaces/interfaces';
 
 @Component({
   selector: 'search-shows',
-  directives: [[ShowList, SearchBox]], // make webstorm happy
+  directives: [ShowList, SearchBox],
   providers: [TVMaze],
   template: `
     <div class="row">

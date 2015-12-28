@@ -7,7 +7,7 @@ import {Navbar} from './components/navbar';
 
 @Component({
   selector: 'app',
-  directives: [ROUTER_DIRECTIVES, [Navbar]],
+  directives: [ROUTER_DIRECTIVES, Navbar],
   template: `
     <navbar></navbar>
     <div class="container">
