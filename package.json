@@ -1,5 +1,6 @@
 {
   "name": "angular2-tv-tracker",
+  "private": true,
   "description": "Angular 2 TV tracker",
   "repository": "git@github.com:mattlewis92/angular2-tv-tracker.git",
   "license": "MIT",
