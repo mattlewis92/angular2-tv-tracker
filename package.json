@@ -5,7 +5,7 @@
   "repository": "git@github.com:mattlewis92/angular2-tv-tracker.git",
   "license": "MIT",
   "dependencies": {
-    "angular2": "2.0.0-beta.7",
+    "angular2": "2.0.0-beta.9",
     "bootstrap": "4.0.0-alpha.2",
     "es6-shim": "0.33.13",
     "es7-shim": "5.0.0",
