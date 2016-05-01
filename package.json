@@ -1,27 +1,29 @@
 {
   "name": "angular2-tv-tracker",
+  "private": true,
   "description": "Angular 2 TV tracker",
   "repository": "git@github.com:mattlewis92/angular2-tv-tracker.git",
   "license": "MIT",
   "dependencies": {
-    "angular2": "~2.0.0-beta.0",
-    "bootstrap": "~4.0.0-alpha.2",
-    "es6-shim": "~0.33.13",
-    "lodash.get": "~3.7.0",
-    "reflect-metadata": "~0.1.2",
-    "rxjs": "~5.0.0-beta.0",
-    "zone.js": "~0.5.10"
+    "angular2": "2.0.0-beta.17",
+    "bootstrap": "4.0.0-alpha.2",
+    "es6-shim": "0.35.0",
+    "es7-shim": "5.0.0",
+    "lodash.get": "4.2.1",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12"
   },
   "devDependencies": {
     "css-loader": "~0.23.0",
-    "node-sass": "~3.4.2",
-    "sass-loader": "~3.1.2",
+    "node-sass": "3.6.0",
+    "sass-loader": "3.2.0",
     "style-loader": "~0.13.0",
-    "ts-loader": "~0.7.2",
-    "tslint": "~3.2.0",
+    "ts-loader": "~0.8.1",
+    "tslint": "3.8.1",
     "tslint-loader": "~2.1.0",
-    "typescript": "~1.7.5",
-    "webpack": "~1.12.9",
+    "typescript": "~1.8.0",
+    "webpack": "1.13.0",
     "webpack-dev-server": "~1.14.0"
   },
   "scripts": {

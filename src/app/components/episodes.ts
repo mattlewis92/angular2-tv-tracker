@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {SortableHeader} from './sortableHeader';
 import {TVMaze} from './../providers/providers';
 import {ToDate, OrderBy} from './../pipes/pipes';
+import {Episode} from '../interfaces/interfaces';
 
 @Component({
   selector: 'episodes',
@@ -22,7 +23,7 @@ import {ToDate, OrderBy} from './../pipes/pipes';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="#episode of episodes | async | orderBy:sort.field:sort.desc">
+        <tr *ngFor="let episode of episodes | async | orderBy:sort.field:sort.desc">
           <td>{{ episode.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
@@ -33,13 +34,12 @@ import {ToDate, OrderBy} from './../pipes/pipes';
       </tbody>
     </table>
   `,
-  providers: [TVMaze],
-  pipes: [[ToDate, OrderBy]],
-  directives: [COMMON_DIRECTIVES, [SortableHeader]]
+  pipes: [ToDate, OrderBy],
+  directives: [COMMON_DIRECTIVES, SortableHeader]
 })
 export class Episodes {
 
-  public episodes: Observable<Object[]>;
+  public episodes: Observable<Episode[]>;
   public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
   constructor(routeParams: RouteParams, tvMaze: TVMaze) {

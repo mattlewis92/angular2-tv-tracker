@@ -22,7 +22,7 @@ import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES} from 'angular2/c
 })
 export class SearchBox {
 
-  @Output() runSearch = new EventEmitter();
+  @Output() runSearch: EventEmitter<any> = new EventEmitter();
 
   private searchForm: ControlGroup;
 
