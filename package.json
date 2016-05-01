@@ -5,13 +5,13 @@
   "repository": "git@github.com:mattlewis92/angular2-tv-tracker.git",
   "license": "MIT",
   "dependencies": {
-    "angular2": "2.0.0-beta.15",
+    "angular2": "2.0.0-beta.17",
     "bootstrap": "4.0.0-alpha.2",
     "es6-shim": "0.35.0",
     "es7-shim": "5.0.0",
     "lodash.get": "4.2.1",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
+    "rxjs": "5.0.0-beta.6",
     "zone.js": "0.6.12"
   },
   "devDependencies": {

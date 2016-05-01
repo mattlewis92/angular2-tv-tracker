@@ -8,7 +8,7 @@ const get: any = require('lodash.get');
 })
 export class OrderBy implements PipeTransform {
 
-  transform(input: Object[], [field, desc = false]: [string, boolean]): Object[] {
+  transform(input: Object[], field: string, desc: boolean = false): Object[] {
     if (input && field) {
       return Array.from(input).sort((a: Object, b: Object) => {
         if (get(a, field) < get(b, field)) {

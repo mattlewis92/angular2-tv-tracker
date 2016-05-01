@@ -25,7 +25,7 @@ import {Show, Episode} from './../interfaces/interfaces';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="#show of shows | orderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
+        <tr *ngFor="let show of shows | orderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium" width="60">

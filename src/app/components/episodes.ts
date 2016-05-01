@@ -23,7 +23,7 @@ import {Episode} from '../interfaces/interfaces';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="#episode of episodes | async | orderBy:sort.field:sort.desc">
+        <tr *ngFor="let episode of episodes | async | orderBy:sort.field:sort.desc">
           <td>{{ episode.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
