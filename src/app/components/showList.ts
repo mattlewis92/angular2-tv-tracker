@@ -1,6 +1,8 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, provide} from '@angular/core';
 import {COMMON_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
+import {PositionService} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
 import {ToDate, OrderBy} from './../pipes/pipes';
 import {SortableHeader} from './sortableHeader';
@@ -9,7 +11,16 @@ import {Show, Episode} from './../interfaces/interfaces';
 
 @Component({
   selector: 'show-list',
-  directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader],
+  providers: [
+    provide(ConfirmOptions, {useFactory: (): ConfirmOptions => {
+      return new ConfirmOptions({
+        confirmButtonType: 'danger',
+        cancelButtonType: 'secondary'
+      });
+    }}),
+    provide(Position, {useClass: PositionService})
+  ],
+  directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
   pipes: [ToDate, OrderBy],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
@@ -48,7 +59,13 @@ import {Show, Episode} from './../interfaces/interfaces';
             <button class="btn btn-success" (click)="subscribe(show)" [hidden]="isSubscribed(show)">
               Subscribe
             </button>
-            <button class="btn btn-danger" (click)="unsubscribe(show)" [hidden]="!isSubscribed(show)">
+            <button
+              class="btn btn-danger"
+              [hidden]="!isSubscribed(show)"
+              mwl-confirm
+              title="Unsubscribe"
+              message="Are you sure you would like to unsubscribe from this show?"
+              (confirm)="unsubscribe(show)">
               Unsubscribe
             </button>
             <button class="btn btn-info" [routerLink]="['/Episodes', {id: show.id}]">
