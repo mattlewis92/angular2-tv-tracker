@@ -16,11 +16,11 @@
   },
   "devDependencies": {
     "css-loader": "~0.23.0",
-    "node-sass": "3.6.0",
+    "node-sass": "3.7.0",
     "sass-loader": "3.2.0",
     "style-loader": "~0.13.0",
     "ts-loader": "~0.8.1",
-    "tslint": "3.8.1",
+    "tslint": "3.9.0",
     "tslint-loader": "~2.1.0",
     "typescript": "~1.8.0",
     "webpack": "1.13.0",
