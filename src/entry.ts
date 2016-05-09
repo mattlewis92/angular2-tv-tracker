@@ -7,9 +7,9 @@ import 'zone.js/dist/zone';
 import 'zone.js/dist/long-stack-trace-zone';
 import 'rxjs';
 import 'bootstrap/scss/bootstrap.scss';
-import {bootstrap} from 'angular2/platform/browser';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {ROUTER_PROVIDERS} from 'angular2/router';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {HTTP_PROVIDERS} from '@angular/http';
+import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {AppComponent} from './app/app';
 import * as providers from './app/providers/providers';
 

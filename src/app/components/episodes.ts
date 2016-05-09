@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {RouteParams, OnActivate} from 'angular2/router';
-import {COMMON_DIRECTIVES} from 'angular2/common';
+import {Component} from '@angular/core';
+import {RouteParams} from '@angular/router-deprecated';
+import {COMMON_DIRECTIVES} from '@angular/common';
 import {Observable} from 'rxjs/Observable';
 import {SortableHeader} from './sortableHeader';
 import {TVMaze} from './../providers/providers';

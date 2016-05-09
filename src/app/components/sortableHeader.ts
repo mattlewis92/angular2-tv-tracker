@@ -1,5 +1,5 @@
-import {Component, Input, Output} from 'angular2/core';
-import {COMMON_DIRECTIVES} from 'angular2/common';
+import {Component, Input, Output} from '@angular/core';
+import {COMMON_DIRECTIVES} from '@angular/common';
 
 @Component({
   selector: 'th[sortableHeader]',

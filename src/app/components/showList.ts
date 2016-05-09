@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {COMMON_DIRECTIVES} from 'angular2/common';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {COMMON_DIRECTIVES} from '@angular/common';
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {LocalStorage, TVMaze} from './../providers/providers';
 import {ToDate, OrderBy} from './../pipes/pipes';
 import {SortableHeader} from './sortableHeader';

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {TVMaze} from './../providers/providers';
 import {ShowList, SearchBox} from './components';
 import {Show} from '../interfaces/interfaces';
