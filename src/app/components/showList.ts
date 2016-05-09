@@ -83,7 +83,7 @@ export class ShowList {
   unsubscribe(show: Show): void {
     this.subscribedShows = this.subscribedShows.filter((subscribedShow: Show) => subscribedShow.id !== show.id);
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
-    this.unsubscribeCallback.next(show);
+    this.unsubscribeCallback.emit(show);
   }
 
   ngOnChanges(changeRecord: any): void {

@@ -5,7 +5,7 @@ import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES} from 'angular2/c
   selector: 'search-box',
   directives: [FORM_DIRECTIVES],
   template: `
-    <form (submit)="$event.preventDefault(); runSearch.next(searchForm.value.query)" [ngFormModel]="searchForm">
+    <form (submit)="$event.preventDefault(); runSearch.emit(searchForm.value.query)" [ngFormModel]="searchForm">
       <div class="input-group">
         <input type="search" class="form-control" ngControl="query">
         <span class="input-group-btn">
