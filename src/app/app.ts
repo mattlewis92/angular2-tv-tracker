@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES, RouteConfig, Route} from 'angular2/router';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES, RouteConfig, Route} from '@angular/router-deprecated';
 import {SearchShows} from './components/searchShows';
 import {Episodes} from './components/episodes';
 import {SubscribedShows} from './components/subscribedShows';

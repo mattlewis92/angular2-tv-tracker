@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {Location} from 'angular2/platform/common';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'navbar',
