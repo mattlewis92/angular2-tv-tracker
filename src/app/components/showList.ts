@@ -13,10 +13,10 @@ import {Show, Episode} from './../interfaces/interfaces';
   selector: 'show-list',
   providers: [
     provide(ConfirmOptions, {useFactory: (): ConfirmOptions => {
-      return new ConfirmOptions({
-        confirmButtonType: 'danger',
-        cancelButtonType: 'secondary'
-      });
+      const options: ConfirmOptions = new ConfirmOptions();
+      options.confirmButtonType = 'danger';
+      options.cancelButtonType = 'secondary';
+      return options;
     }}),
     provide(Position, {useClass: PositionService})
   ],
