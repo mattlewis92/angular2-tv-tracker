@@ -30,6 +30,9 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.DedupePlugin()
+    new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
+    })
   ]
 };
