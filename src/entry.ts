@@ -1,7 +1,6 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 
 import 'es6-shim';
-import 'es7-shim';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/long-stack-trace-zone';
@@ -19,4 +18,8 @@ if (ENV === 'production') {
   enableProdMode();
 }
 
-bootstrap(AppComponent, [HTTP_PROVIDERS, ROUTER_PROVIDERS, Object.values(providers)]);
+bootstrap(AppComponent, [
+  ...HTTP_PROVIDERS,
+  ...ROUTER_PROVIDERS,
+  ...Object.keys(providers).map((key: string) => providers[key])
+]);

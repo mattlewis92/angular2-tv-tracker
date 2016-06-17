@@ -15,7 +15,6 @@
     "angular2-bootstrap-confirm": "0.5.0",
     "bootstrap": "4.0.0-alpha.2",
     "es6-shim": "0.35.1",
-    "es7-shim": "5.0.0",
     "lodash.get": "4.3.0",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.6",
@@ -30,11 +29,14 @@
     "tslint": "3.11.0",
     "tslint-loader": "~2.1.0",
     "typescript": "~1.8.0",
+    "typings": "1.3.0",
     "webpack": "1.13.1",
     "webpack-dev-server": "~1.14.0"
   },
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "prepublish": "typings install",
+    "prestart": "typings install"
   }
 }
