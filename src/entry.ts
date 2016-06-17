@@ -10,6 +10,7 @@ import {enableProdMode} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {AppComponent} from './app/app';
 import * as providers from './app/providers/providers';
 
@@ -21,5 +22,7 @@ if (ENV === 'production') {
 bootstrap(AppComponent, [
   ...HTTP_PROVIDERS,
   ...ROUTER_PROVIDERS,
+  disableDeprecatedForms(),
+  provideForms(),
   ...Object.keys(providers).map((key: string) => providers[key])
 ]);

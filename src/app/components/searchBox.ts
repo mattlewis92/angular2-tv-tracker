@@ -1,13 +1,13 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES} from '@angular/common';
+import {FormBuilder, Validators, FormGroup, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 
 @Component({
   selector: 'search-box',
-  directives: [FORM_DIRECTIVES],
+  directives: [REACTIVE_FORM_DIRECTIVES],
   template: `
-    <form (submit)="$event.preventDefault(); runSearch.emit(searchForm.value.query)" [ngFormModel]="searchForm">
+    <form (submit)="$event.preventDefault(); runSearch.emit(searchForm.value.query)" [formGroup]="searchForm">
       <div class="input-group">
-        <input type="search" class="form-control" ngControl="query">
+        <input type="search" class="form-control" formControlName="query">
         <span class="input-group-btn">
           <button
             class="btn btn-primary"
@@ -24,7 +24,7 @@ export class SearchBox {
 
   @Output() runSearch: EventEmitter<any> = new EventEmitter();
 
-  private searchForm: ControlGroup;
+  private searchForm: FormGroup;
 
   constructor(fb: FormBuilder) {
     this.searchForm = fb.group({
