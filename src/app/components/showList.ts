@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {PositionService} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
-import {ToDate, OrderBy} from './../pipes/pipes';
+import {OrderBy} from './../pipes/pipes';
 import {SortableHeader} from './sortableHeader';
 import {Observable} from 'rxjs/Observable';
 import {Show, Episode} from './../interfaces/interfaces';
@@ -21,7 +21,7 @@ import {Show, Episode} from './../interfaces/interfaces';
     provide(Position, {useClass: PositionService})
   ],
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
-  pipes: [ToDate, OrderBy],
+  pipes: [OrderBy],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
@@ -52,7 +52,7 @@ import {Show, Episode} from './../interfaces/interfaces';
              </span>
           </td>
           <td>
-            <span [hidden]="!show?.nextEpisode?.airstamp">{{ show?.nextEpisode?.airstamp | toDate | date:'fullDate' }}</span>
+            <span [hidden]="!show?.nextEpisode?.airstamp">{{ show?.nextEpisode?.airstamp | date:'fullDate' }}</span>
             <span [hidden]="show?.nextEpisode?.airstamp">Unknown</span>
           </td>
           <td style="width: 270px">

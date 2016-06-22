@@ -4,7 +4,7 @@ import {COMMON_DIRECTIVES} from '@angular/common';
 import {Observable} from 'rxjs/Observable';
 import {SortableHeader} from './sortableHeader';
 import {TVMaze} from './../providers/providers';
-import {ToDate, OrderBy} from './../pipes/pipes';
+import {OrderBy} from './../pipes/pipes';
 import {Episode} from '../interfaces/interfaces';
 
 @Component({
@@ -27,14 +27,14 @@ import {Episode} from '../interfaces/interfaces';
           <td>{{ episode.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
-          <td>{{ episode.airstamp | toDate | date:'fullDate' }}</td>
+          <td>{{ episode.airstamp | date:'fullDate' }}</td>
           <td>{{ episode.runtime }}</td>
           <td [innerHtml]="episode.summary"></td>
         </tr>
       </tbody>
     </table>
   `,
-  pipes: [ToDate, OrderBy],
+  pipes: [OrderBy],
   directives: [COMMON_DIRECTIVES, SortableHeader]
 })
 export class Episodes {
