@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, provide} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {COMMON_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
@@ -11,15 +11,18 @@ import {Show, Episode} from './../interfaces/interfaces';
 
 @Component({
   selector: 'show-list',
-  providers: [
-    provide(ConfirmOptions, {useFactory: (): ConfirmOptions => {
+  providers: [{
+    provide: ConfirmOptions,
+    useFactory: (): ConfirmOptions => {
       const options: ConfirmOptions = new ConfirmOptions();
       options.confirmButtonType = 'danger';
       options.cancelButtonType = 'secondary';
       return options;
-    }}),
-    provide(Position, {useClass: PositionService})
-  ],
+    }
+  }, {
+    provide: Position,
+    useClass: PositionService
+  }],
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
   pipes: [OrderBy],
   template: `
