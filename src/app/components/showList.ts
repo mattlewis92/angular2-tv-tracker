@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {COMMON_DIRECTIVES} from '@angular/common';
+import {COMMON_DIRECTIVES, AsyncPipe, DatePipe} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {PositionService} from 'angular2-bootstrap-confirm/position/position';
@@ -24,7 +24,7 @@ import {Show, Episode} from './../interfaces/interfaces';
     useClass: PositionService
   }],
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
-  pipes: [OrderBy],
+  pipes: [OrderBy, AsyncPipe, DatePipe],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
