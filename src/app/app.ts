@@ -1,8 +1,5 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, RouteConfig, Route} from '@angular/router-deprecated';
-import {SearchShows} from './components/searchShows';
-import {Episodes} from './components/episodes';
-import {SubscribedShows} from './components/subscribedShows';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Navbar} from './components/navbar';
 
 @Component({
@@ -20,9 +17,4 @@ import {Navbar} from './components/navbar';
     }
   `]
 })
-@RouteConfig([
-  new Route({path: '/add', component: SearchShows, name: 'Search'}),
-  new Route({path: '/episodes/:id', component: Episodes, name: 'Episodes'}),
-  new Route({path: '/', component: SubscribedShows, name: 'Subscribed'})
-])
 export class AppComponent {}

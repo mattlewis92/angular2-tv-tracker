@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TVMaze} from './../providers/providers';
-import {ShowList, SearchBox} from './components';
+import {SearchBox} from './searchBox';
+import {ShowList} from './showList';
 import {Show} from '../interfaces/interfaces';
 
 @Component({

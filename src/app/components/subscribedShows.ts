@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {LocalStorage} from '../providers/providers';
-import {ShowList} from './components';
+import {ShowList} from './showList';
 import {Show} from '../interfaces/interfaces';
 
 @Component({
@@ -12,7 +12,7 @@ import {Show} from '../interfaces/interfaces';
     <div
       class="alert alert-warning"
       [hidden]="subscribedShows.length > 0">
-      You haven't yet subscribed to any shows. <a [routerLink]="['/Search']">Add some now.</a>
+      You haven't yet subscribed to any shows. <a [routerLink]="['/add']">Add some now.</a>
     </div>
   `,
   directives: [ShowList, ROUTER_DIRECTIVES]

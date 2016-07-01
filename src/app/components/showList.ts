@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {COMMON_DIRECTIVES} from '@angular/common';
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {PositionService} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
@@ -71,7 +71,7 @@ import {Show, Episode} from './../interfaces/interfaces';
               (confirm)="unsubscribe(show)">
               Unsubscribe
             </button>
-            <button class="btn btn-info" [routerLink]="['/Episodes', {id: show.id}]">
+            <button class="btn btn-info" [routerLink]="['/episodes', show.id]">
               Episodes
             </button>
           </td>

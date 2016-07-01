@@ -9,10 +9,10 @@ import 'bootstrap/scss/bootstrap.scss';
 import {enableProdMode} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS} from '@angular/http';
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {AppComponent} from './app/app';
 import * as providers from './app/providers/providers';
+import {APP_ROUTER_PROVIDER} from './app/routes';
 
 declare var ENV: string;
 if (ENV === 'production') {
@@ -21,7 +21,7 @@ if (ENV === 'production') {
 
 bootstrap(AppComponent, [
   ...HTTP_PROVIDERS,
-  ...ROUTER_PROVIDERS,
+  APP_ROUTER_PROVIDER,
   disableDeprecatedForms(),
   provideForms(),
   ...Object.keys(providers).map((key: string) => providers[key])

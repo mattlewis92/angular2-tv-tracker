@@ -1,4 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {COMMON_DIRECTIVES} from '@angular/common';
 
 @Component({
