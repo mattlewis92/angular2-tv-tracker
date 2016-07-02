@@ -9,16 +9,15 @@ import {SortableHeader} from './sortableHeader';
 import {Observable} from 'rxjs/Observable';
 import {Show, Episode} from './../interfaces/interfaces';
 
+const options: ConfirmOptions = new ConfirmOptions();
+options.confirmButtonType = 'danger';
+options.cancelButtonType = 'secondary';
+
 @Component({
   selector: 'show-list',
   providers: [{
     provide: ConfirmOptions,
-    useFactory: (): ConfirmOptions => {
-      const options: ConfirmOptions = new ConfirmOptions();
-      options.confirmButtonType = 'danger';
-      options.cancelButtonType = 'secondary';
-      return options;
-    }
+    useValue: options
   }, {
     provide: Position,
     useClass: PositionService
