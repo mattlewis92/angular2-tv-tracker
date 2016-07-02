@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {COMMON_DIRECTIVES, AsyncPipe, DatePipe} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
-import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
+import {Confirm, ConfirmOptions, ConfirmPopover, Position} from 'angular2-bootstrap-confirm';
 import {PositionService} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
 import {OrderBy} from './../pipes/pipes';
@@ -23,6 +23,7 @@ import {Show, Episode} from './../interfaces/interfaces';
     provide: Position,
     useClass: PositionService
   }],
+  precompile: [ConfirmPopover],
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
   pipes: [OrderBy, AsyncPipe, DatePipe],
   template: `
@@ -65,7 +66,7 @@ import {Show, Episode} from './../interfaces/interfaces';
             <button
               class="btn btn-danger"
               [hidden]="!isSubscribed(show)"
-              mwl-confirm
+              mwlConfirm
               title="Unsubscribe"
               message="Are you sure you would like to unsubscribe from this show?"
               (confirm)="unsubscribe(show)">
