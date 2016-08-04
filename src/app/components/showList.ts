@@ -2,7 +2,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {COMMON_DIRECTIVES, AsyncPipe, DatePipe} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Confirm, ConfirmOptions, ConfirmPopover, Position} from 'angular2-bootstrap-confirm';
-import {PositionService} from 'angular2-bootstrap-confirm/position/position';
+import {Positioning} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
 import {OrderBy} from './../pipes/pipes';
 import {SortableHeader} from './sortableHeader';
@@ -20,7 +20,7 @@ options.cancelButtonType = 'secondary';
     useValue: options
   }, {
     provide: Position,
-    useClass: PositionService
+    useClass: Positioning
   }],
   precompile: [ConfirmPopover],
   directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
