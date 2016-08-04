@@ -48,9 +48,9 @@ options.cancelButtonType = 'secondary';
           <td [innerHtml]="show.summary"></td>
           <td>
             <span
-              class="label"
-              [class.label-success]="show.status === 'Running'"
-              [class.label-danger]="show.status !== 'Running'">
+              class="tag"
+              [class.tag-success]="show.status === 'Running'"
+              [class.tag-danger]="show.status !== 'Running'">
                {{ show.status }}
              </span>
           </td>
