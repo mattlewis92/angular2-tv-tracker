@@ -1,10 +1,7 @@
-import {Component} from '@angular/core';
-import {RouteParams} from '@angular/router-deprecated';
-import {COMMON_DIRECTIVES} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {SortableHeader} from './sortableHeader';
 import {TVMaze} from './../providers/providers';
-import {OrderBy} from './../pipes/pipes';
 import {Episode} from '../interfaces/interfaces';
 
 @Component({
@@ -33,17 +30,19 @@ import {Episode} from '../interfaces/interfaces';
         </tr>
       </tbody>
     </table>
-  `,
-  pipes: [OrderBy],
-  directives: [COMMON_DIRECTIVES, SortableHeader]
+  `
 })
-export class Episodes {
+export class Episodes implements OnInit {
 
   public episodes: Observable<Episode[]>;
   public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
-  constructor(routeParams: RouteParams, tvMaze: TVMaze) {
-    this.episodes = tvMaze.getEpisodes(+routeParams.get('id'));
+  constructor(private route: ActivatedRoute, private tvMaze: TVMaze) {}
+
+  ngOnInit(): void {
+    this.episodes = this.route.params
+      .map((params: any) => +params.id)
+      .flatMap((id: number) => this.tvMaze.getEpisodes(id));
   }
 
 }

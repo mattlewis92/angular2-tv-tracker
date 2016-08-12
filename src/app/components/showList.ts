@@ -1,30 +1,23 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {COMMON_DIRECTIVES} from '@angular/common';
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {Confirm, ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
-import {PositionService} from 'angular2-bootstrap-confirm/position/position';
+import {ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
+import {Positioning} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
-import {OrderBy} from './../pipes/pipes';
-import {SortableHeader} from './sortableHeader';
 import {Observable} from 'rxjs/Observable';
 import {Show, Episode} from './../interfaces/interfaces';
+
+const options: ConfirmOptions = new ConfirmOptions();
+options.confirmButtonType = 'danger';
+options.cancelButtonType = 'secondary';
 
 @Component({
   selector: 'show-list',
   providers: [{
     provide: ConfirmOptions,
-    useFactory: (): ConfirmOptions => {
-      const options: ConfirmOptions = new ConfirmOptions();
-      options.confirmButtonType = 'danger';
-      options.cancelButtonType = 'secondary';
-      return options;
-    }
+    useValue: options
   }, {
     provide: Position,
-    useClass: PositionService
+    useClass: Positioning
   }],
-  directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
-  pipes: [OrderBy],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
@@ -48,9 +41,9 @@ import {Show, Episode} from './../interfaces/interfaces';
           <td [innerHtml]="show.summary"></td>
           <td>
             <span
-              class="label"
-              [class.label-success]="show.status === 'Running'"
-              [class.label-danger]="show.status !== 'Running'">
+              class="tag"
+              [class.tag-success]="show.status === 'Running'"
+              [class.tag-danger]="show.status !== 'Running'">
                {{ show.status }}
              </span>
           </td>
@@ -65,13 +58,13 @@ import {Show, Episode} from './../interfaces/interfaces';
             <button
               class="btn btn-danger"
               [hidden]="!isSubscribed(show)"
-              mwl-confirm
+              mwlConfirm
               title="Unsubscribe"
               message="Are you sure you would like to unsubscribe from this show?"
               (confirm)="unsubscribe(show)">
               Unsubscribe
             </button>
-            <button class="btn btn-info" [routerLink]="['/Episodes', {id: show.id}]">
+            <button class="btn btn-info" [routerLink]="['/episodes', show.id]">
               Episodes
             </button>
           </td>

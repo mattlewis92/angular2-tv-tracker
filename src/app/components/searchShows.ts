@@ -1,11 +1,9 @@
 import {Component} from '@angular/core';
 import {TVMaze} from './../providers/providers';
-import {ShowList, SearchBox} from './components';
 import {Show} from '../interfaces/interfaces';
 
 @Component({
   selector: 'search-shows',
-  directives: [ShowList, SearchBox],
   template: `
     <div class="row">
       <h1 class="col-md-6">Add a show</h1>
