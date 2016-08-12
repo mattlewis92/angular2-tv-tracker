@@ -1,9 +1,8 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import {FormBuilder, Validators, FormGroup, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'search-box',
-  directives: [REACTIVE_FORM_DIRECTIVES],
   template: `
     <form (submit)="$event.preventDefault(); runSearch.emit(searchForm.value.query)" [formGroup]="searchForm">
       <div class="input-group">

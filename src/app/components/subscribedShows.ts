@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
 import {LocalStorage} from '../providers/providers';
-import {ShowList} from './showList';
 import {Show} from '../interfaces/interfaces';
 
 @Component({
@@ -14,8 +12,7 @@ import {Show} from '../interfaces/interfaces';
       [hidden]="subscribedShows.length > 0">
       You haven't yet subscribed to any shows. <a [routerLink]="['/add']">Add some now.</a>
     </div>
-  `,
-  directives: [ShowList, ROUTER_DIRECTIVES]
+  `
 })
 export class SubscribedShows {
 

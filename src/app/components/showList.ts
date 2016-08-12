@@ -1,11 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {COMMON_DIRECTIVES, AsyncPipe, DatePipe} from '@angular/common';
-import {ROUTER_DIRECTIVES} from '@angular/router';
-import {Confirm, ConfirmOptions, ConfirmPopover, Position} from 'angular2-bootstrap-confirm';
+import {ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {Positioning} from 'angular2-bootstrap-confirm/position/position';
 import {LocalStorage, TVMaze} from './../providers/providers';
-import {OrderBy} from './../pipes/pipes';
-import {SortableHeader} from './sortableHeader';
 import {Observable} from 'rxjs/Observable';
 import {Show, Episode} from './../interfaces/interfaces';
 
@@ -22,9 +18,6 @@ options.cancelButtonType = 'secondary';
     provide: Position,
     useClass: Positioning
   }],
-  precompile: [ConfirmPopover],
-  directives: [COMMON_DIRECTIVES, ROUTER_DIRECTIVES, SortableHeader, Confirm],
-  pipes: [OrderBy, AsyncPipe, DatePipe],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>

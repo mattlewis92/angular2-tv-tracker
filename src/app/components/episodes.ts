@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {COMMON_DIRECTIVES, AsyncPipe, DatePipe} from '@angular/common';
 import {Observable} from 'rxjs/Observable';
-import {SortableHeader} from './sortableHeader';
 import {TVMaze} from './../providers/providers';
-import {OrderBy} from './../pipes/pipes';
 import {Episode} from '../interfaces/interfaces';
 
 @Component({
@@ -33,9 +30,7 @@ import {Episode} from '../interfaces/interfaces';
         </tr>
       </tbody>
     </table>
-  `,
-  pipes: [OrderBy, AsyncPipe, DatePipe],
-  directives: [COMMON_DIRECTIVES, SortableHeader]
+  `
 })
 export class Episodes implements OnInit {
 

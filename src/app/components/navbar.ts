@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Location} from '@angular/common';
 
 @Component({
   selector: 'navbar',
-  directives: [ROUTER_DIRECTIVES],
   template: `
     <nav class="navbar navbar-fixed-top navbar-light bg-faded">
       <div class="container">
