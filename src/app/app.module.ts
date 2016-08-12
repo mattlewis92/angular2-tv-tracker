@@ -5,19 +5,23 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ConfirmModule} from 'angular2-bootstrap-confirm';
-import * as components from './components/components';
-import * as pipes from './pipes/pipes';
-import * as providers from './providers/providers';
+import {Episodes, Navbar, SearchBox, SearchShows, ShowList, SortableHeader, SubscribedShows} from './components/components';
+import {OrderBy} from './pipes/pipes';
+import {LocalStorage, TVMaze} from './providers/providers';
 import {AppComponent} from './app.component';
 import {routing} from './app.routes';
-
-const getObjectValues: Function = (obj: Object) => Object.keys(obj).map(key => obj[key]);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...getObjectValues(components),
-    ...getObjectValues(pipes)
+    Episodes,
+    Navbar,
+    SearchBox,
+    SearchShows,
+    ShowList,
+    SortableHeader,
+    SubscribedShows,
+    OrderBy
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ const getObjectValues: Function = (obj: Object) => Object.keys(obj).map(key => o
     AppComponent
   ],
   providers: [
-    ...getObjectValues(providers)
+    LocalStorage,
+    TVMaze
   ]
 })
 export class AppModule {}
