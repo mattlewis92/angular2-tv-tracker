@@ -1,6 +1,6 @@
 require('es6-shim');
 const webpack = require('webpack');
-const IS_PROD = process.argv.indexOf('-p') > -1;
+const IS_PROD = process.argv.indexOf('--production') > -1;
 
 module.exports = {
   devtool: IS_PROD ? 'source-map' : 'eval',
