@@ -18,26 +18,26 @@
     "angular2-bootstrap-confirm": "0.10.0",
     "bootstrap": "4.0.0-alpha.3",
     "es6-shim": "0.35.1",
-    "lodash.get": "4.4.1",
+    "lodash.get": "4.4.2",
     "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-beta.6",
-    "zone.js": "0.6.12"
+    "zone.js": "0.6.17"
   },
   "devDependencies": {
-    "@types/es6-shim": "0.0.29",
-    "css-loader": "~0.23.0",
+    "@types/es6-shim": "0.0.31",
+    "css-loader": "0.24.0",
     "node-sass": "3.8.0",
     "sass-loader": "4.0.0",
     "style-loader": "~0.13.0",
     "ts-loader": "~0.8.1",
-    "tslint": "3.14.0",
+    "tslint": "3.15.1",
     "tslint-loader": "~2.1.0",
     "typescript": "2.0.0",
-    "webpack": "1.13.1",
-    "webpack-dev-server": "~1.14.0"
+    "webpack": "1.13.2",
+    "webpack-dev-server": "1.15.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress",
+    "start": "webpack-dev-server --progress --open",
     "build": "webpack -p"
   }
 }
