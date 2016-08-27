@@ -38,6 +38,6 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress --open",
-    "build": "webpack -p"
+    "build": "webpack --production"
   }
 }
