@@ -35,7 +35,10 @@ module.exports = {
       ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
     }),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: false
+      mangle: false,
+      compress: {
+        warnings: false
+      }
     })
   ]
 };
