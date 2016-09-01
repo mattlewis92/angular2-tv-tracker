@@ -1,4 +1,4 @@
-require('es6-shim');
+require('core-js');
 const webpack = require('webpack');
 const IS_PROD = process.argv.indexOf('--production') > -1;
 

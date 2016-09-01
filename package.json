@@ -17,14 +17,13 @@
     "@angular/router": "3.0.0-rc.2",
     "angular2-bootstrap-confirm": "0.10.1",
     "bootstrap": "4.0.0-alpha.3",
-    "es6-shim": "0.35.1",
+    "core-js": "2.4.1",
     "lodash.get": "4.4.2",
-    "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-beta.11",
     "zone.js": "0.6.17"
   },
   "devDependencies": {
-    "@types/es6-shim": "0.0.31",
+    "@types/core-js": "0.9.32",
     "css-loader": "0.24.0",
     "node-sass": "3.8.0",
     "sass-loader": "4.0.0",
