@@ -5,7 +5,7 @@ import {SearchShows} from './components/searchShows';
 import {ModuleWithProviders} from '@angular/core';
 
 export const appRoutes: Routes = [
-  {path: '', component: SubscribedShows, terminal: true},
+  {path: '', component: SubscribedShows},
   {path: 'episodes/:id', component: Episodes},
   {path: 'add', component: SearchShows},
   {path: '**', redirectTo: ''}
