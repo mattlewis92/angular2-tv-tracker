@@ -9,7 +9,6 @@ A simple app built with webpack for learning angular2, demonstrating several cor
 * providers
 * observables
 * typescript
-* 3rd party typings from tsd
 
 _Feedback welcome!_
 
@@ -23,8 +22,4 @@ git clone https://github.com/mattlewis92/angular2-tv-tracker.git
 cd angular2-tv-tracker
 npm install
 npm start
-open http://localhost:8000
 ```
-
-### Roadmap
-* Tests
