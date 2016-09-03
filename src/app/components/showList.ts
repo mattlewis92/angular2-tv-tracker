@@ -110,7 +110,7 @@ export class ShowList {
         showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
 
           this.shows[showIndex].nextEpisode = episodes.find((episode: Episode) => {
-            return new Date(episode.airdate).getTime() > Date.now();
+            return new Date(episode.airstamp).getTime() > Date.now();
           });
 
         });

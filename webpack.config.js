@@ -1,4 +1,4 @@
-require('es6-shim');
+require('core-js');
 const webpack = require('webpack');
 const IS_PROD = process.argv.indexOf('--production') > -1;
 
@@ -16,6 +16,8 @@ module.exports = {
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
     }, {
       test: /\.scss$/, loader: 'style!css!sass'
+    }, {
+      test: /\.css$/, loader: 'style!css'
     }]
   },
   resolve: {
