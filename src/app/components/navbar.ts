@@ -11,6 +11,9 @@ import {Location} from '@angular/common';
           <li class="nav-item" [class.active]="location.path() === ''">
             <a class="nav-link" [routerLink]="['/']">Subscribed shows</a>
           </li>
+          <li class="nav-item" [class.active]="location.path() === '/schedule'">
+            <a class="nav-link" [routerLink]="['/schedule']">Schedule</a>
+          </li>
           <li class="nav-item" [class.active]="location.path() === '/add'">
             <a class="nav-link" [routerLink]="['/add']">Add shows</a>
           </li>

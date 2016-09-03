@@ -16,6 +16,8 @@ module.exports = {
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
     }, {
       test: /\.scss$/, loader: 'style!css!sass'
+    }, {
+      test: /\.css$/, loader: 'style!css'
     }]
   },
   resolve: {
