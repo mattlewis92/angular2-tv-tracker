@@ -31,7 +31,7 @@ module.exports = env => {
       contentBase: 'src/public'
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
+      ...(env.production ? [] : [new webpack.HotModuleReplacementPlugin()]),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
