@@ -36,7 +36,6 @@ module.exports = env => {
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
       new webpack.optimize.UglifyJsPlugin({
-        mangle: false,
         compress: {
           warnings: false
         }
