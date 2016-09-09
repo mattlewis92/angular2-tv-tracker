@@ -30,12 +30,11 @@ module.exports = env => {
     devServer: {
       port: 8000,
       inline: true,
-      hot: true,
       historyApiFallback: true,
       contentBase: 'src/public'
     },
     plugins: [
-      ...(env.production ? [new webpack.optimize.UglifyJsPlugin({sourceMap: true})] : [new webpack.HotModuleReplacementPlugin()]),
+      ...(env.production ? [new webpack.optimize.UglifyJsPlugin({sourceMap: true})] : []),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
