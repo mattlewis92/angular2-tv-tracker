@@ -38,7 +38,8 @@ module.exports = env => {
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
-      extractCSS
+      extractCSS,
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ]
   };
 
