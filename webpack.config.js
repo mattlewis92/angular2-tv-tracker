@@ -22,7 +22,7 @@ module.exports = env => {
     },
     resolve: {
       extensions: ['', '.ts', '.js'],
-      mainFields: ['main', 'module']
+      mainFields: ['webpack', 'browser', 'web', 'browserify', 'main', 'module']
     },
     devServer: {
       port: 8000,
