@@ -36,11 +36,7 @@ module.exports = env => {
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
-      })
+      new webpack.optimize.UglifyJsPlugin({sourceMap: true})
     ]
   };
 
