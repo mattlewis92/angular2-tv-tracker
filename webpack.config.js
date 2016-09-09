@@ -1,6 +1,9 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = env => {
+
+  const extractCSS = new ExtractTextPlugin('tv-tracker.css');
 
   return {
     devtool: env.production ? 'source-map' : 'eval',
@@ -15,9 +18,9 @@ module.exports = env => {
       loaders: [{
         test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/
       }, {
-        test: /\.scss$/, loader: 'style!css!sass'
+        test: /\.scss$/, loader: extractCSS.extract(['css', 'sass'])
       }, {
-        test: /\.css$/, loader: 'style!css'
+        test: /\.css$/, loader: extractCSS.extract(['css'])
       }]
     },
     resolve: {
@@ -35,7 +38,8 @@ module.exports = env => {
       ...(env.production ? [new webpack.optimize.UglifyJsPlugin({sourceMap: true})] : [new webpack.HotModuleReplacementPlugin()]),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env.production ? 'production' : 'development')
-      })
+      }),
+      extractCSS
     ]
   };
 
