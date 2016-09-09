@@ -21,7 +21,8 @@ module.exports = env => {
       }]
     },
     resolve: {
-      extensions: ['', '.ts', '.js']
+      extensions: ['', '.ts', '.js'],
+      mainFields: ['main', 'module']
     },
     devServer: {
       port: 8000,
