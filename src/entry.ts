@@ -1,8 +1,9 @@
+/// <reference types="core-js" />
 /// <reference path="./customTypings.d.ts" />
 
-import 'core-js';
+import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
-import 'rxjs';
+import 'rxjs/Observable';
 import 'bootstrap/scss/bootstrap.scss';
 import {enableProdMode} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
