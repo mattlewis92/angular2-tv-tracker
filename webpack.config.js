@@ -13,7 +13,7 @@ module.exports = env => {
         test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/
       }],
       loaders: [{
-        test: /\.ts$/, loader: 'ts', exclude: /node_modules/
+        test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/
       }, {
         test: /\.scss$/, loader: 'style!css!sass'
       }, {
