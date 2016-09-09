@@ -32,11 +32,10 @@ module.exports = env => {
       contentBase: 'src/public'
     },
     plugins: [
-      ...(env.production ? [] : [new webpack.HotModuleReplacementPlugin()]),
+      ...(env.production ? [new webpack.optimize.UglifyJsPlugin({sourceMap: true})] : [new webpack.HotModuleReplacementPlugin()]),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env.production ? 'production' : 'development')
-      }),
-      new webpack.optimize.UglifyJsPlugin({sourceMap: true})
+      })
     ]
   };
 
