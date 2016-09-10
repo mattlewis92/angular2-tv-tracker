@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "allowJs": true
+    "lib": ["ES5", "dom"]
   },
   "exclude": [
     "node_modules"
