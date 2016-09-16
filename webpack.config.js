@@ -24,8 +24,7 @@ module.exports = env => {
       }]
     },
     resolve: {
-      extensions: ['', '.ts', '.js'],
-      mainFields: ['webpack', 'browser', 'web', 'browserify', 'main', 'module']
+      extensions: ['', '.ts', '.js']
     },
     devServer: {
       port: 8000,
@@ -39,7 +38,11 @@ module.exports = env => {
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
       extractCSS,
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        __dirname + '/src'
+      )
     ]
   };
 
