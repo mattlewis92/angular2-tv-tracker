@@ -12,10 +12,9 @@ module.exports = env => {
       filename: 'tv-tracker.js'
     },
     module: {
-      preLoaders: [{
-        test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/
-      }],
-      loaders: [{
+      rules: [{
+        test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/, enforce: 'pre'
+      }, {
         test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/
       }, {
         test: /\.scss$/, loader: extractCSS.extract(['css', 'sass'])
@@ -24,7 +23,7 @@ module.exports = env => {
       }]
     },
     resolve: {
-      extensions: ['', '.ts', '.js']
+      extensions: ['.ts', '.js']
     },
     devServer: {
       port: 8000,
