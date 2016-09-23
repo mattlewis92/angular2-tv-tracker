@@ -20,15 +20,15 @@
     "bootstrap": "4.0.0-alpha.4",
     "core-js": "2.4.1",
     "lodash.get": "4.4.2",
-    "moment": "2.15.0",
+    "moment": "2.15.1",
     "randomcolor": "0.4.4",
     "rxjs": "5.0.0-beta.12",
     "tinycolor2": "1.4.1",
-    "zone.js": "0.6.23"
+    "zone.js": "0.6.25"
   },
   "devDependencies": {
-    "@types/core-js": "0.9.32",
-    "@types/tinycolor": "1.1.26",
+    "@types/core-js": "0.9.34",
+    "@types/tinycolor": "1.1.27",
     "awesome-typescript-loader": "2.2.4",
     "css-loader": "0.25.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
@@ -37,7 +37,7 @@
     "style-loader": "~0.13.0",
     "tslint": "3.15.1",
     "tslint-loader": "~2.1.0",
-    "typescript": "2.0.2",
+    "typescript": "2.0.3",
     "webpack": "2.1.0-beta.22",
     "webpack-dev-server": "2.1.0-beta.4"
   },
