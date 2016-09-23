@@ -1,4 +1,4 @@
-import 'angular2-calendar/css/angular2-calendar.css';
+import 'angular2-calendar/dist/css/angular2-calendar.css';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';

@@ -37,7 +37,6 @@ module.exports = env => {
         ENV: JSON.stringify(env.production ? 'production' : 'development')
       }),
       extractCSS,
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         __dirname + '/src'
