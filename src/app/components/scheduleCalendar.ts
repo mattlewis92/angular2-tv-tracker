@@ -82,17 +82,12 @@ interface EpisodeCalendarEvent extends CalendarEvent {
 })
 export class ScheduleCalendar {
 
-  private view: string = 'month';
-
-  private viewDate: Date = new Date();
-
-  private activeDayIsOpen: boolean = false;
-
-  private events: EpisodeCalendarEvent[] = [];
-
-  private subscribedShows: Show[];
-
-  private showsLoaded: boolean = false;
+  view: string = 'month';
+  viewDate: Date = new Date();
+  activeDayIsOpen: boolean = false;
+  events: EpisodeCalendarEvent[] = [];
+  subscribedShows: Show[];
+  showsLoaded: boolean = false;
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);

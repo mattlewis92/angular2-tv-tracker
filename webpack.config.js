@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -7,7 +8,7 @@ module.exports = env => {
 
   return {
     devtool: env.production ? 'source-map' : 'eval',
-    entry: './src/entry.ts',
+    entry: './src/entry.jit.ts',
     output: {
       filename: 'tv-tracker.js'
     },
@@ -15,7 +16,7 @@ module.exports = env => {
       rules: [{
         test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/, enforce: 'pre'
       }, {
-        test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/
+        test: /\.ts$/, loader: 'awesome-typescript', exclude: path.resolve(__dirname, 'node_modules')
       }, {
         test: /\.scss$/, loader: extractCSS.extract(['css', 'sass'])
       }, {

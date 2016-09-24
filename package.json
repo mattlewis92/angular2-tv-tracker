@@ -46,6 +46,6 @@
   "scripts": {
     "start": "webpack-dev-server --env.development --progress --open",
     "build": "webpack --env.production",
-    "ngc": "ngc -p ."
+    "ngc": "ngc -p . && rm -rf tsc"
   }
 }
