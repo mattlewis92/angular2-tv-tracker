@@ -5,15 +5,18 @@ import {LocalStorage, TVMaze} from './../providers/providers';
 import {Observable} from 'rxjs/Observable';
 import {Show, Episode} from './../interfaces/interfaces';
 
-const options: ConfirmOptions = new ConfirmOptions();
-options.confirmButtonType = 'danger';
-options.cancelButtonType = 'secondary';
+export function confirmOptionsFactory() {
+  const options: ConfirmOptions = new ConfirmOptions();
+  options.confirmButtonType = 'danger';
+  options.cancelButtonType = 'secondary';
+  return options;
+}
 
 @Component({
   selector: 'show-list',
   providers: [{
     provide: ConfirmOptions,
-    useValue: options
+    useFactory: confirmOptionsFactory
   }, {
     provide: Position,
     useClass: Positioning
