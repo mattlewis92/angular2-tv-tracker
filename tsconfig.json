@@ -8,10 +8,12 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "lib": ["ES5", "dom"]
+    "lib": ["ES5", "dom"],
+    "outDir": "tsc"
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "compileOnSave": false
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "debug": true,
+    "skipMetadataEmit" : true
+  }
 }
