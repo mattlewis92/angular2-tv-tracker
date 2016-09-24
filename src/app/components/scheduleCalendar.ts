@@ -1,15 +1,22 @@
 /// <reference types="tinycolor" />
 
 import {Component} from '@angular/core';
-import {UnitOfTime, Moment} from 'moment';
-import * as moment from 'moment';
 import {CalendarEvent} from 'angular2-calendar';
-import {LocalStorage} from '../providers/localStorage';
-import {TVMaze} from '../providers/tvMaze';
-import {Show, Episode} from '../interfaces/interfaces';
 import {Observable} from 'rxjs';
 import * as randomColor from 'randomcolor';
 import * as tinycolor from 'tinycolor2';
+import * as subDays from 'date-fns/sub_days';
+import * as addDays from 'date-fns/add_days';
+import * as isSameDay from 'date-fns/is_same_day';
+import * as isSameMonth from 'date-fns/is_same_month';
+import * as addWeeks from 'date-fns/add_weeks';
+import * as subWeeks from 'date-fns/sub_weeks';
+import * as addMonths from 'date-fns/add_months';
+import * as subMonths from 'date-fns/sub_months';
+import * as format from 'date-fns/format';
+import {LocalStorage} from '../providers/localStorage';
+import {TVMaze} from '../providers/tvMaze';
+import {Show, Episode} from '../interfaces/interfaces';
 
 interface EpisodeCalendarEvent extends CalendarEvent {
   episode: Episode;
@@ -75,17 +82,12 @@ interface EpisodeCalendarEvent extends CalendarEvent {
 })
 export class ScheduleCalendar {
 
-  private view: UnitOfTime = 'month';
-
-  private viewDate: Date = new Date();
-
-  private activeDayIsOpen: boolean = false;
-
-  private events: EpisodeCalendarEvent[] = [];
-
-  private subscribedShows: Show[];
-
-  private showsLoaded: boolean = false;
+  view: string = 'month';
+  viewDate: Date = new Date();
+  activeDayIsOpen: boolean = false;
+  events: EpisodeCalendarEvent[] = [];
+  subscribedShows: Show[];
+  showsLoaded: boolean = false;
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);
@@ -122,7 +124,7 @@ export class ScheduleCalendar {
 
           this.events.push({
             title: `
-              ${moment(episode.airstamp).format('h:mma')} - ${show.name} 
+              ${format(episode.airstamp, 'h:mma')} - ${show.name} 
               S${padNumber(episode.season)}E${padNumber(episode.number)} - ${episode.name}
             `,
             start: new Date(episode.airstamp),
@@ -140,30 +142,44 @@ export class ScheduleCalendar {
   }
 
   increment(): void {
-    this.viewDate = moment(this.viewDate).add(1, this.view).toDate();
-    this.activeDayIsOpen = false;
+
+    const addFn: any = {
+      day: addDays,
+      week: addWeeks,
+      month: addMonths
+    }[this.view];
+
+    this.viewDate = addFn(this.viewDate, 1);
+
   }
 
   decrement(): void {
-    this.viewDate = moment(this.viewDate).subtract(1, this.view).toDate();
-    this.activeDayIsOpen = false;
+
+    const subFn: any = {
+      day: subDays,
+      week: subWeeks,
+      month: subMonths
+    }[this.view];
+
+    this.viewDate = subFn(this.viewDate, 1);
+
   }
 
   today(): void {
     this.viewDate = new Date();
-    this.activeDayIsOpen = false;
   }
 
-  dayClicked({date, events}: {date: Moment, events: EpisodeCalendarEvent[]}): void {
-    if (moment(date).startOf('month').isSame(moment(this.viewDate).startOf('month'))) {
+  dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
+
+    if (isSameMonth(date, this.viewDate)) {
       if (
-        (moment(this.viewDate).startOf('day').isSame(date.clone().startOf('day')) && this.activeDayIsOpen === true) ||
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
         events.length === 0
       ) {
         this.activeDayIsOpen = false;
       } else {
         this.activeDayIsOpen = true;
-        this.viewDate = date.toDate();
+        this.viewDate = date;
       }
     }
   }

@@ -23,7 +23,7 @@ export class SearchBox {
 
   @Output() runSearch: EventEmitter<any> = new EventEmitter();
 
-  private searchForm: FormGroup;
+  searchForm: FormGroup;
 
   constructor(fb: FormBuilder) {
     this.searchForm = fb.group({
