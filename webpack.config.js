@@ -8,7 +8,7 @@ module.exports = env => {
 
   return {
     devtool: env.production ? 'source-map' : 'eval',
-    entry: './src/entry.jit.ts',
+    entry: env.production ? './src/entry.aot.ts' : './src/entry.jit.ts',
     output: {
       filename: 'tv-tracker.js'
     },
