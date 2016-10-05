@@ -6,7 +6,7 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ConfirmModule} from 'angular2-bootstrap-confirm';
-import {CalendarModule, CalendarEventTitle, CalendarDateFormatter} from 'angular2-calendar';
+import {CalendarModule} from 'angular2-calendar';
 import {
   Episodes,
   Navbar,
@@ -42,7 +42,7 @@ import {routing} from './app.routes';
     ReactiveFormsModule,
     HttpModule,
     ConfirmModule,
-    CalendarModule,
+    CalendarModule.forRoot(),
     routing
   ],
   bootstrap: [
@@ -50,9 +50,7 @@ import {routing} from './app.routes';
   ],
   providers: [
     LocalStorage,
-    TVMaze,
-    CalendarEventTitle,
-    CalendarDateFormatter
+    TVMaze
   ]
 })
 export class AppModule {}

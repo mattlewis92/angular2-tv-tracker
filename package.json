@@ -16,7 +16,7 @@
     "@angular/platform-browser-dynamic": "^2.0.1",
     "@angular/router": "^3.0.1",
     "angular2-bootstrap-confirm": "^1.0.1",
-    "angular2-calendar": "^0.2.2",
+    "angular2-calendar": "^0.3.0",
     "bootstrap": "4.0.0-alpha.4",
     "core-js": "^2.4.1",
     "lodash.get": "^4.4.2",
