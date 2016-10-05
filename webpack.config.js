@@ -29,7 +29,6 @@ module.exports = env => {
     devServer: {
       port: 8000,
       inline: true,
-      historyApiFallback: true,
       contentBase: 'src/public'
     },
     plugins: [
