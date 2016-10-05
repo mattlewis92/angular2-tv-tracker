@@ -30,6 +30,7 @@
     "@angular/platform-server": "^2.0.1",
     "@types/core-js": "^0.9.34",
     "@types/date-fns": "^0.0.1",
+    "@types/node": "^6.0.42",
     "@types/tinycolor": "^1.1.27",
     "awesome-typescript-loader": "^2.2.4",
     "css-loader": "^0.25.0",
