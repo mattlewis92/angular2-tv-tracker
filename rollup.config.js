@@ -2,6 +2,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript';
 import uglify from 'rollup-plugin-uglify';
+import scss from 'rollup-plugin-scss'
 import ts from 'typescript';
 
 export default {
@@ -9,11 +10,12 @@ export default {
   sourceMap: true,
   moduleName: 'main',
   plugins: [
+    scss(),
     typescript({
       typescript: ts
     }),
     nodeResolve({
-      extensions: [ '.js', '.ts' ]
+      extensions: ['.js', '.ts']
     }),
     commonjs({
       include: 'node_modules/**'
