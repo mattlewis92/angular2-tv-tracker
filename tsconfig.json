@@ -9,7 +9,8 @@
     "removeComments": false,
     "noImplicitAny": false,
     "lib": ["ES5", "dom"],
-    "outDir": "tsc"
+    "outDir": "tsc",
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "genDir": "aot",

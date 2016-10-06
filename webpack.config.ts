@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 
 module.exports = env => {
 
@@ -40,7 +41,8 @@ module.exports = env => {
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         __dirname + '/src'
-      )
+      ),
+      new FixDefaultImportPlugin()
     ]
   };
 
