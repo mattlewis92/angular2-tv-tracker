@@ -36,6 +36,11 @@
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "node-sass": "^3.10.0",
+    "rollup": "^0.36.1",
+    "rollup-plugin-commonjs": "^5.0.4",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-uglify": "^1.0.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.0",
     "tslint": "^3.15.1",
@@ -48,6 +53,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.development --progress --open",
     "build": "npm run ngc && webpack --env.production && rm -rf aot",
-    "ngc": "ngc -p . && rm -rf tsc"
+    "ngc": "ngc -p . && rm -rf tsc",
+    "rollup": "rollup -f iife -c -o dist/bundle.es2015.js"
   }
 }
