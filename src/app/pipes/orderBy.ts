@@ -1,7 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-
-declare var require: any;
-const get: any = require('lodash.get');
+import get from 'lodash.get';
 
 @Pipe({
   name: 'orderBy'
