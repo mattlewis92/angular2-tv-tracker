@@ -2,7 +2,8 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript';
 import uglify from 'rollup-plugin-uglify';
-import scss from 'rollup-plugin-scss'
+import scss from 'rollup-plugin-scss';
+import replace from 'rollup-plugin-replace';
 import ts from 'typescript';
 
 export default {
@@ -19,6 +20,9 @@ export default {
     }),
     commonjs({
       include: 'node_modules/**'
+    }),
+    replace({
+      ENV: JSON.stringify('production')
     }),
     uglify()
   ]
