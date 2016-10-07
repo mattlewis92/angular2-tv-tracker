@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {TVMaze} from './../providers/providers';
-import {Episode} from '../interfaces/interfaces';
+import {TVMaze} from './../shared/tvMaze.provider';
+import {Episode} from '../../interfaces';
 
 @Component({
   selector: 'episodes',

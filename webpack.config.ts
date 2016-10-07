@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 
 module.exports = env => {
 
@@ -14,13 +15,17 @@ module.exports = env => {
     },
     module: {
       rules: [{
-        test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/, enforce: 'pre'
+        test: /\.ts$/,
+        loader: 'tslint-loader?emitErrors=false&failOnHint=false',
+        exclude: /node_modules/,
+        enforce: 'pre'
       }, {
-        test: /\.ts$/, loader: 'awesome-typescript', exclude: path.resolve(__dirname, 'node_modules')
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system&genDir=./aot/src/app' + (env.production ? '&aot=true' : ''),
+        exclude: path.resolve(__dirname, 'node_modules')
       }, {
-        test: /\.scss$/, loader: extractCSS.extract(['css', 'sass'])
-      }, {
-        test: /\.css$/, loader: extractCSS.extract(['css'])
+        test: /\.scss$/,
+        loader: extractCSS.extract(['css-loader', 'sass-loader'])
       }]
     },
     resolve: {
@@ -29,7 +34,6 @@ module.exports = env => {
     devServer: {
       port: 8000,
       inline: true,
-      historyApiFallback: true,
       contentBase: 'src/public'
     },
     plugins: [
@@ -41,7 +45,8 @@ module.exports = env => {
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         __dirname + '/src'
-      )
+      ),
+      new FixDefaultImportPlugin()
     ]
   };
 

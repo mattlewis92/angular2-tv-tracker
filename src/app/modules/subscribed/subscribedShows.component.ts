@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {LocalStorage} from '../providers/providers';
-import {Show} from '../interfaces/interfaces';
+import {LocalStorage} from './../shared/localStorage.provider';
+import {Show} from '../../interfaces';
 
 @Component({
   selector: 'subscribed-shows',
@@ -10,7 +10,7 @@ import {Show} from '../interfaces/interfaces';
     <div
       class="alert alert-warning"
       [hidden]="subscribedShows.length > 0">
-      You haven't yet subscribed to any shows. <a [routerLink]="['/add']">Add some now.</a>
+      You haven't yet subscribed to any shows. <a [routerLink]="['/search']">Add some now.</a>
     </div>
   `
 })

@@ -2,21 +2,21 @@
 
 import {Component} from '@angular/core';
 import {CalendarEvent} from 'angular2-calendar';
-import {Observable} from 'rxjs';
-import * as randomColor from 'randomcolor';
-import * as tinycolor from 'tinycolor2';
-import * as subDays from 'date-fns/sub_days';
-import * as addDays from 'date-fns/add_days';
-import * as isSameDay from 'date-fns/is_same_day';
-import * as isSameMonth from 'date-fns/is_same_month';
-import * as addWeeks from 'date-fns/add_weeks';
-import * as subWeeks from 'date-fns/sub_weeks';
-import * as addMonths from 'date-fns/add_months';
-import * as subMonths from 'date-fns/sub_months';
-import * as format from 'date-fns/format';
-import {LocalStorage} from '../providers/localStorage';
-import {TVMaze} from '../providers/tvMaze';
-import {Show, Episode} from '../interfaces/interfaces';
+import {Observable} from 'rxjs/Observable';
+import randomColor from 'randomcolor';
+import tinycolor from 'tinycolor2';
+import subDays from 'date-fns/sub_days';
+import addDays from 'date-fns/add_days';
+import isSameDay from 'date-fns/is_same_day';
+import isSameMonth from 'date-fns/is_same_month';
+import addWeeks from 'date-fns/add_weeks';
+import subWeeks from 'date-fns/sub_weeks';
+import addMonths from 'date-fns/add_months';
+import subMonths from 'date-fns/sub_months';
+import format from 'date-fns/format';
+import {LocalStorage} from '../shared/localStorage.provider';
+import {TVMaze} from '../shared/tvMaze.provider';
+import {Show, Episode} from '../../interfaces';
 
 interface EpisodeCalendarEvent extends CalendarEvent {
   episode: Episode;
