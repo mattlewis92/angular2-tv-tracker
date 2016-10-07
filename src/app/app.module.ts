@@ -24,7 +24,6 @@ import {
   SubscribedShows
 } from './components/components';
 import {SharedModule} from './modules/shared';
-import {LocalStorage, TVMaze} from './providers/providers';
 import {AppComponent} from './app.component';
 
 declare var ENV: string;
@@ -47,7 +46,7 @@ if (ENV === 'production') {
     ReactiveFormsModule,
     HttpModule,
     ConfirmModule,
-    SharedModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot([
       {path: 'subscribed', component: SubscribedShows},
       {path: 'episodes/:id', loadChildren: './modules/+episodes#EpisodesModule'},
@@ -58,10 +57,6 @@ if (ENV === 'production') {
   ],
   bootstrap: [
     AppComponent
-  ],
-  providers: [
-    LocalStorage,
-    TVMaze
   ]
 })
 export class AppModule {}

@@ -1,7 +1,8 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {Positioning} from '@ng-bootstrap/ng-bootstrap/util/positioning';
-import {LocalStorage, TVMaze} from './../providers/providers';
+import {TVMaze} from './../modules/shared/tvMaze.provider';
+import {LocalStorage} from './../modules/shared/localStorage.provider';
 import {Observable} from 'rxjs/Observable';
 import {Show, Episode} from './../interfaces';
 

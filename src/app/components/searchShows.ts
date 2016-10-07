@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TVMaze} from './../providers/providers';
+import {TVMaze} from './../modules/shared/tvMaze.provider';
 import {Show} from '../interfaces';
 
 @Component({
