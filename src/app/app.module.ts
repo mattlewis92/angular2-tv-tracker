@@ -43,11 +43,11 @@ import {AppComponent} from './app.component';
     ConfirmModule,
     CalendarModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', component: SubscribedShows},
+      {path: 'subscribed', component: SubscribedShows},
       {path: 'episodes/:id', component: Episodes},
       {path: 'add', component: SearchShows},
       {path: 'schedule', component: ScheduleCalendar},
-      {path: '**', redirectTo: ''}
+      {path: '**', redirectTo: 'subscribed'}
     ], {useHash: true})
   ],
   bootstrap: [

@@ -8,8 +8,8 @@ import {Location} from '@angular/common';
       <div class="container">
         <h1 class="navbar-brand">Angular 2 TV tracker</h1>
         <ul class="nav navbar-nav">
-          <li class="nav-item" [class.active]="location.path() === ''">
-            <a class="nav-link" [routerLink]="['/']">Subscribed shows</a>
+          <li class="nav-item" [class.active]="location.path() === '/subscribed'">
+            <a class="nav-link" [routerLink]="['/subscribed']">Subscribed shows</a>
           </li>
           <li class="nav-item" [class.active]="location.path() === '/schedule'">
             <a class="nav-link" [routerLink]="['/schedule']">Schedule</a>
