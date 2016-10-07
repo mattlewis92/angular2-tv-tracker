@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import {Show} from '../../interfaces';
 
 @Injectable()
