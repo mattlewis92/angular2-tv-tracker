@@ -14,10 +14,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
-import {
-  Navbar,
-  SubscribedShows
-} from './components/components';
+import {Navbar} from './components/navbar';
+import {SubscribedShows} from './modules/subscribed';
 import {SharedModule} from './modules/shared';
 import {AppComponent} from './app.component';
 
