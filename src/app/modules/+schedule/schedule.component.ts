@@ -3,6 +3,8 @@
 import {Component} from '@angular/core';
 import {CalendarEvent} from 'angular2-calendar';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/forkJoin';
 import randomColor from 'randomcolor';
 import tinycolor from 'tinycolor2';
 import subDays from 'date-fns/sub_days';

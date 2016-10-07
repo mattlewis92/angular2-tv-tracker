@@ -4,6 +4,8 @@ import {Positioning} from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import {TVMaze} from './tvMaze.provider';
 import {LocalStorage} from './localStorage.provider';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/forkJoin';
 import {Show, Episode} from './../../interfaces';
 
 export function confirmOptionsFactory(): ConfirmOptions {
