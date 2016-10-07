@@ -31,9 +31,9 @@ if (ENV === 'production') {
     SharedModule.forRoot(),
     RouterModule.forRoot([
       {path: 'subscribed', component: SubscribedShows},
-      {path: 'episodes/:id', loadChildren: './modules/+episodes#EpisodesModule'},
-      {path: 'search', loadChildren: './modules/+search#SearchModule'},
-      {path: 'schedule', loadChildren: './modules/+schedule#ScheduleModule'},
+      {path: 'episodes/:id', loadChildren: './modules/+episodes/index#EpisodesModule'},
+      {path: 'search', loadChildren: './modules/+search/index#SearchModule'},
+      {path: 'schedule', loadChildren: './modules/+schedule/index#ScheduleModule'},
       {path: '**', redirectTo: 'subscribed'}
     ], {useHash: true})
   ],
