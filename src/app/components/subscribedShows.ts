@@ -10,7 +10,7 @@ import {Show} from '../interfaces';
     <div
       class="alert alert-warning"
       [hidden]="subscribedShows.length > 0">
-      You haven't yet subscribed to any shows. <a [routerLink]="['/add']">Add some now.</a>
+      You haven't yet subscribed to any shows. <a [routerLink]="['/search']">Add some now.</a>
     </div>
   `
 })

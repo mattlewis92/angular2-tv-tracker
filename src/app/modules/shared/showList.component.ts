@@ -1,10 +1,10 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {Positioning} from '@ng-bootstrap/ng-bootstrap/util/positioning';
-import {TVMaze} from './../modules/shared/tvMaze.provider';
-import {LocalStorage} from './../modules/shared/localStorage.provider';
+import {TVMaze} from './tvMaze.provider';
+import {LocalStorage} from './localStorage.provider';
 import {Observable} from 'rxjs/Observable';
-import {Show, Episode} from './../interfaces';
+import {Show, Episode} from './../../interfaces';
 
 export function confirmOptionsFactory(): ConfirmOptions {
   const options: ConfirmOptions = new ConfirmOptions();

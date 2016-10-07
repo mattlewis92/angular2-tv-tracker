@@ -14,7 +14,7 @@ import {Component} from '@angular/core';
             <a class="nav-link" [routerLink]="['/schedule']">Schedule</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/add']">Add shows</a>
+            <a class="nav-link" [routerLink]="['/search']">Add shows</a>
           </li>
         </ul>
       </div>

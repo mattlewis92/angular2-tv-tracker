@@ -13,14 +13,9 @@ import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {ConfirmModule} from 'angular2-bootstrap-confirm';
 import {
   Navbar,
-  SearchBox,
-  SearchShows,
-  ShowList,
   SubscribedShows
 } from './components/components';
 import {SharedModule} from './modules/shared';
@@ -35,22 +30,17 @@ if (ENV === 'production') {
   declarations: [
     AppComponent,
     Navbar,
-    SearchBox,
-    SearchShows,
-    ShowList,
     SubscribedShows
   ],
   imports: [
     BrowserModule,
     CommonModule,
-    ReactiveFormsModule,
     HttpModule,
-    ConfirmModule,
     SharedModule.forRoot(),
     RouterModule.forRoot([
       {path: 'subscribed', component: SubscribedShows},
       {path: 'episodes/:id', loadChildren: './modules/+episodes#EpisodesModule'},
-      {path: 'add', component: SearchShows},
+      {path: 'search', loadChildren: './modules/+search#SearchModule'},
       {path: 'schedule', loadChildren: './modules/+schedule#ScheduleModule'},
       {path: '**', redirectTo: 'subscribed'}
     ], {useHash: true})

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {TVMaze} from './../modules/shared/tvMaze.provider';
-import {Show} from '../interfaces';
+import {TVMaze} from './../shared/tvMaze.provider';
+import {Show} from '../../interfaces';
 
 @Component({
   selector: 'search-shows',
