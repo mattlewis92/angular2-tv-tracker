@@ -46,7 +46,7 @@ import {Router, NavigationStart} from '@angular/router';
 })
 export class AppComponent {
 
-  private loading: boolean = true;
+  loading: boolean = true;
 
   constructor(router: Router) {
     router.events.subscribe((event: any) => {
