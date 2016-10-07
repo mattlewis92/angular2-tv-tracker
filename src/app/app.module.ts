@@ -21,7 +21,6 @@ import {
 import {OrderBy} from './pipes/pipes';
 import {LocalStorage, TVMaze} from './providers/providers';
 import {AppComponent} from './app.component';
-import {routing} from './app.routes';
 
 @NgModule({
   declarations: [
@@ -39,12 +38,17 @@ import {routing} from './app.routes';
   imports: [
     BrowserModule,
     CommonModule,
-    RouterModule,
     ReactiveFormsModule,
     HttpModule,
     ConfirmModule,
     CalendarModule.forRoot(),
-    routing
+    RouterModule.forRoot([
+      {path: '', component: SubscribedShows},
+      {path: 'episodes/:id', component: Episodes},
+      {path: 'add', component: SearchShows},
+      {path: 'schedule', component: ScheduleCalendar},
+      {path: '**', redirectTo: ''}
+    ], {useHash: true})
   ],
   bootstrap: [
     AppComponent
