@@ -9,6 +9,7 @@ import 'rxjs/Observable';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import {SharedModule} from './modules/shared';
 import {Loading} from './modules/loading';
 import {AppComponent} from './app.component';
 
@@ -24,6 +25,7 @@ if (ENV === 'production') {
   ],
   imports: [
     BrowserModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot([
       {path: 'loading', component: Loading},
       {path: 'subscribed', loadChildren: './modules/+subscribed/index#SubscribedModule'},

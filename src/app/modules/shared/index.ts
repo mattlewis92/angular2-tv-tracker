@@ -26,10 +26,18 @@ import {ShowList} from './showList.component';
     SortableHeader,
     ShowList,
     CommonModule
-  ],
-  providers: [ // if these held any state they should be instantiated by the root module
-    LocalStorage,
-    TVMaze
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        LocalStorage,
+        TVMaze
+      ]
+    };
+  }
+
+}
