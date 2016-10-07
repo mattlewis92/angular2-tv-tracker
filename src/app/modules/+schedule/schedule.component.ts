@@ -2,7 +2,7 @@
 
 import {Component} from '@angular/core';
 import {CalendarEvent} from 'angular2-calendar';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs/Observable';
 import randomColor from 'randomcolor';
 import tinycolor from 'tinycolor2';
 import subDays from 'date-fns/sub_days';
