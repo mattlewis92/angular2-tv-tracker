@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'navbar',
@@ -8,13 +7,13 @@ import {Location} from '@angular/common';
       <div class="container">
         <h1 class="navbar-brand">Angular 2 TV tracker</h1>
         <ul class="nav navbar-nav">
-          <li class="nav-item" [class.active]="location.path() === '/subscribed'">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/subscribed']">Subscribed shows</a>
           </li>
-          <li class="nav-item" [class.active]="location.path() === '/schedule'">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/schedule']">Schedule</a>
           </li>
-          <li class="nav-item" [class.active]="location.path() === '/add'">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/add']">Add shows</a>
           </li>
         </ul>
@@ -22,6 +21,4 @@ import {Location} from '@angular/common';
     </nav>
   `
 })
-export class Navbar {
-  constructor(public location: Location) {}
-}
+export class Navbar {}
