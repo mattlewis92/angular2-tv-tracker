@@ -21,7 +21,7 @@ module.exports = env => {
         enforce: 'pre'
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system' + (env.production ? '&aot=true' : ''),
+        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system&genDir=./aot/src/app' + (env.production ? '&aot=true' : ''),
         exclude: path.resolve(__dirname, 'node_modules')
       }, {
         test: /\.scss$/,
