@@ -4701,32 +4701,14 @@ a.text-danger:focus, a.text-danger:hover {
   min-height: 62px; }
 
 .cal-month-view .cal-cell-row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  -js-display: flex;
   display: flex; }
 
 .cal-month-view .cal-cell {
   float: left;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  -js-display: flex;
+  flex: 1;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch; }
+  flex-direction: column;
+  align-items: stretch; }
 
 .cal-month-view .cal-day-cell {
   min-height: 100px; }
@@ -4763,24 +4745,12 @@ a.text-danger:focus, a.text-danger:hover {
   margin-bottom: 10px; }
 
 .cal-month-view .cal-events {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  flex: 1;
+  align-items: flex-end;
   margin: 3px;
   line-height: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  -js-display: flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  flex-wrap: wrap; }
 
 .cal-month-view .cal-event {
   width: 10px;
@@ -4823,10 +4793,6 @@ a.text-danger:focus, a.text-danger:hover {
   opacity: 0.3; }
 
 .cal-week-view .cal-day-headers {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  -js-display: flex;
   display: flex;
   margin-bottom: 3px;
   border: 1px solid #e1e1e1;
@@ -4834,10 +4800,7 @@ a.text-danger:focus, a.text-danger:hover {
   margin-right: 2px; }
 
 .cal-week-view .cal-day-headers .cal-header {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   text-align: center;
   padding: 5px; }
 
