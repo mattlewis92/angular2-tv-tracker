@@ -6,7 +6,9 @@ import {ScheduleCalendar} from './schedule.component';
 import {SharedModule} from './../shared';
 
 @NgModule({
-  declarations: [ScheduleCalendar],
+  declarations: [
+    ScheduleCalendar
+  ],
   imports: [
     CommonModule,
     SharedModule,

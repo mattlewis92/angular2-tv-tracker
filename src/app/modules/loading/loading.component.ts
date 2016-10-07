@@ -2,11 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  template: `
-    <div class="text-xs-center">
-      <h1>Loading...</h1>
-    </div>
-  `
+  template: '<loading-spinner></loading-spinner>'
 })
 export class Loading {
 

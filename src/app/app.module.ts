@@ -9,7 +9,7 @@ import 'rxjs/Observable';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
-import {Loading} from './modules/loading';
+import {Loading, LoadingSpinner} from './modules/loading';
 import {AppComponent} from './app.component';
 
 declare var ENV: string;
@@ -20,7 +20,8 @@ if (ENV === 'production') {
 @NgModule({
   declarations: [
     AppComponent,
-    Loading
+    Loading,
+    LoadingSpinner
   ],
   imports: [
     BrowserModule,
