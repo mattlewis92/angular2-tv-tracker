@@ -7,6 +7,7 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/forkJoin';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -16,15 +17,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ConfirmModule} from 'angular2-bootstrap-confirm';
 import {
-  Episodes,
   Navbar,
   SearchBox,
   SearchShows,
   ShowList,
-  SortableHeader,
   SubscribedShows
 } from './components/components';
-import {OrderBy} from './pipes/pipes';
+import {SharedModule} from './modules/shared';
 import {LocalStorage, TVMaze} from './providers/providers';
 import {AppComponent} from './app.component';
 
@@ -36,14 +35,11 @@ if (ENV === 'production') {
 @NgModule({
   declarations: [
     AppComponent,
-    Episodes,
     Navbar,
     SearchBox,
     SearchShows,
     ShowList,
-    SortableHeader,
-    SubscribedShows,
-    OrderBy
+    SubscribedShows
   ],
   imports: [
     BrowserModule,
@@ -51,9 +47,10 @@ if (ENV === 'production') {
     ReactiveFormsModule,
     HttpModule,
     ConfirmModule,
+    SharedModule,
     RouterModule.forRoot([
       {path: 'subscribed', component: SubscribedShows},
-      {path: 'episodes/:id', component: Episodes},
+      {path: 'episodes/:id', loadChildren: './modules/+episodes#EpisodesModule'},
       {path: 'add', component: SearchShows},
       {path: 'schedule', loadChildren: './modules/+schedule#ScheduleModule'},
       {path: '**', redirectTo: 'subscribed'}
