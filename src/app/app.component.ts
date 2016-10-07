@@ -50,11 +50,7 @@ export class AppComponent {
 
   constructor(router: Router) {
     router.events.subscribe((event: any) => {
-      if (event instanceof NavigationStart) {
-        this.loading = true;
-      } else {
-        this.loading = false;
-      }
+      this.loading = !!(event instanceof NavigationStart);
     });
   }
 
