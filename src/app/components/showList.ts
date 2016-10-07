@@ -3,7 +3,7 @@ import {ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
 import {Positioning} from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import {LocalStorage, TVMaze} from './../providers/providers';
 import {Observable} from 'rxjs/Observable';
-import {Show, Episode} from './../interfaces/interfaces';
+import {Show, Episode} from './../interfaces';
 
 export function confirmOptionsFactory(): ConfirmOptions {
   const options: ConfirmOptions = new ConfirmOptions();

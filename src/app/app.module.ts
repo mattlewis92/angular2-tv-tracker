@@ -1,5 +1,5 @@
 /// <reference types="core-js" />
-/// <reference path="./customTypings.d.ts" />
+/// <reference path="./typings.custom.d.ts" />
 
 import 'bootstrap/scss/bootstrap.scss';
 import 'angular2-calendar/scss/angular2-calendar.scss';

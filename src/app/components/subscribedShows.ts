@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {LocalStorage} from '../providers/providers';
-import {Show} from '../interfaces/interfaces';
+import {Show} from '../interfaces';
 
 @Component({
   selector: 'subscribed-shows',
