@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router, NavigationStart} from '@angular/router';
+import {Router, NavigationStart, RoutesRecognized} from '@angular/router';
 
 @Component({
   selector: 'app',
@@ -21,26 +21,13 @@ import {Router, NavigationStart} from '@angular/router';
       </div>
     </nav>
     <div class="container content">
-      <div class="loading" *ngIf="loading">
-        <h1 class="text-xs-center">
-          <i class="fa fa-spin fa-spinner"></i>
-        </h1>
-      </div>
+      <loading-spinner *ngIf="loading"></loading-spinner>
       <router-outlet [hidden]="loading"></router-outlet>
     </div>
   `,
   styles: [`
     .container.content {
       padding-top: 70px;
-    }
-    .loading {
-      height: calc(100vh - 70px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .loading i {
-      font-size: 80px;
     }
   `]
 })
@@ -50,11 +37,7 @@ export class AppComponent {
 
   constructor(router: Router) {
     router.events.subscribe((event: any) => {
-      if (event instanceof NavigationStart) {
-        this.loading = true;
-      } else {
-        this.loading = false;
-      }
+      this.loading = !!(event instanceof NavigationStart || event instanceof RoutesRecognized);
     });
   }
 

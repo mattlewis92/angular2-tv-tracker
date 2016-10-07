@@ -46,7 +46,12 @@ module.exports = env => {
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         __dirname + '/src'
       ),
-      new FixDefaultImportPlugin()
+      new FixDefaultImportPlugin(),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'main',
+        async: true,
+        minChunks: 2
+      })
     ]
   };
 

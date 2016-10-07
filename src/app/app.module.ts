@@ -9,8 +9,7 @@ import 'rxjs/Observable';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
-import {SubscribedShows} from './modules/subscribed';
-import {SharedModule} from './modules/shared';
+import {Loading, LoadingSpinner} from './modules/loading';
 import {AppComponent} from './app.component';
 
 declare var ENV: string;
@@ -21,17 +20,18 @@ if (ENV === 'production') {
 @NgModule({
   declarations: [
     AppComponent,
-    SubscribedShows
+    Loading,
+    LoadingSpinner
   ],
   imports: [
     BrowserModule,
-    SharedModule.forRoot(),
     RouterModule.forRoot([
-      {path: 'subscribed', component: SubscribedShows},
+      {path: 'loading', component: Loading},
+      {path: 'subscribed', loadChildren: './modules/+subscribed/index#SubscribedModule'},
       {path: 'episodes/:id', loadChildren: './modules/+episodes/index#EpisodesModule'},
       {path: 'search', loadChildren: './modules/+search/index#SearchModule'},
       {path: 'schedule', loadChildren: './modules/+schedule/index#ScheduleModule'},
-      {path: '**', redirectTo: 'subscribed'}
+      {path: '**', redirectTo: 'loading'}
     ], {useHash: true})
   ],
   bootstrap: [
