@@ -11,9 +11,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/forkJoin';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {HttpModule} from '@angular/http';
 import {SubscribedShows} from './modules/subscribed';
 import {SharedModule} from './modules/shared';
 import {AppComponent} from './app.component';
@@ -30,8 +28,6 @@ if (ENV === 'production') {
   ],
   imports: [
     BrowserModule,
-    CommonModule,
-    HttpModule,
     SharedModule.forRoot(),
     RouterModule.forRoot([
       {path: 'subscribed', component: SubscribedShows},

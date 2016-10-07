@@ -1,6 +1,7 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {HttpModule} from '@angular/http';
 import {ConfirmModule} from 'angular2-bootstrap-confirm';
 import {OrderBy} from './orderBy.pipe';
 import {SortableHeader} from './sortableHeader.directive';
@@ -12,7 +13,8 @@ import {ShowList} from './showList.component';
   imports: [
     CommonModule,
     RouterModule,
-    ConfirmModule
+    ConfirmModule,
+    HttpModule
   ],
   declarations: [
     OrderBy,
