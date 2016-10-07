@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router, NavigationStart} from '@angular/router';
+import {Router, NavigationStart, RoutesRecognized} from '@angular/router';
 
 @Component({
   selector: 'app',
@@ -37,7 +37,7 @@ export class AppComponent {
 
   constructor(router: Router) {
     router.events.subscribe((event: any) => {
-      this.loading = !!(event instanceof NavigationStart);
+      this.loading = !!(event instanceof NavigationStart || event instanceof RoutesRecognized);
     });
   }
 

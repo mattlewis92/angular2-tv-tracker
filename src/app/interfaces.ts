@@ -12,3 +12,8 @@ export interface Episode {
   number: number;
   url: string;
 }
+
+export interface ShowWithEpisodes {
+  show: Show;
+  episodes: Episode[];
+}

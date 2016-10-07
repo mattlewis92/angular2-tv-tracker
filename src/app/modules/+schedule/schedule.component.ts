@@ -2,11 +2,11 @@
 
 import {Component} from '@angular/core';
 import {CalendarEvent} from 'angular2-calendar';
-import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/forkJoin';
 import randomColor from 'randomcolor';
 import tinycolor from 'tinycolor2';
+import format from 'date-fns/format';
 import subDays from 'date-fns/sub_days';
 import addDays from 'date-fns/add_days';
 import isSameDay from 'date-fns/is_same_day';
@@ -15,21 +15,19 @@ import addWeeks from 'date-fns/add_weeks';
 import subWeeks from 'date-fns/sub_weeks';
 import addMonths from 'date-fns/add_months';
 import subMonths from 'date-fns/sub_months';
-import format from 'date-fns/format';
-import {LocalStorage} from '../shared/localStorage.provider';
-import {TVMaze} from '../shared/tvMaze.provider';
-import {Show, Episode} from '../../interfaces';
+import {Episode, ShowWithEpisodes} from './../../interfaces';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 interface EpisodeCalendarEvent extends CalendarEvent {
   episode: Episode;
 }
 
+const padNumber: Function = (number: number): string => number < 10 ? `0${number}` : number + '';
+
 @Component({
   template: `
-    <div class="text-xs-center" *ngIf="!showsLoaded">
-      <h1>Loading...</h1>
-    </div>
-    <div *ngIf="showsLoaded">
+    <div>
       <div class="row">
         <div class="col-md-4">
           <div class="btn-group">
@@ -60,7 +58,7 @@ interface EpisodeCalendarEvent extends CalendarEvent {
         <mwl-calendar-month-view
           *ngSwitchCase="'month'"
           [viewDate]="viewDate"
-          [events]="events"
+          [events]="events | async"
           [activeDayIsOpen]="activeDayIsOpen"
           (dayClicked)="dayClicked($event.day)"
           (eventClicked)="openEpisode($event.event)">
@@ -68,13 +66,13 @@ interface EpisodeCalendarEvent extends CalendarEvent {
         <mwl-calendar-week-view
           *ngSwitchCase="'week'"
           [viewDate]="viewDate"
-          [events]="events"
+          [events]="events | async"
           (eventClicked)="openEpisode($event.event)">
         </mwl-calendar-week-view>
         <mwl-calendar-day-view
           *ngSwitchCase="'day'"
           [viewDate]="viewDate"
-          [events]="events"
+          [events]="events | async"
           (eventClicked)="openEpisode($event.event)">
         </mwl-calendar-day-view>
       </div>
@@ -87,32 +85,12 @@ export class ScheduleCalendar {
   view: string = 'month';
   viewDate: Date = new Date();
   activeDayIsOpen: boolean = false;
-  events: EpisodeCalendarEvent[] = [];
-  subscribedShows: Show[];
-  showsLoaded: boolean = false;
+  events: Observable<{}>;
 
-  constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
-    this.subscribedShows = localStorage.getItem('subscribedShows', []);
-  }
+  constructor(route: ActivatedRoute) {
+    this.events = route.data.pluck('episodeEvents').map((showsWithEpisodes: ShowWithEpisodes[]) => {
 
-  ngOnInit(): void {
-
-    interface ShowWithEpisodes {
-      show: Show;
-      episodes: Episode[];
-    }
-
-    const episodeRequests: Observable<any>[] = this.subscribedShows.map((show: Show) => {
-      return this.tvMaze.getEpisodes(show.id).map((episodes: Episode[]): ShowWithEpisodes => {
-        return {episodes, show};
-      });
-    });
-
-    const padNumber: Function = (number: number): string => number < 10 ? `0${number}` : number + '';
-
-    Observable.forkJoin(episodeRequests).subscribe((showsWithEpisodes: ShowWithEpisodes[]) => {
-
-      this.events = [];
+      const events: EpisodeCalendarEvent[] = [];
 
       showsWithEpisodes.forEach(({episodes, show}: ShowWithEpisodes) => {
         episodes.forEach((episode: Episode) => {
@@ -124,7 +102,7 @@ export class ScheduleCalendar {
           });
           color.secondary = tinycolor(color.primary).lighten(50).toString();
 
-          this.events.push({
+          events.push({
             title: `
               ${format(episode.airstamp, 'h:mma')} - ${show.name} 
               S${padNumber(episode.season)}E${padNumber(episode.number)} - ${episode.name}
@@ -138,7 +116,7 @@ export class ScheduleCalendar {
 
       });
 
-      this.showsLoaded = true;
+      return events;
 
     });
   }
