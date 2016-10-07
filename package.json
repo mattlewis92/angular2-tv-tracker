@@ -49,6 +49,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.development --progress --open",
     "build": "npm run ngc && webpack --env.production && rm -rf aot",
-    "ngc": "ngc -p . && rm -rf tsc"
+    "ngc": "ngc -p . && rm -rf tsc",
+    "gh-pages": "git checkout gh-pages && git merge master && npm run build && git add . && git commit -m 'Build' && git push && git checkout master"
   }
 }
