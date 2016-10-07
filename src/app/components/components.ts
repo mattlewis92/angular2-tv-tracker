@@ -5,4 +5,3 @@ export * from './searchShows';
 export * from './showList';
 export * from './sortableHeader';
 export * from './subscribedShows';
-export * from './scheduleCalendar';

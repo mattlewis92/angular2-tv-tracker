@@ -14,9 +14,9 @@ import subWeeks from 'date-fns/sub_weeks';
 import addMonths from 'date-fns/add_months';
 import subMonths from 'date-fns/sub_months';
 import format from 'date-fns/format';
-import {LocalStorage} from '../providers/localStorage';
-import {TVMaze} from '../providers/tvMaze';
-import {Show, Episode} from '../interfaces/interfaces';
+import {LocalStorage} from '../../providers/localStorage';
+import {TVMaze} from '../../providers/tvMaze';
+import {Show, Episode} from '../../interfaces/interfaces';
 
 interface EpisodeCalendarEvent extends CalendarEvent {
   episode: Episode;

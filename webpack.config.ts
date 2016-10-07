@@ -15,13 +15,17 @@ module.exports = env => {
     },
     module: {
       rules: [{
-        test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/, enforce: 'pre'
+        test: /\.ts$/,
+        loader: 'tslint-loader?emitErrors=false&failOnHint=false',
+        exclude: /node_modules/,
+        enforce: 'pre'
       }, {
-        test: /\.ts$/, loader: 'awesome-typescript', exclude: path.resolve(__dirname, 'node_modules')
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system' + (env.production ? '&aot=true' : ''),
+        exclude: path.resolve(__dirname, 'node_modules')
       }, {
-        test: /\.scss$/, loader: extractCSS.extract(['css', 'sass'])
-      }, {
-        test: /\.css$/, loader: extractCSS.extract(['css'])
+        test: /\.scss$/,
+        loader: extractCSS.extract(['css-loader', 'sass-loader'])
       }]
     },
     resolve: {
