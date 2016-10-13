@@ -6,13 +6,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = env => {
 
-  const extractCSS = new ExtractTextPlugin('tv-tracker.css');
+  const outputFilename = env.production ? '[name]-[chunkhash]' : '[name]';
+  const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
 
   return {
     devtool: env.production ? 'source-map' : 'eval',
     entry: env.production ? './src/entry.aot.ts' : './src/entry.jit.ts',
     output: {
-      filename: 'tv-tracker.js',
+      filename: `${outputFilename}.js`,
       publicPath: env.production ? '/angular2-tv-tracker/' : '/'
     },
     module: {
