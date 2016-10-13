@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 module.exports = env => {
 
@@ -30,6 +29,12 @@ module.exports = env => {
       }, {
         test: /\.scss$/,
         loader: extractCSS.extract(['css-loader', 'sass-loader'])
+      }, {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      }, {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
       }]
     },
     resolve: {
@@ -58,8 +63,7 @@ module.exports = env => {
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         title: 'Angular 2 TV tracker'
-      }),
-      new OfflinePlugin()
+      })
     ]
   };
 

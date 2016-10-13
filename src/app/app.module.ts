@@ -2,6 +2,7 @@
 /// <reference path="./typings.custom.d.ts" />
 
 import 'bootstrap/scss/bootstrap.scss';
+import 'font-awesome/scss/font-awesome.scss';
 import 'angular2-calendar/scss/angular2-calendar.scss';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
@@ -11,8 +12,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, PreloadAllModules} from '@angular/router';
 import {Loading, LoadingSpinner} from './modules/loading';
 import {AppComponent} from './app.component';
-
-require('offline-plugin/runtime').install();
 
 declare var ENV: string;
 if (ENV === 'production') {
