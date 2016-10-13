@@ -13,7 +13,7 @@ module.exports = env => {
     entry: env.production ? './src/entry.aot.ts' : './src/entry.jit.ts',
     output: {
       filename: 'tv-tracker.js',
-      publicPath: env.production ? '/tv-tracker/' : '/'
+      publicPath: env.production ? '/angular2-tv-tracker/' : '/'
     },
     module: {
       rules: [{
