@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = env => {
 
@@ -11,7 +12,8 @@ module.exports = env => {
     devtool: env.production ? 'source-map' : 'eval',
     entry: env.production ? './src/entry.aot.ts' : './src/entry.jit.ts',
     output: {
-      filename: 'tv-tracker.js'
+      filename: 'tv-tracker.js',
+      publicPath: '/'
     },
     module: {
       rules: [{
@@ -33,8 +35,7 @@ module.exports = env => {
     },
     devServer: {
       port: 8000,
-      inline: true,
-      contentBase: 'src/public'
+      inline: true
     },
     plugins: [
       ...(env.production ? [new webpack.optimize.UglifyJsPlugin({sourceMap: true})] : []),
@@ -51,6 +52,10 @@ module.exports = env => {
         name: 'main',
         async: true,
         minChunks: 2
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.ejs',
+        title: 'Angular 2 TV tracker'
       })
     ]
   };
