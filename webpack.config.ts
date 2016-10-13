@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 module.exports = env => {
 
@@ -63,7 +64,8 @@ module.exports = env => {
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         title: 'Angular 2 TV tracker'
-      })
+      }),
+      new OfflinePlugin()
     ]
   };
 
