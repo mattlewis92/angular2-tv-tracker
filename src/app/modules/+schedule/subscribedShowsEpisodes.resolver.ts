@@ -7,7 +7,7 @@ import {TVMaze} from '../shared/tvMaze.provider';
 import {Show, Episode, ShowWithEpisodes} from '../../interfaces';
 
 @Injectable()
-export class EpisodesResolver implements Resolve<ShowWithEpisodes[]> {
+export class SubscribedShowsEpisodesResolver implements Resolve<ShowWithEpisodes[]> {
 
   subscribedShows: Show[];
 

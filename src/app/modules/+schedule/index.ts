@@ -3,7 +3,7 @@ import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {CalendarModule} from 'angular2-calendar';
 import {ScheduleCalendar} from './schedule.component';
-import {EpisodesResolver} from './episodes.resolver';
+import {SubscribedShowsEpisodesResolver} from './subscribedShowsEpisodes.resolver';
 import {SharedModule} from './../shared';
 
 @NgModule({
@@ -19,11 +19,11 @@ import {SharedModule} from './../shared';
         path: '',
         component: ScheduleCalendar,
         resolve: {
-          episodeEvents: EpisodesResolver
+          subscribedShowsWithEpisodes: SubscribedShowsEpisodesResolver
         }
       }
     ])
   ],
-  providers: [EpisodesResolver]
+  providers: [SubscribedShowsEpisodesResolver]
 })
 export class ScheduleModule {}

@@ -88,7 +88,7 @@ export class ScheduleCalendar {
   events: Observable<{}>;
 
   constructor(route: ActivatedRoute) {
-    this.events = route.data.pluck('episodeEvents').map((showsWithEpisodes: ShowWithEpisodes[]) => {
+    this.events = route.data.pluck('subscribedShowsWithEpisodes').map((showsWithEpisodes: ShowWithEpisodes[]) => {
 
       const events: EpisodeCalendarEvent[] = [];
 
