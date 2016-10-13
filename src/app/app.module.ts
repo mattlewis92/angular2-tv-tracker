@@ -8,7 +8,7 @@ import 'zone.js/dist/zone';
 import 'rxjs/Observable';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
+import {RouterModule, PreloadAllModules} from '@angular/router';
 import {Loading, LoadingSpinner} from './modules/loading';
 import {AppComponent} from './app.component';
 
@@ -32,7 +32,7 @@ if (ENV === 'production') {
       {path: 'search', loadChildren: './modules/+search/index#SearchModule'},
       {path: 'schedule', loadChildren: './modules/+schedule/index#ScheduleModule'},
       {path: '**', redirectTo: 'loading'}
-    ], {useHash: true})
+    ], {useHash: true, preloadingStrategy: PreloadAllModules})
   ],
   bootstrap: [
     AppComponent
