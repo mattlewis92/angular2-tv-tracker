@@ -14,10 +14,9 @@ import {Loading, LoadingSpinner} from './modules/loading';
 import {AppComponent} from './app.component';
 import {install} from 'offline-plugin/runtime';
 
-install();
-
 declare var ENV: string;
 if (ENV === 'production') {
+  install();
   enableProdMode();
 }
 
