@@ -32,7 +32,10 @@ if (ENV === 'production') {
       {path: 'search', loadChildren: './modules/+search/index#SearchModule'},
       {path: 'schedule', loadChildren: './modules/+schedule/index#ScheduleModule'},
       {path: '**', redirectTo: 'loading'}
-    ], {useHash: true, preloadingStrategy: PreloadAllModules})
+    ], {
+      useHash: true,
+      preloadingStrategy: PreloadAllModules
+    })
   ],
   bootstrap: [
     AppComponent
