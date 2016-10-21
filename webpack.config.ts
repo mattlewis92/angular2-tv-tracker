@@ -29,7 +29,7 @@ module.exports = env => {
         exclude: path.resolve(__dirname, 'node_modules')
       }, {
         test: /\.scss$/,
-        loader: extractCSS.extract(['css-loader', 'sass-loader'])
+        loader: extractCSS.extract(['css-loader?minimize', 'sass-loader'])
       }, {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url-loader?limit=10000&mimetype=application/font-woff'
