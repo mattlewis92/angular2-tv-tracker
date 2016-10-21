@@ -105,8 +105,8 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
 angular2-bootstrap-confirm@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/angular2-bootstrap-confirm/-/angular2-bootstrap-confirm-1.0.2.tgz#cba192116f35b0d5927f7ca76f6119297f80591a"
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/angular2-bootstrap-confirm/-/angular2-bootstrap-confirm-1.0.4.tgz#4432a0718861a08f0ea11c75e5d66a858c0b9e5e"
 
 angular2-calendar@^0.3.0:
   version "0.3.5"
@@ -330,7 +330,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.4.1:
+bluebird@^3.4.6:
   version "3.4.6"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.4.6.tgz#01da8d821d87813d158967e743d5fe6c62cf8c0f"
 
@@ -1493,7 +1493,7 @@ html-comment-regex@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/html-comment-regex/-/html-comment-regex-1.1.1.tgz#668b93776eaae55ebde8f3ad464b307a4963625e"
 
-html-minifier@^3.0.2:
+html-minifier@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.1.0.tgz#e0b35d7a1fff89ae989e2fa51c572bc0d1f2d1f6"
   dependencies:
@@ -1506,14 +1506,14 @@ html-minifier@^3.0.2:
     uglify-js "2.7.x"
 
 html-webpack-plugin@^2.22.0:
-  version "2.23.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.23.0.tgz#728c1313b57252755e43b1346af958fbc76a9406"
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.24.0.tgz#53697cea79a9f3cd1f8c239ac71f949d5673cacb"
   dependencies:
-    bluebird "^3.4.1"
-    html-minifier "^3.0.2"
-    loader-utils "^0.2.15"
-    lodash "^4.14.2"
-    pretty-error "^2.0.0"
+    bluebird "^3.4.6"
+    html-minifier "^3.1.0"
+    loader-utils "^0.2.16"
+    lodash "^4.16.4"
+    pretty-error "^2.0.2"
     toposort "^1.0.0"
 
 htmlparser2@~3.3.0:
@@ -1875,7 +1875,7 @@ loader-runner@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.2.0.tgz#824c1b699c4e7a2b6501b85902d5b862bf45b3fa"
 
-loader-utils@^0.2.11, loader-utils@^0.2.15, loader-utils@^0.2.3, loader-utils@^0.2.6, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5, loader-utils@0.2.x:
+loader-utils@^0.2.11, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.2.3, loader-utils@^0.2.6, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5, loader-utils@0.2.x:
   version "0.2.16"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-0.2.16.tgz#f08632066ed8282835dff88dfb52704765adee6d"
   dependencies:
@@ -1929,7 +1929,7 @@ lodash.words@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.14.2, lodash@^4.16.2, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.2, lodash@^4.16.4, lodash@^4.3.0:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.4.tgz#01ce306b9bad1319f2a5528674f88297aeb70127"
 
@@ -2694,7 +2694,7 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-pretty-error@^2.0.0:
+pretty-error@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/pretty-error/-/pretty-error-2.0.2.tgz#a7db19cbb529ca9f0af3d3a2f77d5caf8e5dec23"
   dependencies:
