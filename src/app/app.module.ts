@@ -11,11 +11,11 @@ import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, PreloadAllModules} from '@angular/router';
 import {AppComponent, LoadingSpinner} from './app.component';
-import {install} from 'offline-plugin/runtime';
+import {install as installServiceWorker} from 'offline-plugin/runtime';
 
-declare var ENV: string;
+declare const ENV: string;
 if (ENV === 'production') {
-  install();
+  installServiceWorker();
   enableProdMode();
 }
 
