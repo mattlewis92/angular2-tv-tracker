@@ -10,8 +10,7 @@ import 'rxjs/Observable';
 import {NgModule, enableProdMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, PreloadAllModules} from '@angular/router';
-import {Loading, LoadingSpinner} from './modules/loading';
-import {AppComponent} from './app.component';
+import {AppComponent, LoadingSpinner} from './app.component';
 import {install} from 'offline-plugin/runtime';
 
 declare var ENV: string;
@@ -23,18 +22,16 @@ if (ENV === 'production') {
 @NgModule({
   declarations: [
     AppComponent,
-    Loading,
     LoadingSpinner
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: 'loading', component: Loading},
       {path: 'subscribed', loadChildren: './modules/+subscribed/index#SubscribedModule'},
       {path: 'episodes/:id', loadChildren: './modules/+episodes/index#EpisodesModule'},
       {path: 'search', loadChildren: './modules/+search/index#SearchModule'},
       {path: 'schedule', loadChildren: './modules/+schedule/index#ScheduleModule'},
-      {path: '**', redirectTo: 'loading'}
+      {path: '**', redirectTo: 'subscribed'}
     ], {
       useHash: true,
       preloadingStrategy: PreloadAllModules
