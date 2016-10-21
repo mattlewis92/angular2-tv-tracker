@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {Router, NavigationStart, RoutesRecognized} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'loading-spinner',
+  selector: 'mwl-loading-spinner',
   template: `
     <div class="loading">
       <h1 class="text-xs-center">
@@ -23,10 +23,10 @@ import 'rxjs/add/operator/map';
     }
   `]
 })
-export class LoadingSpinner {}
+export class LoadingSpinnerComponent {}
 
 @Component({
-  selector: 'app',
+  selector: 'mwl-app',
   template: `
     <nav class="navbar navbar-fixed-top navbar-light bg-faded">
       <div class="container">
@@ -45,7 +45,7 @@ export class LoadingSpinner {}
       </div>
     </nav>
     <div class="container content">
-      <loading-spinner *ngIf="loading"></loading-spinner>
+      <mwl-loading-spinner *ngIf="loading"></mwl-loading-spinner>
       <router-outlet [hidden]="loading"></router-outlet>
     </div>
   `,

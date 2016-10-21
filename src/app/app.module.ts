@@ -7,11 +7,11 @@ import 'angular2-calendar/scss/angular2-calendar.scss';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'rxjs/Observable';
-import {NgModule, enableProdMode} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, PreloadAllModules} from '@angular/router';
-import {AppComponent, LoadingSpinner} from './app.component';
-import {install as installServiceWorker} from 'offline-plugin/runtime';
+import { NgModule, enableProdMode } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { AppComponent, LoadingSpinnerComponent } from './app.component';
+import { install as installServiceWorker } from 'offline-plugin/runtime';
 
 declare const ENV: string;
 if (ENV === 'production') {
@@ -22,7 +22,7 @@ if (ENV === 'production') {
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingSpinner
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

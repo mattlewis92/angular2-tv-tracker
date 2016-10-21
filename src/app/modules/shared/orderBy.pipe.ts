@@ -1,8 +1,8 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import get from 'lodash.get';
 
 @Pipe({
-  name: 'orderBy'
+  name: 'mwlOrderBy'
 })
 export class OrderBy implements PipeTransform {
 

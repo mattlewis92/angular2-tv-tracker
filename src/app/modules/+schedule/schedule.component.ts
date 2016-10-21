@@ -1,7 +1,7 @@
 /// <reference types="tinycolor" />
 
-import {Component} from '@angular/core';
-import {CalendarEvent} from 'angular2-calendar';
+import { Component } from '@angular/core';
+import { CalendarEvent } from 'angular2-calendar';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/map';
 import randomColor from 'randomcolor';
@@ -15,9 +15,9 @@ import addWeeks from 'date-fns/add_weeks';
 import subWeeks from 'date-fns/sub_weeks';
 import addMonths from 'date-fns/add_months';
 import subMonths from 'date-fns/sub_months';
-import {Episode, ShowWithEpisodes} from './../../interfaces';
-import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import { Episode, ShowWithEpisodes } from './../../interfaces';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 interface EpisodeCalendarEvent extends CalendarEvent {
   episode: Episode;
@@ -80,7 +80,7 @@ const padNumber: Function = (number: number): string => number < 10 ? `0${number
     <br><br>
   `
 })
-export class ScheduleCalendar {
+export class ScheduleCalendarComponent {
 
   view: string = 'month';
   viewDate: Date = new Date();

@@ -1,12 +1,11 @@
-import {Component} from '@angular/core';
-import {LocalStorage} from './../shared/localStorage.provider';
-import {Show} from '../../interfaces';
+import { Component } from '@angular/core';
+import { LocalStorage } from './../shared/localStorage.provider';
+import { Show } from '../../interfaces';
 
 @Component({
-  selector: 'subscribed-shows',
   template: `
     <h1>Subscribed shows</h1>
-    <show-list [shows]="subscribedShows" (unsubscribe)="unsubscribe($event)"></show-list>
+    <mwl-show-list [shows]="subscribedShows" (unsubscribe)="unsubscribe($event)"></mwl-show-list>
     <div
       class="alert alert-warning"
       [hidden]="subscribedShows.length > 0">
@@ -14,7 +13,7 @@ import {Show} from '../../interfaces';
     </div>
   `
 })
-export class SubscribedShows {
+export class SubscribedShowsComponent {
 
   public subscribedShows: Show[];
 

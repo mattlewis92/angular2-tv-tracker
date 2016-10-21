@@ -1,15 +1,15 @@
-import {NgModule} from '@angular/core';
-import {SubscribedShows} from './subscribedShows.component';
-import {RouterModule} from '@angular/router';
-import {SharedModule} from './../shared';
+import { NgModule } from '@angular/core';
+import { SubscribedShowsComponent } from './subscribedShows.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from './../shared';
 
 @NgModule({
   declarations: [
-    SubscribedShows
+    SubscribedShowsComponent
   ],
   imports: [
     RouterModule.forChild([
-      {path: '', component: SubscribedShows}
+      {path: '', component: SubscribedShowsComponent}
     ]),
     SharedModule
   ]

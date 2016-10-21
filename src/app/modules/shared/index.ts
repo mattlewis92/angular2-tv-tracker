@@ -1,13 +1,13 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {HttpModule} from '@angular/http';
-import {ConfirmModule} from 'angular2-bootstrap-confirm';
-import {OrderBy} from './orderBy.pipe';
-import {SortableHeader} from './sortableHeader.directive';
-import {LocalStorage} from './localStorage.provider';
-import {TVMaze} from './tvMaze.provider';
-import {ShowList} from './showList.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { ConfirmModule } from 'angular2-bootstrap-confirm';
+import { OrderBy } from './orderBy.pipe';
+import { SortableHeaderComponent } from './sortableHeader.directive';
+import { LocalStorage } from './localStorage.provider';
+import { TVMaze } from './tvMaze.provider';
+import { ShowListComponent } from './showList.component';
 
 @NgModule({
   imports: [
@@ -18,13 +18,13 @@ import {ShowList} from './showList.component';
   ],
   declarations: [
     OrderBy,
-    SortableHeader,
-    ShowList
+    SortableHeaderComponent,
+    ShowListComponent
   ],
   exports: [
     OrderBy,
-    SortableHeader,
-    ShowList,
+    SortableHeaderComponent,
+    ShowListComponent,
     CommonModule
   ],
   providers: [ // if these held any state they should be instantiated by the root module
