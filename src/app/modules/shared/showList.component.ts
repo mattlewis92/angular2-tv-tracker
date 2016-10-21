@@ -1,12 +1,12 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ConfirmOptions, Position} from 'angular2-bootstrap-confirm';
-import {Positioning} from '@ng-bootstrap/ng-bootstrap/util/positioning';
-import {TVMaze} from './tvMaze.provider';
-import {LocalStorage} from './localStorage.provider';
-import {Observable} from 'rxjs/Observable';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { ConfirmOptions, Position } from 'angular2-bootstrap-confirm';
+import { Positioning } from '@ng-bootstrap/ng-bootstrap/util/positioning';
+import { TVMaze } from './tvMaze.provider';
+import { LocalStorage } from './localStorage.provider';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
-import {Show, Episode} from './../../interfaces';
+import { Show, Episode } from './../../interfaces';
 
 export function confirmOptionsFactory(): ConfirmOptions {
   const options: ConfirmOptions = new ConfirmOptions();
@@ -16,7 +16,7 @@ export function confirmOptionsFactory(): ConfirmOptions {
 }
 
 @Component({
-  selector: 'show-list',
+  selector: 'mwl-show-list',
   providers: [{
     provide: ConfirmOptions,
     useFactory: confirmOptionsFactory
@@ -28,17 +28,17 @@ export function confirmOptionsFactory(): ConfirmOptions {
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
         <tr>
-          <th sortableHeader="name" [sort]="sort">Name</th>
+          <th mwlSortableHeader="name" [sort]="sort">Name</th>
           <th>Image</th>
-          <th sortableHeader="network.name" [sort]="sort">Network</th>
+          <th mwlSortableHeader="network.name" [sort]="sort">Network</th>
           <th>Summary</th>
-          <th sortableHeader="status" [sort]="sort">Status</th>
-          <th sortableHeader="nextEpisode.airstamp" [sort]="sort">Next episode</th>
+          <th mwlSortableHeader="status" [sort]="sort">Status</th>
+          <th mwlSortableHeader="nextEpisode.airstamp" [sort]="sort">Next episode</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let show of shows | orderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
+        <tr *ngFor="let show of shows | mwlOrderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium" width="60">
@@ -67,7 +67,7 @@ export function confirmOptionsFactory(): ConfirmOptions {
               mwlConfirm
               title="Unsubscribe"
               message="Are you sure you would like to unsubscribe from this show?"
-              (confirm)="unsubscribe(show)">
+              (confirm)="unsubscribeFromShow(show)">
               Unsubscribe
             </button>
             <button class="btn btn-info" [routerLink]="['/episodes', show.id]">
@@ -79,10 +79,10 @@ export function confirmOptionsFactory(): ConfirmOptions {
     </table>
   `
 })
-export class ShowList {
+export class ShowListComponent implements OnChanges {
 
   @Input() public shows: Array<Show>;
-  @Output('unsubscribe') public unsubscribeCallback: EventEmitter<any> = new EventEmitter();
+  @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
   public subscribedShows: Array<Show>;
   public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
@@ -95,14 +95,14 @@ export class ShowList {
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
   }
 
-  isSubscribed(show: Show): Object {
-    return this.subscribedShows.find((subscribedShow: Show) => subscribedShow.id === show.id);
+  isSubscribed(show: Show): boolean {
+    return this.subscribedShows.some((subscribedShow: Show) => subscribedShow.id === show.id);
   }
 
-  unsubscribe(show: Show): void {
+  unsubscribeFromShow(show: Show): void {
     this.subscribedShows = this.subscribedShows.filter((subscribedShow: Show) => subscribedShow.id !== show.id);
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
-    this.unsubscribeCallback.emit(show);
+    this.unsubscribe.emit(show);
   }
 
   ngOnChanges(changeRecord: any): void {

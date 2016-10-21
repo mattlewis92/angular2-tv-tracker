@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'th[sortableHeader]',
+  selector: 'th[mwlSortableHeader]', // tslint:disable-line
   template: `
     <div (click)="headerClicked()">
       <i class="fa fa-sort" [hidden]="sort.field === fieldName"></i>
@@ -17,9 +17,9 @@ import {Component, Input} from '@angular/core';
     }
   `]
 })
-export class SortableHeader {
+export class SortableHeaderComponent {
 
-  @Input('sortableHeader') fieldName: string;
+  @Input('mwlSortableHeader') fieldName: string; // tslint:disable-line
   @Input() sort: {field: string, desc: boolean};
 
   headerClicked(): void {

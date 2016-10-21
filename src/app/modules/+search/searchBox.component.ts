@@ -1,8 +1,8 @@
-import {Component, Output, EventEmitter} from '@angular/core';
-import {FormBuilder, Validators, FormGroup} from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'search-box',
+  selector: 'mwl-search-box',
   template: `
     <form (submit)="$event.preventDefault(); runSearch.emit(searchForm.value.query)" [formGroup]="searchForm">
       <div class="input-group">
@@ -19,7 +19,7 @@ import {FormBuilder, Validators, FormGroup} from '@angular/forms';
     </form>
   `
 })
-export class SearchBox {
+export class SearchBoxComponent {
 
   @Output() runSearch: EventEmitter<any> = new EventEmitter();
 

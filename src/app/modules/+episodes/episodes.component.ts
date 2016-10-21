@@ -1,28 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import {TVMaze} from './../shared/tvMaze.provider';
-import {Episode} from '../../interfaces';
+import { TVMaze } from './../shared/tvMaze.provider';
+import { Episode } from '../../interfaces';
 
 @Component({
-  selector: 'episodes',
   template: `
     <h1>View episodes</h1>
     <table class="table">
       <thead>
         <tr>
-          <th sortableHeader="name" [sort]="sort">Name</th>
-          <th sortableHeader="season" [sort]="sort">Season</th>
-          <th sortableHeader="number" [sort]="sort">Number</th>
+          <th mwlSortableHeader="name" [sort]="sort">Name</th>
+          <th mwlSortableHeader="season" [sort]="sort">Season</th>
+          <th mwlSortableHeader="number" [sort]="sort">Number</th>
           <th>Air date</th>
           <th>Runtime</th>
           <th>Summary</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let episode of episodes | async | orderBy:sort.field:sort.desc">
+        <tr *ngFor="let episode of episodes | async | mwlOrderBy:sort.field:sort.desc">
           <td>{{ episode.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
@@ -34,7 +33,7 @@ import {Episode} from '../../interfaces';
     </table>
   `
 })
-export class Episodes implements OnInit {
+export class EpisodesComponent implements OnInit {
 
   public episodes: Observable<Episode[]>;
   public sort: {field: string, desc: boolean} = {field: null, desc: false};

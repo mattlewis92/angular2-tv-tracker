@@ -1,16 +1,15 @@
-import {Component} from '@angular/core';
-import {TVMaze} from './../shared/tvMaze.provider';
-import {Show} from '../../interfaces';
+import { Component } from '@angular/core';
+import { TVMaze } from './../shared/tvMaze.provider';
+import { Show } from '../../interfaces';
 
 @Component({
-  selector: 'search-shows',
   template: `
     <div class="row">
       <h1 class="col-md-6">Add a show</h1>
-      <search-box class="col-md-6" (runSearch)="searchShows($event)"></search-box>
+      <mwl-search-box class="col-md-6" (runSearch)="searchShows($event)"></mwl-search-box>
     </div>
     <br>
-    <show-list [shows]="shows"></show-list>
+    <mwl-show-list [shows]="shows"></mwl-show-list>
     <div
       class="alert alert-danger"
       [hidden]="!error && (!shows || shows.length > 0)">
@@ -18,7 +17,7 @@ import {Show} from '../../interfaces';
     </div>
   `
 })
-export class SearchShows {
+export class SearchShowsComponent {
 
   public shows: Show[];
   public error: string;

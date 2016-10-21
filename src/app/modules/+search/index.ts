@@ -1,18 +1,18 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
-import {SearchShows} from './searchShows.component';
-import {SearchBox} from './searchBox.component';
-import {SharedModule} from './../shared';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SearchShowsComponent } from './searchShows.component';
+import { SearchBoxComponent } from './searchBox.component';
+import { SharedModule } from './../shared';
 
 @NgModule({
   declarations: [
-    SearchShows,
-    SearchBox
+    SearchShowsComponent,
+    SearchBoxComponent
   ],
   imports: [
     RouterModule.forChild([
-      {path: '', component: SearchShows}
+      {path: '', component: SearchShowsComponent}
     ]),
     SharedModule,
     ReactiveFormsModule

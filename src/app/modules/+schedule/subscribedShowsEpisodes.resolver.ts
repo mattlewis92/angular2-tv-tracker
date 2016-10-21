@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Resolve} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Resolve } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
-import {LocalStorage} from '../shared/localStorage.provider';
-import {TVMaze} from '../shared/tvMaze.provider';
-import {Show, Episode, ShowWithEpisodes} from '../../interfaces';
+import { LocalStorage } from '../shared/localStorage.provider';
+import { TVMaze } from '../shared/tvMaze.provider';
+import { Show, Episode, ShowWithEpisodes } from '../../interfaces';
 
 @Injectable()
 export class SubscribedShowsEpisodesResolver implements Resolve<ShowWithEpisodes[]> {

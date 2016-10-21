@@ -1,8 +1,32 @@
-import {Component} from '@angular/core';
-import {Router, NavigationStart, RoutesRecognized} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'app',
+  selector: 'mwl-loading-spinner',
+  template: `
+    <div class="loading">
+      <h1 class="text-xs-center">
+        <i class="fa fa-spin fa-spinner"></i>
+      </h1>
+    </div>
+  `,
+  styles: [`
+    .loading {
+      height: calc(100vh - 70px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loading i {
+      font-size: 80px;
+    }
+  `]
+})
+export class LoadingSpinnerComponent {}
+
+@Component({
+  selector: 'mwl-app',
   template: `
     <nav class="navbar navbar-fixed-top navbar-light bg-faded">
       <div class="container">
@@ -21,7 +45,7 @@ import {Router, NavigationStart, RoutesRecognized} from '@angular/router';
       </div>
     </nav>
     <div class="container content">
-      <loading-spinner *ngIf="loading"></loading-spinner>
+      <mwl-loading-spinner *ngIf="loading"></mwl-loading-spinner>
       <router-outlet [hidden]="loading"></router-outlet>
     </div>
   `,
@@ -36,8 +60,10 @@ export class AppComponent {
   loading: boolean = true;
 
   constructor(router: Router) {
-    router.events.subscribe((event: any) => {
-      this.loading = !!(event instanceof NavigationStart || event instanceof RoutesRecognized);
+    router.events.map((event: any) => {
+      return !!(event instanceof NavigationStart || event instanceof RoutesRecognized);
+    }).subscribe((isRouteLoading: boolean) => {
+      this.loading = isRouteLoading;
     });
   }
 
