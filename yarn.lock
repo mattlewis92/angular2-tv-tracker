@@ -104,18 +104,23 @@ amdefine@>=0.0.4:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
-angular2-bootstrap-confirm@^1.0.1:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/angular2-bootstrap-confirm/-/angular2-bootstrap-confirm-1.0.4.tgz#4432a0718861a08f0ea11c75e5d66a858c0b9e5e"
-
-angular2-calendar@^0.3.0:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/angular2-calendar/-/angular2-calendar-0.3.5.tgz#3725735798d13190938ab5f35b47ac44acd88eae"
+angular-calendar@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.4.0.tgz#5fe0f04f364da10652b8d53a141f346b673d85af"
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "^1.0.0-alpha.0"
     "@types/date-fns" "0.0.2"
-    calendar-utils "0.0.33"
+    angular-resizable-element "~0.5.0"
+    calendar-utils "0.0.36"
     date-fns "^1.3.0"
+
+angular-resizable-element@~0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.1.tgz#0d80346e7bd36a758dd2593fcdc4f343c052b10c"
+
+angular2-bootstrap-confirm@^1.0.1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/angular2-bootstrap-confirm/-/angular2-bootstrap-confirm-1.0.4.tgz#4432a0718861a08f0ea11c75e5d66a858c0b9e5e"
 
 angular2-router-loader@^0.3.0:
   version "0.3.3"
@@ -449,9 +454,9 @@ bytes@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.3.0.tgz#d5b680a165b6201739acb611542aabc2d8ceb070"
 
-calendar-utils@0.0.33:
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.33.tgz#96c3e5efaed4a16b936fa50fa059216a4d36721a"
+calendar-utils@0.0.36:
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.36.tgz#8ffc327146dcc3b5a2a8711f74349065976b7f5a"
 
 camel-case@^3.0.0:
   version "3.0.0"

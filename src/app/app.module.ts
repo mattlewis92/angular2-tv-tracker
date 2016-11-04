@@ -3,7 +3,7 @@
 
 import 'bootstrap/scss/bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
-import 'angular2-calendar/scss/angular2-calendar.scss';
+import 'angular-calendar/scss/angular-calendar.scss';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'rxjs/Observable';
