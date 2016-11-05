@@ -119,8 +119,8 @@ angular-calendar@^0.4.0:
     date-fns "^1.3.0"
 
 angular-resizable-element@~0.5.0:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.1.tgz#0d80346e7bd36a758dd2593fcdc4f343c052b10c"
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.2.tgz#61c8790b7e736e211e6e5bbfbd50b8f8189785ef"
 
 angular2-bootstrap-confirm@^1.0.1:
   version "1.0.4"
