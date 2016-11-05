@@ -104,6 +104,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-async-cache:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.1.0.tgz#7745cd7c361cd47498200d88e6335586bb9544bc"
+
 angular-calendar@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.4.0.tgz#5fe0f04f364da10652b8d53a141f346b673d85af"
