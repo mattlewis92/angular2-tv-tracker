@@ -1,7 +1,7 @@
 /// <reference types="tinycolor" />
 
 import { Component } from '@angular/core';
-import { CalendarEvent } from 'angular2-calendar';
+import { CalendarEvent } from 'angular-calendar';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/map';
 import randomColor from 'randomcolor';

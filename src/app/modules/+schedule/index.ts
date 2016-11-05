@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'angular2-calendar';
+import { CalendarModule } from 'angular-calendar';
 import { ScheduleCalendarComponent } from './schedule.component';
 import { SubscribedShowsEpisodesResolver } from './subscribedShowsEpisodes.resolver';
 import { SharedModule } from './../shared';
