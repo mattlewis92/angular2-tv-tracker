@@ -17,7 +17,6 @@ import { ShowListComponent } from './showList.component';
     ConfirmModule,
     HttpModule,
     AsyncCacheModule.forRoot({
-      driver: new LocalStorageDriver(),
       fromCacheAndReplay: true
     })
   ],
