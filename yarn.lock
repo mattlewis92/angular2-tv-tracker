@@ -104,9 +104,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-async-cache@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.2.0.tgz#fa9871c268bb97d337cc2842f95382ebc2c00e5c"
+angular-async-cache@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.3.1.tgz#5c6fe3308d2167aad498a12ee76b187f7b9ded20"
 
 angular-calendar@^0.4.0:
   version "0.4.0"
@@ -1502,8 +1502,8 @@ html-comment-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/html-comment-regex/-/html-comment-regex-1.1.1.tgz#668b93776eaae55ebde8f3ad464b307a4963625e"
 
 html-minifier@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.1.0.tgz#e0b35d7a1fff89ae989e2fa51c572bc0d1f2d1f6"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.1.1.tgz#73bd0600fc9d68f536b13a788360245b6d76eb9c"
   dependencies:
     change-case "3.0.x"
     clean-css "3.4.x"
