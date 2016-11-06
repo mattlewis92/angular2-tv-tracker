@@ -104,9 +104,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-async-cache@^0.1.0:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.1.2.tgz#5b94172ca2ab022c1399de091d3a3d8ce08d27f3"
+angular-async-cache@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.2.0.tgz#fa9871c268bb97d337cc2842f95382ebc2c00e5c"
 
 angular-calendar@^0.4.0:
   version "0.4.0"
