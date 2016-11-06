@@ -3,12 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ConfirmModule } from 'angular2-bootstrap-confirm';
-import { AsyncCacheModule, LocalStorageDriver } from 'angular-async-cache';
+import { AsyncCacheModule, LocalStorageDriver, AsyncCacheOptions } from 'angular-async-cache';
 import { OrderBy } from './orderBy.pipe';
 import { SortableHeaderComponent } from './sortableHeader.directive';
 import { LocalStorage } from './localStorage.provider';
 import { TVMaze } from './tvMaze.provider';
 import { ShowListComponent } from './showList.component';
+
+export function asyncCacheOptionsFactory(): AsyncCacheOptions {
+  return new AsyncCacheOptions({
+    driver: new LocalStorageDriver(),
+    fromCacheAndReplay: true
+  });
+}
 
 @NgModule({
   imports: [
@@ -17,7 +24,8 @@ import { ShowListComponent } from './showList.component';
     ConfirmModule,
     HttpModule,
     AsyncCacheModule.forRoot({
-      fromCacheAndReplay: true
+      provide: AsyncCacheOptions,
+      useFactory: asyncCacheOptionsFactory
     })
   ],
   declarations: [
