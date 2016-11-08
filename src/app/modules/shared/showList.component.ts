@@ -1,6 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { ConfirmOptions, Position } from 'angular2-bootstrap-confirm';
-import { Positioning } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import { TVMaze } from './tvMaze.provider';
 import { LocalStorage } from './localStorage.provider';
 import { Observable } from 'rxjs/Observable';
@@ -8,22 +6,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
 import { Show, Episode } from './../../interfaces';
 
-export function confirmOptionsFactory(): ConfirmOptions {
-  const options: ConfirmOptions = new ConfirmOptions();
-  options.confirmButtonType = 'danger';
-  options.cancelButtonType = 'secondary';
-  return options;
-}
-
 @Component({
   selector: 'mwl-show-list',
-  providers: [{
-    provide: ConfirmOptions,
-    useFactory: confirmOptionsFactory
-  }, {
-    provide: Position,
-    useClass: Positioning
-  }],
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
@@ -64,7 +48,7 @@ export function confirmOptionsFactory(): ConfirmOptions {
             <button
               class="btn btn-danger"
               [hidden]="!isSubscribed(show)"
-              mwlConfirm
+              mwlConfirmationPopover
               title="Unsubscribe"
               message="Are you sure you would like to unsubscribe from this show?"
               (confirm)="unsubscribeFromShow(show)">
