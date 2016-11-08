@@ -119,8 +119,8 @@ angular-calendar@^0.4.0:
     date-fns "^1.3.0"
 
 angular-confirmation-popover@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/angular-confirmation-popover/-/angular-confirmation-popover-2.0.2.tgz#393e48016c657ff73815005b5251b682ffd105c6"
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/angular-confirmation-popover/-/angular-confirmation-popover-2.0.3.tgz#cfcf74b14f961ab43a2b1c4a0d8b225a82e78f09"
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "~1.0.0-alpha.0"
 
