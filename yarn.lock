@@ -68,6 +68,10 @@
   version "6.0.48"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.48.tgz#86ccc15f66b73cbbc5eb3483398936c585122b3c"
 
+"@types/tinycolor2@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.1.0.tgz#da79edd38c37d995f161a0c70cc24ace7c66945f"
+
 "@types/tinycolor@^1.1.27":
   version "1.1.27"
   resolved "https://registry.yarnpkg.com/@types/tinycolor/-/tinycolor-1.1.27.tgz#d01d05a681d0ce28923b021d5f3d752ea0478089"
