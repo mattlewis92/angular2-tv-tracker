@@ -56,10 +56,6 @@
   version "0.9.34"
   resolved "https://registry.yarnpkg.com/@types/core-js/-/core-js-0.9.34.tgz#72c521d8e59fdaa8b65f76db71fa53c82c7c21c5"
 
-"@types/date-fns@2.5.3":
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/@types/date-fns/-/date-fns-2.5.3.tgz#f2748929dc31d02c4d60578ee76228d56582e81a"
-
 "@types/node@^6.0.42":
   version "6.0.51"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.51.tgz#84cbf25111516ec9304d0b61469dc0fa9d12ba32"
@@ -3307,9 +3303,9 @@ type-is@~1.6.13:
     media-typer "0.3.0"
     mime-types "~2.1.13"
 
-typescript@^2.0.3:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.1.tgz#41c2b64472f529331b2055c0424862b44ce58d42"
+typescript@~2.0.3:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.0.10.tgz#ccdd4ed86fd5550a407101a0814012e1b3fac3dd"
 
 uglify-js@2.7.x, uglify-js@~2.7.3:
   version "2.7.4"
