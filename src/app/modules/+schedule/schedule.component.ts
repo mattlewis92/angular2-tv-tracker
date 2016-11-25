@@ -1,5 +1,3 @@
-/// <reference types="tinycolor" />
-
 import { Component } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import 'rxjs/add/operator/pluck';
