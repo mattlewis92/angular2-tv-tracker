@@ -40,7 +40,7 @@
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.10.0",
-    "offline-plugin": "^3.4.2",
+    "offline-plugin": "^4.5.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.0",
     "tslint": "~4.0.2",

@@ -1120,10 +1120,6 @@ es6-iterator@2:
     es5-ext "^0.10.7"
     es6-symbol "3"
 
-es6-promise@^3.0.2:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
-
 es6-symbol@3, es6-symbol@^3.0.2, es6-symbol@~3.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.0.tgz#94481c655e7a7cad82eba832d97d5433496d7ffa"
@@ -2117,7 +2113,7 @@ minimalistic-assert@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.0.tgz#702be2dda6b37f4836bcb3f5db56641b64a1d3d3"
 
-"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@~3.0.2:
+"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@~3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.3.tgz#2a4e4090b96b2db06a9d7df01055a62a77c9b774"
   dependencies:
@@ -2326,15 +2322,15 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
-offline-plugin@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/offline-plugin/-/offline-plugin-3.4.2.tgz#ddbb9eec3e8fd052ec51e03c56afdc33b0a331a2"
+offline-plugin@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/offline-plugin/-/offline-plugin-4.5.2.tgz#c0d1bc5c3545bbb5711b412c46355948bebeffca"
   dependencies:
     deep-extend "^0.4.0"
     ejs "^2.3.4"
-    es6-promise "^3.0.2"
     loader-utils "0.2.x"
-    minimatch "^3.0.2"
+    minimatch "^3.0.3"
+    slash "^1.0.0"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -3163,6 +3159,10 @@ sha.js@^2.3.6:
 signal-exit@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.1.tgz#5a4c884992b63a7acd9badb7894c3ee9cfccad81"
+
+slash@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
 slide@^1.1.5:
   version "1.1.6"
