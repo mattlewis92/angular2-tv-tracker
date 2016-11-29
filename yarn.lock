@@ -3436,7 +3436,7 @@ tsickle@^0.1.7:
     source-map "^0.4.2"
     source-map-support "^0.3.1"
 
-tslint-loader@3.2.0:
+tslint-loader@~3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.2.0.tgz#de6f842a8ea4aa1c4ab995b670b95a1f54845821"
   dependencies:
@@ -3445,7 +3445,7 @@ tslint-loader@3.2.0:
     object-assign "^4.0.1"
     rimraf "^2.4.4"
 
-tslint@4.0.2:
+tslint@~4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-4.0.2.tgz#d43f24c0c1f826de7f3a097bb7808a8b4325feac"
   dependencies:
@@ -3828,6 +3828,6 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-zone.js@^0.6.25:
-  version "0.6.26"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.6.26.tgz#067c13b8b80223a89b62e9dc82680f09762c4636"
+zone.js@^0.7.0:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.2.tgz#1a62b6be4b24d1b935e4566b0b4386b66966d1a7"
