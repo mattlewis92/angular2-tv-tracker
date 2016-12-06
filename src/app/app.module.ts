@@ -10,9 +10,10 @@ import 'zone.js/dist/zone';
 import 'rxjs/Observable';
 import { NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, PreloadAllModules } from '@angular/router';
-import { AppComponent, LoadingSpinnerComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 import { install as installServiceWorker } from 'offline-plugin/runtime';
+import { AppComponent, LoadingSpinnerComponent } from './app.component';
 
 declare const ENV: string;
 if (ENV === 'production') {
@@ -27,6 +28,7 @@ if (ENV === 'production') {
   ],
   imports: [
     BrowserModule,
+    IdlePreloadModule.forRoot(),
     RouterModule.forRoot([
       {path: 'subscribed', loadChildren: './modules/+subscribed/index#SubscribedModule'},
       {path: 'episodes/:id', loadChildren: './modules/+episodes/index#EpisodesModule'},
@@ -35,7 +37,7 @@ if (ENV === 'production') {
       {path: '**', redirectTo: 'subscribed'}
     ], {
       useHash: true,
-      preloadingStrategy: PreloadAllModules
+      preloadingStrategy: IdlePreload
     })
   ],
   bootstrap: [

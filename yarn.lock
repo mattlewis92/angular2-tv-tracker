@@ -48,6 +48,10 @@
   dependencies:
     tsickle "^0.1.7"
 
+"@angularclass/idle-preload@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@angularclass/idle-preload/-/idle-preload-1.0.4.tgz#41eeea532cc4998167c825f6dca62cb98f4b7028"
+
 "@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.0", "@ng-bootstrap/ng-bootstrap@~1.0.0-alpha.0":
   version "1.0.0-alpha.14"
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.14.tgz#98b30ba5f56ba2cea3313e1244063b9ac2cd9096"
