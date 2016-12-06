@@ -65,7 +65,7 @@ module.exports = env => {
         template: 'src/index.ejs',
         title: 'Angular 2 TV tracker'
       }),
-      new OfflinePlugin()
+      new OfflinePlugin({})
     ]
   };
 
