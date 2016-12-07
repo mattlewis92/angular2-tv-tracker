@@ -1,5 +1,4 @@
 /// <reference types="core-js" />
-/// <reference path="../../node_modules/date-fns/typings.d.ts" />
 /// <reference path="./typings.custom.d.ts" />
 
 import 'bootstrap/scss/bootstrap.scss';
