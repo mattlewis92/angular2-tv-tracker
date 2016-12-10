@@ -1,5 +1,4 @@
 /// <reference types="core-js" />
-/// <reference path="../../node_modules/date-fns/typings.d.ts" />
 /// <reference path="./typings.custom.d.ts" />
 
 import 'bootstrap/scss/bootstrap.scss';
@@ -12,12 +11,12 @@ import { NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
-import { install as installServiceWorker } from 'offline-plugin/runtime';
 import { AppComponent, LoadingSpinnerComponent } from './app.component';
 
 declare const ENV: string;
 if (ENV === 'production') {
-  installServiceWorker();
+  const install: Function = require('offline-plugin/runtime').install;
+  install();
   enableProdMode();
 }
 

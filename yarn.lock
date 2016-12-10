@@ -111,13 +111,13 @@ angular-async-cache@^0.4.0:
   resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.0.tgz#36689129a9e4cf13c9ed1d12c631de0f7e0bc324"
 
 angular-calendar@^0.4.0:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.4.3.tgz#011ff58d939aed9c4b4a54fbd7f8046769e794ec"
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.4.4.tgz#7754148ac168197758196b6b526855b0c1a0a554"
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "^1.0.0-alpha.0"
     angular-resizable-element "~0.5.0"
     calendar-utils "0.0.38"
-    date-fns "^1.11.1"
+    date-fns "^1.15.1"
 
 angular-confirmation-popover@^2.0.0:
   version "2.0.3"
@@ -932,9 +932,9 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns@^1.11.1:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.14.1.tgz#7bea2b23770b7a5278d951e718b889bfbfe77391"
+date-fns@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.15.1.tgz#26b1f3163de8c9a71447adeb23c9bc40171b3fd4"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -1916,8 +1916,8 @@ jsprim@^1.2.2:
     verror "1.3.6"
 
 kind-of@^3.0.2:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.0.4.tgz#7b8ecf18a4e17f8269d73b501c9f232c96887a74"
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.1.0.tgz#475d698a5e49ff5e53d14e3e732429dc8bf4cf47"
   dependencies:
     is-buffer "^1.0.2"
 
