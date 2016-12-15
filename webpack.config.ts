@@ -66,7 +66,10 @@ module.exports = env => {
         title: 'Angular 2 TV tracker'
       }),
       ...(env.production ? [new OfflinePlugin({})] : [])
-    ]
+    ],
+    performance: {
+      hints: false
+    }
   };
 
 };
