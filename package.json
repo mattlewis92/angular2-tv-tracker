@@ -17,7 +17,7 @@
     "@angular/router": "^3.0.1",
     "@angularclass/idle-preload": "^1.0.4",
     "angular-async-cache": "^0.4.0",
-    "angular-calendar": "^0.4.0",
+    "angular-calendar": "^0.5.0",
     "angular-confirmation-popover": "^2.0.0",
     "bootstrap": "4.0.0-alpha.5",
     "core-js": "^2.4.1",

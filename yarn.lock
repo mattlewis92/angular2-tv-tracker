@@ -120,13 +120,14 @@ angular-async-cache@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.0.tgz#36689129a9e4cf13c9ed1d12c631de0f7e0bc324"
 
-angular-calendar@^0.4.0:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.4.4.tgz#7754148ac168197758196b6b526855b0c1a0a554"
+angular-calendar@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.5.0.tgz#d789476299b986d2c7b0d76e3e55378c05361dcd"
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "^1.0.0-alpha.0"
-    angular-resizable-element "~0.5.0"
-    calendar-utils "0.0.38"
+    angular-draggable-droppable "^0.4.0"
+    angular-resizable-element "^0.5.4"
+    calendar-utils "0.0.39"
     date-fns "^1.15.1"
 
 angular-confirmation-popover@^2.0.0:
@@ -135,7 +136,11 @@ angular-confirmation-popover@^2.0.0:
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "~1.0.0-alpha.0"
 
-angular-resizable-element@~0.5.0:
+angular-draggable-droppable@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.4.0.tgz#84486ef94796b0427990f66316f89357854b4d80"
+
+angular-resizable-element@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.4.tgz#76467857841d906f517d2bf1b56539c90e16240a"
 
@@ -491,9 +496,9 @@ bytes@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.3.0.tgz#d5b680a165b6201739acb611542aabc2d8ceb070"
 
-calendar-utils@0.0.38:
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.38.tgz#13569692ecdf9c20fe9db67122323cd8f9f86779"
+calendar-utils@0.0.39:
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.39.tgz#8b12c85873a61d730212da1bc327166a46c50951"
 
 camel-case@3.0.x:
   version "3.0.0"
