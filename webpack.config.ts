@@ -7,9 +7,8 @@ const OfflinePlugin = require('offline-plugin');
 const {getIfUtils, removeEmpty} = require('webpack-config-utils');
 const {AotPlugin} = require('@ngtools/webpack');
 
-module.exports = env => {
+module.exports = environment => {
 
-  const environment = env.production ? 'production': 'development';
   const {ifProduction} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
   const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
