@@ -5,6 +5,7 @@ const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const {getIfUtils, removeEmpty} = require('webpack-config-utils');
+const {AotPlugin} = require('@ngtools/webpack');
 
 module.exports = env => {
 
@@ -26,11 +27,14 @@ module.exports = env => {
         loader: 'tslint-loader?emitErrors=false&failOnHint=false',
         exclude: /node_modules/,
         enforce: 'pre'
+      }, ifProduction({
+        test: /\.ts$/,
+        loader: '@ngtools/webpack'
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system&genDir=./aot/src/app' + ifProduction('&aot=true' , ''),
+        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system',
         exclude: path.resolve(__dirname, 'node_modules')
-      }, {
+      }), {
         test: /\.scss$/,
         loader: extractCSS.extract(['css-loader?minimize', 'sass-loader'])
       }, {
@@ -49,6 +53,7 @@ module.exports = env => {
       inline: true
     },
     plugins: removeEmpty([
+      ifProduction(new AotPlugin({tsConfigPath: './tsconfig.json'})),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(environment)

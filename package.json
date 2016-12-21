@@ -16,6 +16,7 @@
     "@angular/platform-browser-dynamic": "^2.0.1",
     "@angular/router": "^3.0.1",
     "@angularclass/idle-preload": "^1.0.4",
+    "@ngtools/webpack": "^1.2.1",
     "angular-async-cache": "^0.4.0",
     "angular-calendar": "^0.6.0",
     "angular-confirmation-popover": "^2.0.0",
@@ -55,8 +56,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --env.development --progress --open",
-    "build": "npm run ngc && webpack --progress --env.production && rm -rf aot",
-    "ngc": "ngc -p . && rm -rf tsc",
+    "build": "webpack --progress --env.production",
     "gh-pages": "git checkout gh-pages && git merge master --no-edit && rm -rf *.js *.css *.map *.html && npm run build && git add . && git commit -m 'Build' && git push && git checkout master"
   }
 }
