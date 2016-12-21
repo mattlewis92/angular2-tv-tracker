@@ -120,12 +120,12 @@ angular-async-cache@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.0.tgz#36689129a9e4cf13c9ed1d12c631de0f7e0bc324"
 
-angular-calendar@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.5.0.tgz#d789476299b986d2c7b0d76e3e55378c05361dcd"
+angular-calendar@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.6.0.tgz#000da5f268a7410857f80ec2b4a374a4283c7df1"
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "^1.0.0-alpha.0"
-    angular-draggable-droppable "^0.4.0"
+    angular-draggable-droppable "^0.5.0"
     angular-resizable-element "^0.5.4"
     calendar-utils "0.0.39"
     date-fns "^1.15.1"
@@ -136,9 +136,9 @@ angular-confirmation-popover@^2.0.0:
   dependencies:
     "@ng-bootstrap/ng-bootstrap" "~1.0.0-alpha.0"
 
-angular-draggable-droppable@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.4.0.tgz#84486ef94796b0427990f66316f89357854b4d80"
+angular-draggable-droppable@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.5.0.tgz#71aedc7ff228a34514b74de2ea9d7257d7f82a4c"
 
 angular-resizable-element@^0.5.4:
   version "0.5.4"
@@ -3138,9 +3138,9 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
-rxjs@5.0.0-rc.4:
-  version "5.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.0-rc.4.tgz#a4d08bc5d7f30d48ed7130e2995490c326a325c4"
+rxjs@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.1.tgz#3a69bdf9f0ca0a986303370d4708f72bdfac8356"
   dependencies:
     symbol-observable "^1.0.1"
 
