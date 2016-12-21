@@ -8,7 +8,7 @@ const {getIfUtils, removeEmpty} = require('webpack-config-utils');
 
 module.exports = env => {
 
-  const environment = getIfUtils(env.production ? 'production': 'development');
+  const environment = env.production ? 'production': 'development';
   const {ifProduction} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
   const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
