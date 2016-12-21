@@ -3,44 +3,44 @@
 
 
 "@angular/common@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.0.tgz#8adcc00bdf87f7de8a648ef0ca048eb937bf342f"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.3.1.tgz#146c2ed44e02b0f291dd9d4b2e5e2a693057e9bc"
 
 "@angular/compiler-cli@^2.1.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.0.tgz#3262b941f4617f7c89955fb54cd68ff9ca0a9650"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.3.1.tgz#ff461fdf44a8c5b51117f572ba58949e45bd18b5"
   dependencies:
     "@angular/tsc-wrapped" "0.5.0"
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
 "@angular/compiler@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.0.tgz#275fa0a47ff2f1e4bae9ea053b94bbcdf8dee8ac"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.3.1.tgz#0c57f848e41432bac3201c29b645dd4dd099d2f9"
 
 "@angular/core@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.0.tgz#7da68c85c6f2d76e5c391daefd3eedf545305bb5"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.3.1.tgz#be6e91fdfdd7498506604263e051797cf67a47be"
 
 "@angular/forms@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.0.tgz#d0daf261d00927a3c09355ce21f8e6c118253cc3"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.3.1.tgz#2177e0513c5177fc6e4d140473e7b9f0b9dfd069"
 
 "@angular/http@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.0.tgz#21083c631f95b73a9e472d74170dfd70395be91f"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.3.1.tgz#3dda85771dccea49d5e08a47366a7168e3435141"
 
 "@angular/platform-browser-dynamic@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.0.tgz#56348ae1ab5a4382442fe2c5436262c78dba48dc"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.3.1.tgz#d01f3c0c25c628be83c308e83d53128222f558fa"
 
 "@angular/platform-browser@^2.0.1":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.0.tgz#c662a0fefec50ff18b8fface93686e2267037714"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.3.1.tgz#114309150876188e0df8841b20ca2359fd5e7cad"
 
 "@angular/router@^3.0.1":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.0.tgz#134346631c11a269d75cce3da9f0ef0b3d0b95b4"
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.3.1.tgz#7bae01d165232f5bb5b8ec01e22943e44eb4af88"
 
 "@angular/tsc-wrapped@0.5.0":
   version "0.5.0"
@@ -86,8 +86,8 @@ acorn-dynamic-import@^2.0.0:
     acorn "^4.0.3"
 
 acorn@^4.0.3:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.3.tgz#1a3e850b428e73ba6b09d1cc527f5aaad4d03ef1"
 
 ajv-keywords@^1.1.1:
   version "1.2.0"
@@ -527,8 +527,8 @@ camelcase@^3.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
 caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000597:
-  version "1.0.30000602"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000602.tgz#06b2cbfb6c3aeef7ddb18cd588043549ad1a2d4e"
+  version "1.0.30000597"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000597.tgz#b52e6cbe9dc83669affb98501629feaee1af6588"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -583,8 +583,8 @@ clap@^1.0.9:
     chalk "^1.1.3"
 
 clean-css@3.4.x:
-  version "3.4.23"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.23.tgz#604fbbca24c12feb59b02f00b84f1fb7ded6d001"
+  version "3.4.22"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.22.tgz#db323064f752028778233b58c54cd8535f860892"
   dependencies:
     commander "2.8.x"
     source-map "0.4.x"
@@ -948,8 +948,8 @@ dashdash@^1.12.0:
     assert-plus "^1.0.0"
 
 date-fns@^1.15.1:
-  version "1.21.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.21.1.tgz#5f5de347a88d575c8a09958a884f91502b48d157"
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.21.0.tgz#7183c75dd0762e101f5db7fdbe3598b5a47c09e4"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -2029,6 +2029,10 @@ lodash.indexof@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/lodash.indexof/-/lodash.indexof-4.0.5.tgz#53714adc2cddd6ed87638f893aa9b6c24e31ef3c"
 
+lodash.isarray@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-4.0.0.tgz#2aca496b28c4ca6d726715313590c02e6ea34403"
+
 lodash.mergewith@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.0.tgz#150cf0a16791f5903b8891eab154609274bdea55"
@@ -2275,8 +2279,8 @@ node-pre-gyp@^0.6.29:
     tar-pack "~3.3.0"
 
 node-sass@^4.0.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.1.1.tgz#dc3e27d25bd827b6276ea243be357c7c7cd07111"
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.0.0.tgz#3208301ad5a6096de227f3fc4c3ce682b9816afc"
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -2287,6 +2291,7 @@ node-sass@^4.0.0:
     in-publish "^2.0.0"
     lodash.assign "^4.2.0"
     lodash.clonedeep "^4.3.2"
+    lodash.isarray "^4.0.0"
     lodash.mergewith "^4.6.0"
     meow "^3.7.0"
     mkdirp "^0.5.1"
@@ -2295,7 +2300,6 @@ node-sass@^4.0.0:
     npmlog "^4.0.0"
     request "^2.61.0"
     sass-graph "^2.1.1"
-    stdout-stream "^1.4.0"
 
 node-status-codes@^1.0.0:
   version "1.0.0"
@@ -2671,8 +2675,8 @@ postcss-minify-gradients@^1.0.1:
     postcss-value-parser "^3.3.0"
 
 postcss-minify-params@^1.0.4:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/postcss-minify-params/-/postcss-minify-params-1.2.1.tgz#c899444d9e2ff8933018befac151fbfadf10e737"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-minify-params/-/postcss-minify-params-1.1.0.tgz#b6093472b5872a6deda47aa3b0b5b8b973547c50"
   dependencies:
     alphanum-sort "^1.0.1"
     postcss "^5.0.2"
@@ -2767,8 +2771,8 @@ postcss-selector-parser@^2.0.0:
     uniq "^1.0.1"
 
 postcss-svgo@^2.1.1:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-2.1.6.tgz#b6df18aa613b666e133f08adb5219c2684ac108d"
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-2.1.5.tgz#46fc0363f01bab6a36a9abb01c229fcc45363094"
   dependencies:
     is-svg "^2.0.0"
     postcss "^5.0.14"
@@ -3005,8 +3009,8 @@ reduce-function-call@^1.0.1:
     balanced-match "^0.4.2"
 
 reflect-metadata@^0.1.2:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.9.tgz#987238dc87a516895fe457f130435ffbd763a4d4"
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.8.tgz#72426d570b60776e3688968bd5ab9537a15cecf6"
 
 regenerate@^1.2.1:
   version "1.3.2"
@@ -3353,12 +3357,6 @@ sshpk@^1.7.0:
 "statuses@>= 1.3.1 < 2", statuses@~1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e"
-
-stdout-stream@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/stdout-stream/-/stdout-stream-1.4.0.tgz#a2c7c8587e54d9427ea9edb3ac3f2cd522df378b"
-  dependencies:
-    readable-stream "^2.0.1"
 
 stream-browserify@^2.0.1:
   version "2.0.1"
@@ -3963,5 +3961,5 @@ yargs@~3.10.0:
     window-size "0.1.0"
 
 zone.js@^0.7.0:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.4.tgz#0e624fe5b724450ee433495deff15c02b3908ee0"
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.2.tgz#1a62b6be4b24d1b935e4566b0b4386b66966d1a7"
