@@ -13,7 +13,7 @@ A simple app built with webpack for learning angular2, demonstrating several cor
 _Feedback welcome!_
 
 ### Demo
-http://mattlewis.me/angular2-tv-tracker/
+https://mattlewis92.github.io/angular2-tv-tracker/
 
 ### Run locally (assuming node + npm are installed)
 
