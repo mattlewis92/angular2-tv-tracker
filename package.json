@@ -55,8 +55,8 @@
     "webpack-fix-default-import-plugin": "^1.0.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --env.development --progress --open",
-    "build": "webpack --progress --env.production",
+    "start": "webpack-dev-server --env=development --progress --open",
+    "build": "webpack --progress --env=production",
     "gh-pages": "git checkout gh-pages && git merge master --no-edit && rm -rf *.js *.css *.map *.html && npm run build && git add . && git commit -m 'Build' && git push && git checkout master"
   }
 }
