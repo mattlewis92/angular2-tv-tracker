@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AsyncCacheModule, LocalStorageDriver, AsyncCacheOptions } from 'angular-async-cache';
 import { OrderBy } from './orderBy.pipe';
+import { Replace } from './replace.pipe';
 import { SortableHeaderComponent } from './sortableHeader.directive';
 import { LocalStorage } from './localStorage.provider';
 import { TVMaze } from './tvMaze.provider';
@@ -33,11 +34,13 @@ export function asyncCacheOptionsFactory(): AsyncCacheOptions {
   ],
   declarations: [
     OrderBy,
+    Replace,
     SortableHeaderComponent,
     ShowListComponent
   ],
   exports: [
     OrderBy,
+    Replace,
     SortableHeaderComponent,
     ShowListComponent,
     CommonModule
