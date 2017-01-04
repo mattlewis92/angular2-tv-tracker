@@ -2,6 +2,9 @@ export interface Show {
   id: number;
   name: string;
   nextEpisode?: Object;
+  image: {
+    medium: string;
+  };
 }
 
 export interface Episode {

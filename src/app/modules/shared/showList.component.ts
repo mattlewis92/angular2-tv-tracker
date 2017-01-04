@@ -25,7 +25,7 @@ import { Show, Episode } from './../../interfaces';
         <tr *ngFor="let show of shows | mwlOrderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
-            <img [src]="show.image?.medium" width="60">
+            <img [src]="show.image?.medium | mwlReplace:'http://':'https://'" width="60">
           </td>
           <td>{{ show.network?.name }}</td>
           <td [innerHtml]="show.summary"></td>
