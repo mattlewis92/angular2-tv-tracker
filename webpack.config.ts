@@ -31,7 +31,7 @@ module.exports = environment => {
         loader: '@ngtools/webpack'
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader!angular2-router-loader?loader=system',
+        loader: 'ts-loader!angular2-router-loader?loader=system',
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
@@ -52,7 +52,7 @@ module.exports = environment => {
       inline: true
     },
     plugins: removeEmpty([
-      ifProduction(new AotPlugin({tsConfigPath: './tsconfig.json'})),
+      ifProduction(new AotPlugin({tsConfigPath: './tsconfig-aot.json'})),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(environment)

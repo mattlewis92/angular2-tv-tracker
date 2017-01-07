@@ -10,9 +10,14 @@
     "noImplicitAny": false,
     "lib": ["ES5", "dom"],
     "outDir": "tsc",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "",
+    "rootDir": "."
   },
-  "files": [
-    "src/entry.jit.ts"
-  ]
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "debug": true,
+    "skipMetadataEmit" : true,
+    "entryModule": "src/app/app.module#AppModule"
+  }
 }
