@@ -12,7 +12,7 @@
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true
   },
-  "exclude": [
-    "src/entry.aot.ts"
+  "files": [
+    "src/entry.jit.ts"
   ]
 }
