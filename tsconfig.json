@@ -11,8 +11,5 @@
     "lib": ["ES5", "dom"],
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true
-  },
-  "files": [
-    "src/entry.jit.ts"
-  ]
+  }
 }
