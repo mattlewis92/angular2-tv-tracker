@@ -20,7 +20,7 @@
     "angular-async-cache": "^0.4.0",
     "angular-calendar": "^0.6.0",
     "angular-confirmation-popover": "^2.0.0",
-    "bootstrap": "4.0.0-alpha.5",
+    "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "font-awesome": "^4.6.3",
     "lodash.get": "^4.4.2",
