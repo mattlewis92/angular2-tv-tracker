@@ -10,6 +10,7 @@
     "noImplicitAny": false,
     "lib": ["ES5", "dom"],
     "outDir": "tsc",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true
   }
 }
