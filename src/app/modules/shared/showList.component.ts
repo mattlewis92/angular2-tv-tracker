@@ -31,9 +31,9 @@ import { Show, Episode } from './../../interfaces';
           <td [innerHtml]="show.summary"></td>
           <td>
             <span
-              class="tag"
-              [class.tag-success]="show.status === 'Running'"
-              [class.tag-danger]="show.status !== 'Running'">
+              class="badge"
+              [class.badge-success]="show.status === 'Running'"
+              [class.badge-danger]="show.status !== 'Running'">
                {{ show.status }}
              </span>
           </td>

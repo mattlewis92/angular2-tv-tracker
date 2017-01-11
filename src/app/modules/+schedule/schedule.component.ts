@@ -29,25 +29,25 @@ const padNumber: Function = (number: number): string => number < 10 ? `0${number
       <div class="row">
         <div class="col-md-4">
           <div class="btn-group">
-            <div class="btn btn-primary" (click)="decrement()">
+            <button class="btn btn-primary" (click)="decrement()">
               Previous
-            </div>
-            <div class="btn btn-secondary" (click)="today()">
+            </button>
+            <button class="btn btn-secondary" (click)="today()">
               Today
-            </div>
-            <div class="btn btn-primary" (click)="increment()">
+            </button>
+            <button class="btn btn-primary" (click)="increment()">
               Next
-            </div>
+            </button>
           </div>
         </div>
-        <div class="col-md-4 text-xs-center">
+        <div class="col-md-4 text-center">
           <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
         </div>
-        <div class="col-md-4 text-xs-right">
+        <div class="col-md-4 text-right">
           <div class="btn-group">
-            <div class="btn btn-primary" (click)="view = 'month'" [class.active]="view === 'month'">Month</div>
-            <div class="btn btn-primary" (click)="view = 'week'" [class.active]="view === 'week'">Week</div>
-            <div class="btn btn-primary" (click)="view = 'day'" [class.active]="view === 'day'">Day</div>
+            <button class="btn btn-primary" (click)="view = 'month'" [class.active]="view === 'month'">Month</button>
+            <button class="btn btn-primary" (click)="view = 'week'" [class.active]="view === 'week'">Week</button>
+            <button class="btn btn-primary" (click)="view = 'day'" [class.active]="view === 'day'">Day</button>
           </div>
         </div>
       </div>

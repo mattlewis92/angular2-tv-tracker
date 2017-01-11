@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
   selector: 'mwl-loading-spinner',
   template: `
     <div class="loading">
-      <h1 class="text-xs-center">
+      <h1 class="text-center">
         <i class="fa fa-spin fa-spinner"></i>
       </h1>
     </div>
@@ -28,20 +28,22 @@ export class LoadingSpinnerComponent {}
 @Component({
   selector: 'mwl-app',
   template: `
-    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
       <div class="container">
-        <h1 class="navbar-brand">Angular 2 TV tracker</h1>
-        <ul class="nav navbar-nav">
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/subscribed']">Subscribed shows</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/schedule']">Schedule</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/search']">Add shows</a>
-          </li>
-        </ul>
+        <a href="/" class="navbar-brand">Angular 2 TV tracker</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/subscribed']">Subscribed shows</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/schedule']">Schedule</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/search']">Add shows</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container content">

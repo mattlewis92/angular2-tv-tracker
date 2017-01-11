@@ -1,16 +1,6 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
-    "target": "ES5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false,
-    "lib": ["ES5", "dom"],
-    "outDir": "tsc",
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "",
     "rootDir": "."
   },

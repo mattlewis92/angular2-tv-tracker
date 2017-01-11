@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig",
+  "files": [
+    "src/entry.jit.ts"
+  ]
+}

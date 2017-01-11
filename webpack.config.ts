@@ -31,7 +31,7 @@ module.exports = environment => {
         loader: '@ngtools/webpack'
       }, {
         test: /\.ts$/,
-        loader: 'ts-loader!angular2-router-loader?loader=system',
+        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular2-router-loader?loader=system',
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
