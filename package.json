@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.1.0",
-    "@types/core-js": "^0.9.34",
     "@types/node": "^7.0.0",
     "@types/tinycolor2": "^1.1.0",
     "angular2-router-loader": "^0.3.0",

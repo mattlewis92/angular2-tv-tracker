@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const {getIfUtils, removeEmpty} = require('webpack-config-utils');
 const {AotPlugin} = require('@ngtools/webpack');
+const {CheckerPlugin} = require('awesome-typescript-loader');
 
 module.exports = environment => {
 
@@ -31,7 +32,7 @@ module.exports = environment => {
         loader: '@ngtools/webpack'
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular2-router-loader?loader=system',
+        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular2-router-loader',
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
@@ -52,6 +53,7 @@ module.exports = environment => {
       inline: true
     },
     plugins: removeEmpty([
+      new CheckerPlugin(),
       ifProduction(new AotPlugin({tsConfigPath: './tsconfig-aot.json'})),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({

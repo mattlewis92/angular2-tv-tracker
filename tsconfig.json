@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "lib": ["ES5", "dom"],
+    "lib": ["ES5", "dom", "es2015"],
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true,
     "importHelpers": true
