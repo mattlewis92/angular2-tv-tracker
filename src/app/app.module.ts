@@ -1,6 +1,3 @@
-/// <reference types="core-js" />
-/// <reference path="./typings.custom.d.ts" />
-
 import 'bootstrap/scss/bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'angular-calendar/scss/angular-calendar.scss';
