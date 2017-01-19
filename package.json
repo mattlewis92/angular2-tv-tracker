@@ -38,7 +38,7 @@
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "codelyzer": "^2.0.0-beta.1",
     "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "extract-text-webpack-plugin": "2.0.0-beta.5",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^4.0.0",
@@ -49,9 +49,9 @@
     "tslint-loader": "^3.3.0",
     "typescript": "~2.1.4",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0-rc.3",
+    "webpack": "^2.2.0",
     "webpack-config-utils": "^2.3.0",
-    "webpack-dev-server": "^2.2.0-rc.0",
+    "webpack-dev-server": "^2.2.0",
     "webpack-fix-default-import-plugin": "^1.0.1"
   },
   "scripts": {
