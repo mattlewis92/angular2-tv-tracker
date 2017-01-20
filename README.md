@@ -20,6 +20,6 @@ https://mattlewis92.github.io/angular2-tv-tracker/
 ```
 git clone https://github.com/mattlewis92/angular2-tv-tracker.git
 cd angular2-tv-tracker
-npm install
-npm start
+yarn
+yarn start
 ```
