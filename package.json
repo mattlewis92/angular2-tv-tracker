@@ -39,7 +39,7 @@
     "codelyzer": "^2.0.0-beta.1",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "2.0.0-beta.5",
-    "file-loader": "^0.9.0",
+    "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^4.0.0",
     "offline-plugin": "^4.5.2",
