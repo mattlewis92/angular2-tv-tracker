@@ -5,15 +5,9 @@ import 'rxjs/add/operator/map';
 import randomColor from 'randomcolor';
 import tinycolor from 'tinycolor2';
 import format from 'date-fns/format';
-import subDays from 'date-fns/sub_days';
-import addDays from 'date-fns/add_days';
 import isSameDay from 'date-fns/is_same_day';
 import isSameMonth from 'date-fns/is_same_month';
-import addWeeks from 'date-fns/add_weeks';
-import subWeeks from 'date-fns/sub_weeks';
-import addMonths from 'date-fns/add_months';
-import subMonths from 'date-fns/sub_months';
-import { Episode, ShowWithEpisodes } from './../../interfaces';
+import { Episode, ShowWithEpisodes } from '../../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -29,15 +23,26 @@ const padNumber: Function = (number: number): string => number < 10 ? `0${number
       <div class="row">
         <div class="col-md-4">
           <div class="btn-group">
-            <button class="btn btn-primary" (click)="decrement()">
+            <div
+              class="btn btn-primary"
+              mwlCalendarPreviousView
+              [view]="view"
+              [(viewDate)]="viewDate">
               Previous
-            </button>
-            <button class="btn btn-secondary" (click)="today()">
+            </div>
+            <div
+              class="btn btn-secondary"
+              mwlCalendarToday
+              [(viewDate)]="viewDate">
               Today
-            </button>
-            <button class="btn btn-primary" (click)="increment()">
+            </div>
+            <div
+              class="btn btn-primary"
+              mwlCalendarNextView
+              [view]="view"
+              [(viewDate)]="viewDate">
               Next
-            </button>
+            </div>
           </div>
         </div>
         <div class="col-md-4 text-center">
@@ -117,34 +122,6 @@ export class ScheduleCalendarComponent {
       return events;
 
     });
-  }
-
-  increment(): void {
-
-    const addFn: any = {
-      day: addDays,
-      week: addWeeks,
-      month: addMonths
-    }[this.view];
-
-    this.viewDate = addFn(this.viewDate, 1);
-
-  }
-
-  decrement(): void {
-
-    const subFn: any = {
-      day: subDays,
-      week: subWeeks,
-      month: subMonths
-    }[this.view];
-
-    this.viewDate = subFn(this.viewDate, 1);
-
-  }
-
-  today(): void {
-    this.viewDate = new Date();
   }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {

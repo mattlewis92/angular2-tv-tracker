@@ -52,10 +52,6 @@
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@angularclass/idle-preload/-/idle-preload-1.0.4.tgz#41eeea532cc4998167c825f6dca62cb98f4b7028"
 
-"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.0":
-  version "1.0.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.18.tgz#e2be574f75dfafab27fe32769bfbc0a923736f1d"
-
 "@ngtools/webpack@^1.2.1":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.2.4.tgz#1aec8dfaf2b5b0027bd9732229a028db61b47d25"
@@ -125,15 +121,15 @@ angular-async-cache@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.0.tgz#36689129a9e4cf13c9ed1d12c631de0f7e0bc324"
 
-angular-calendar@^0.6.0:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.6.2.tgz#7f141579e7a8ff90b59e0046c07a5c01955fedea"
+angular-calendar@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.7.0.tgz#47807349feac65e0347f92c85da73cf8951a7b73"
   dependencies:
-    "@ng-bootstrap/ng-bootstrap" "^1.0.0-alpha.0"
     angular-draggable-droppable "^0.5.1"
     angular-resizable-element "^0.5.4"
     calendar-utils "0.0.39"
     date-fns "^1.15.1"
+    positioning "^1.0.4"
 
 angular-confirmation-popover@^2.0.0:
   version "2.1.2"
@@ -2523,7 +2519,7 @@ portfinder@^1.0.9:
     debug "^2.2.0"
     mkdirp "0.5.x"
 
-positioning@^1.1.0:
+positioning@^1.0.4, positioning@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/positioning/-/positioning-1.1.0.tgz#9284bf36b2e38035728e19afc5e07ee89711e58c"
 
