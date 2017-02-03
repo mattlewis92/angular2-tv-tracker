@@ -8,7 +8,7 @@ const {getIfUtils, removeEmpty} = require('webpack-config-utils');
 const {AotPlugin} = require('@ngtools/webpack');
 const {CheckerPlugin} = require('awesome-typescript-loader');
 
-module.exports = environment => {
+export default environment => {
 
   const {ifProduction} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
