@@ -72,13 +72,10 @@ module.exports = environment => {
       }),
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
-        title: 'Angular 2 TV tracker'
+        title: 'Angular 2+ TV tracker'
       }),
       ifProduction(new OfflinePlugin({}))
-    ]),
-    performance: {
-      hints: false
-    }
+    ])
   };
 
 };
