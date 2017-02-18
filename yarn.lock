@@ -3097,9 +3097,9 @@ sass-graph@^2.1.1:
     lodash "^4.0.0"
     yargs "^4.7.1"
 
-sass-loader@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-5.0.1.tgz#4aa82f44242abe62ed8fdcd28d6331a34ef27c2d"
+sass-loader@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-6.0.1.tgz#fcfa0251cd18a61e62c8a6ec0eb56dd6baa8278c"
   dependencies:
     async "^2.0.1"
     loader-utils "^0.2.15"
