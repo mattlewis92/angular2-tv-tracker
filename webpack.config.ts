@@ -32,7 +32,7 @@ module.exports = environment => {
         loader: '@ngtools/webpack'
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular2-router-loader',
+        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular-router-loader',
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,

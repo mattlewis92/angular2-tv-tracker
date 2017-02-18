@@ -141,9 +141,9 @@ angular-resizable-element@^0.5.4:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.7.tgz#1040517b24b69d7e2140346f659a5330f4f985d0"
 
-angular2-router-loader@^0.3.0:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/angular2-router-loader/-/angular2-router-loader-0.3.5.tgz#2b18fa9683e0e8aab3e942f5d93a11d63c37c303"
+angular-router-loader@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/angular-router-loader/-/angular-router-loader-0.5.0.tgz#b81b1480498320d2a9ac7afb24ed7a9e735a5692"
   dependencies:
     loader-utils "^0.2.15"
 
