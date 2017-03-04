@@ -30,7 +30,7 @@ export class LoadingSpinnerComponent {}
   template: `
     <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
       <div class="container">
-        <a href="/" class="navbar-brand">Angular 2 TV tracker</a>
+        <a href="/" class="navbar-brand">Angular 2+ TV tracker</a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
             <li class="nav-item" routerLinkActive="active">
