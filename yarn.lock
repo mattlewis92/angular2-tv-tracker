@@ -117,13 +117,13 @@ angular-async-cache@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.0.tgz#36689129a9e4cf13c9ed1d12c631de0f7e0bc324"
 
-angular-calendar@^0.7.0:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.7.3.tgz#f71170df66f60639055caa1f6201d024bdf5ebb9"
+angular-calendar@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.8.0.tgz#85ae321b661e7a6cd176f8e4ff9a091840bba7b3"
   dependencies:
     angular-draggable-droppable "^0.5.4"
     angular-resizable-element "^0.7.2"
-    calendar-utils "0.0.39"
+    calendar-utils "0.0.41"
     date-fns "^1.15.1"
     positioning "^1.0.4"
 
@@ -484,9 +484,9 @@ bytes@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.3.0.tgz#d5b680a165b6201739acb611542aabc2d8ceb070"
 
-calendar-utils@0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.39.tgz#8b12c85873a61d730212da1bc327166a46c50951"
+calendar-utils@0.0.41:
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.41.tgz#20abc3662dc7bc9b00f7a94addd3a214efac8abf"
 
 camel-case@3.0.x:
   version "3.0.0"
@@ -842,9 +842,9 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-loader@^0.26.1:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.26.2.tgz#a9cd4c2b1a559b45d8efc04fc311ab5d2aaccb9d"
+css-loader@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.27.2.tgz#1522fafc8dd2323414355e304b6f92a96cef7f40"
   dependencies:
     babel-code-frame "^6.11.0"
     css-selector-tokenizer "^0.7.0"
@@ -962,13 +962,13 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.6.1:
+debug@2.6.1, debug@^2.2.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
     ms "0.7.2"
 
-debug@^2.2.0, debug@~2.2.0:
+debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
@@ -4051,6 +4051,6 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-zone.js@^0.7.0:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.7.tgz#0d7b7ae7f68012d03438b8a18f5763441bbf9620"
+zone.js@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.0.tgz#d5fbfd04aa91401cd848b2baa3d00643b864dfa6"
