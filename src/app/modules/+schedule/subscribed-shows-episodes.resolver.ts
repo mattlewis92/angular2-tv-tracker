@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
-import { LocalStorage } from '../shared/localStorage.provider';
-import { TVMaze } from '../shared/tvMaze.provider';
+import { LocalStorage } from '../shared/local-storage.provider';
+import { TVMaze } from '../shared/tv-maze.provider';
 import { Show, Episode, ShowWithEpisodes } from '../../interfaces';
 
 @Injectable()

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import { TVMaze } from './../shared/tvMaze.provider';
+import { TVMaze } from './../shared/tv-maze.provider';
 import { Episode } from '../../interfaces';
 
 @Component({
