@@ -113,9 +113,9 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
-angular-async-cache@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.0.tgz#36689129a9e4cf13c9ed1d12c631de0f7e0bc324"
+angular-async-cache@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.1.tgz#7ccf8322fefb9ce650db48ffb947bf14db401598"
 
 angular-calendar@^0.9.0:
   version "0.9.1"
