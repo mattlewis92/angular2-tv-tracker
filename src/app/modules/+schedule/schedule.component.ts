@@ -107,7 +107,7 @@ export class ScheduleCalendarComponent {
 
           events.push({
             title: `
-              ${format(episode.airstamp, 'h:mma')} - ${show.name} 
+              ${format(episode.airstamp, 'h:mma')} - ${show.name}
               S${padNumber(episode.season)}E${padNumber(episode.number)} - ${episode.name}
             `,
             start: new Date(episode.airstamp),
