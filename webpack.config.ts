@@ -19,7 +19,8 @@ module.exports = environment => {
     entry: ifProduction('./src/entry.aot.ts', './src/entry.jit.ts'),
     output: {
       filename: `${outputFilename}.js`,
-      publicPath: ifProduction('/angular2-tv-tracker/', '/')
+      publicPath: ifProduction('/angular2-tv-tracker/', '/'),
+      path: path.join(__dirname, 'dist')
     },
     module: {
       rules: [{
