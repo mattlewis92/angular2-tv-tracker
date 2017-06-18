@@ -30,10 +30,15 @@ module.exports = environment => {
         enforce: 'pre'
       }), ifProduction({
         test: /\.ts$/,
-        loader: '@ngtools/webpack'
+        loader: '@ngtools/webpack',
+        options: {
+          compilerOptions: {
+            module: 'es2015'
+          }
+        }
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular-router-loader',
+        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json&module=es2015!angular-router-loader',
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
