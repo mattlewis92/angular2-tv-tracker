@@ -4,9 +4,13 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared';
 
 @NgModule({
-  declarations: [SubscribedShowsComponent],
+  declarations: [
+    SubscribedShowsComponent
+  ],
   imports: [
-    RouterModule.forChild([{ path: '', component: SubscribedShowsComponent }]),
+    RouterModule.forChild([
+      {path: '', component: SubscribedShowsComponent}
+    ]),
     SharedModule
   ]
 })

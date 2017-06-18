@@ -20,6 +20,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   `
 })
 export class SearchBoxComponent {
+
   @Output() runSearch: EventEmitter<any> = new EventEmitter();
 
   searchForm: FormGroup;
@@ -29,4 +30,5 @@ export class SearchBoxComponent {
       query: ['', Validators.required]
     });
   }
+
 }

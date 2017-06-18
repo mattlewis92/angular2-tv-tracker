@@ -6,9 +6,14 @@ import { SearchBoxComponent } from './search-box.component';
 import { SharedModule } from './../shared';
 
 @NgModule({
-  declarations: [SearchShowsComponent, SearchBoxComponent],
+  declarations: [
+    SearchShowsComponent,
+    SearchBoxComponent
+  ],
   imports: [
-    RouterModule.forChild([{ path: '', component: SearchShowsComponent }]),
+    RouterModule.forChild([
+      {path: '', component: SearchShowsComponent}
+    ]),
     SharedModule,
     ReactiveFormsModule
   ]

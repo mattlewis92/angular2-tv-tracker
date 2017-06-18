@@ -34,11 +34,9 @@ import { Episode } from '../../interfaces';
   `
 })
 export class EpisodesComponent implements OnInit {
+
   public episodes: Observable<Episode[]>;
-  public sort: { field: string | null; desc: boolean } = {
-    field: null,
-    desc: false
-  };
+  public sort: {field: string | null, desc: boolean} = {field: null, desc: false};
 
   constructor(private route: ActivatedRoute, private tvMaze: TVMaze) {}
 
@@ -47,4 +45,5 @@ export class EpisodesComponent implements OnInit {
       .map((params: any) => +params.id)
       .flatMap((id: number) => this.tvMaze.getEpisodes(id));
   }
+
 }

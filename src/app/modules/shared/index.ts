@@ -3,11 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import {
-  AsyncCacheModule,
-  LocalStorageDriver,
-  AsyncCacheOptions
-} from 'angular-async-cache';
+import { AsyncCacheModule, LocalStorageDriver, AsyncCacheOptions } from 'angular-async-cache';
 import { OrderBy } from './order-by.pipe';
 import { Replace } from './replace.pipe';
 import { SortableHeaderComponent } from './sortable-header.directive';
@@ -36,7 +32,12 @@ export function asyncCacheOptionsFactory(): AsyncCacheOptions {
       useFactory: asyncCacheOptionsFactory
     })
   ],
-  declarations: [OrderBy, Replace, SortableHeaderComponent, ShowListComponent],
+  declarations: [
+    OrderBy,
+    Replace,
+    SortableHeaderComponent,
+    ShowListComponent
+  ],
   exports: [
     OrderBy,
     Replace,
@@ -44,8 +45,7 @@ export function asyncCacheOptionsFactory(): AsyncCacheOptions {
     ShowListComponent,
     CommonModule
   ],
-  providers: [
-    // if these held any state they should be instantiated by the root module
+  providers: [ // if these held any state they should be instantiated by the root module
     LocalStorage,
     TVMaze
   ]

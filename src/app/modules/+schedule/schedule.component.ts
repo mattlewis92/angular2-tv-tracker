@@ -82,53 +82,50 @@ function padNumber(number: number): string {
   `
 })
 export class ScheduleCalendarComponent {
+
   view = 'month';
   viewDate: Date = new Date();
   activeDayIsOpen = false;
   events: Observable<{}>;
 
   constructor(route: ActivatedRoute) {
-    this.events = route.data
-      .pluck('subscribedShowsWithEpisodes')
-      .map((showsWithEpisodes: ShowWithEpisodes[]) => {
-        const events: Array<CalendarEvent<{ episode: Episode }>> = [];
+    this.events = route.data.pluck('subscribedShowsWithEpisodes').map((showsWithEpisodes: ShowWithEpisodes[]) => {
 
-        showsWithEpisodes.forEach(({ episodes, show }: ShowWithEpisodes) => {
-          episodes.forEach((episode: Episode) => {
-            const color: any = {};
-            color.primary = randomColor({
-              luminosity: 'dark',
-              seed: show.id
-            });
-            color.secondary = tinycolor(color.primary).lighten(50).toString();
+      const events: Array<CalendarEvent<{episode: Episode}>> = [];
 
-            events.push({
-              title: `
-              ${format(episode.airstamp, 'h:mma')} - ${show.name}
-              S${padNumber(episode.season)}E${padNumber(
-                episode.number
-              )} - ${episode.name}
-            `,
-              start: new Date(episode.airstamp),
-              color,
-              meta: {
-                episode
-              }
-            });
+      showsWithEpisodes.forEach(({episodes, show}: ShowWithEpisodes) => {
+        episodes.forEach((episode: Episode) => {
+
+          const color: any = {};
+          color.primary = randomColor({
+            luminosity: 'dark',
+            seed: show.id
           });
+          color.secondary = tinycolor(color.primary).lighten(50).toString();
+
+          events.push({
+            title: `
+              ${format(episode.airstamp, 'h:mma')} - ${show.name}
+              S${padNumber(episode.season)}E${padNumber(episode.number)} - ${episode.name}
+            `,
+            start: new Date(episode.airstamp),
+            color,
+            meta: {
+              episode
+            }
+          });
+
         });
 
-        return events;
       });
+
+      return events;
+
+    });
   }
 
-  dayClicked({
-    date,
-    events
-  }: {
-    date: Date;
-    events: Array<CalendarEvent<{ episode: Episode }>>;
-  }): void {
+  dayClicked({date, events}: {date: Date, events: Array<CalendarEvent<{episode: Episode}>>}): void {
+
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -142,7 +139,8 @@ export class ScheduleCalendarComponent {
     }
   }
 
-  openEpisode(event: CalendarEvent<{ episode: Episode }>): void {
+  openEpisode(event: CalendarEvent<{episode: Episode}>): void {
     window.open(event.meta!.episode.url, '_blank');
   }
+
 }

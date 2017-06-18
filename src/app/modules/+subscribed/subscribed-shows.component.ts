@@ -14,6 +14,7 @@ import { Show } from '../../interfaces';
   `
 })
 export class SubscribedShowsComponent {
+
   public subscribedShows: Show[];
 
   constructor(private localStorage: LocalStorage) {
@@ -21,8 +22,7 @@ export class SubscribedShowsComponent {
   }
 
   unsubscribe(show: Show): void {
-    this.subscribedShows = this.subscribedShows.filter(
-      (subscribedShow: Show) => subscribedShow.id !== show.id
-    );
+    this.subscribedShows = this.subscribedShows.filter((subscribedShow: Show) => subscribedShow.id !== show.id);
   }
+
 }

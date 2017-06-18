@@ -7,7 +7,9 @@ import { SubscribedShowsEpisodesResolver } from './subscribed-shows-episodes.res
 import { SharedModule } from './../shared';
 
 @NgModule({
-  declarations: [ScheduleCalendarComponent],
+  declarations: [
+    ScheduleCalendarComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

@@ -5,6 +5,7 @@ import get from 'lodash.get';
   name: 'mwlOrderBy'
 })
 export class OrderBy implements PipeTransform {
+
   transform(input: object[], field: string, desc: boolean = false): object[] {
     if (input && field) {
       return Array.from(input).sort((a: object, b: object) => {
@@ -19,4 +20,5 @@ export class OrderBy implements PipeTransform {
     }
     return input;
   }
+
 }

@@ -7,8 +7,8 @@ import { TVMaze } from '../shared/tv-maze.provider';
 import { Show, Episode, ShowWithEpisodes } from '../../interfaces';
 
 @Injectable()
-export class SubscribedShowsEpisodesResolver
-  implements Resolve<ShowWithEpisodes[]> {
+export class SubscribedShowsEpisodesResolver implements Resolve<ShowWithEpisodes[]> {
+
   subscribedShows: Show[];
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
@@ -16,16 +16,15 @@ export class SubscribedShowsEpisodesResolver
   }
 
   resolve(): Observable<ShowWithEpisodes[]> {
-    const episodeRequests: Array<
-      Observable<ShowWithEpisodes>
-    > = this.subscribedShows.map((show: Show) => {
-      return this.tvMaze
-        .getEpisodes(show.id)
-        .map((episodes: Episode[]): ShowWithEpisodes => {
-          return { episodes, show };
-        });
+
+    const episodeRequests: Array<Observable<ShowWithEpisodes>> = this.subscribedShows.map((show: Show) => {
+      return this.tvMaze.getEpisodes(show.id).map((episodes: Episode[]): ShowWithEpisodes => {
+        return {episodes, show};
+      });
     });
 
     return Observable.forkJoin(episodeRequests);
+
   }
+
 }
