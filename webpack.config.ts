@@ -13,13 +13,14 @@ module.exports = environment => {
   const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
   const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
+  const PROD_PUBLIC_PATH = '/angular2-tv-tracker/';
 
   return {
     devtool: ifProduction('source-map', 'eval'),
     entry: './src/entry.ts',
     output: {
       filename: `${outputFilename}.js`,
-      publicPath: ifProduction('/angular2-tv-tracker/', '/')
+      publicPath: ifProduction(PROD_PUBLIC_PATH, '/')
     },
     module: {
       rules: removeEmpty([ifDevelopment({
@@ -75,7 +76,11 @@ module.exports = environment => {
         title: 'Angular 2+ TV tracker'
       }),
       ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
-      ifProduction(new OfflinePlugin({}))
+      ifProduction(new OfflinePlugin({
+        ServiceWorker: {
+          navigateFallbackURL: PROD_PUBLIC_PATH
+        }
+      }))
     ])
   };
 
