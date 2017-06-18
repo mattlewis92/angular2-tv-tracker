@@ -8,7 +8,7 @@ import { Show, Episode } from '../../interfaces';
 @Injectable()
 export class TVMaze {
 
-  static BASE_URL: string = 'https://api.tvmaze.com/';
+  static BASE_URL = 'https://api.tvmaze.com/';
 
   constructor(private http: CachedHttp) {}
 

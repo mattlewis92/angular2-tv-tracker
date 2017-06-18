@@ -6,9 +6,9 @@ import get from 'lodash.get';
 })
 export class OrderBy implements PipeTransform {
 
-  transform(input: Object[], field: string, desc: boolean = false): Object[] {
+  transform(input: object[], field: string, desc: boolean = false): object[] {
     if (input && field) {
-      return Array.from(input).sort((a: Object, b: Object) => {
+      return Array.from(input).sort((a: object, b: object) => {
         if (get(a, field) < get(b, field)) {
           return desc ? 1 : -1;
         }

@@ -65,9 +65,9 @@ import { Show, Episode } from './../../interfaces';
 })
 export class ShowListComponent implements OnChanges {
 
-  @Input() public shows: Array<Show>;
+  @Input() public shows: Show[];
   @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
-  public subscribedShows: Array<Show>;
+  public subscribedShows: Show[];
   public sort: {field: string, desc: boolean} = {field: null, desc: false};
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
@@ -93,7 +93,7 @@ export class ShowListComponent implements OnChanges {
 
     if (changeRecord.shows && this.shows) {
 
-      const episodeRequests: Observable<any>[] = this.shows.map((show: Show) => this.tvMaze.getEpisodes(show.id));
+      const episodeRequests: Array<Observable<any>> = this.shows.map((show: Show) => this.tvMaze.getEpisodes(show.id));
 
       Observable.forkJoin(episodeRequests).subscribe((showEpisodes: Episode[][]) => {
 

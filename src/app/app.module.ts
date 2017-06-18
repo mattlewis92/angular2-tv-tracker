@@ -12,7 +12,7 @@ import { AppComponent, LoadingSpinnerComponent } from './app.component';
 
 declare const ENV: string;
 if (ENV === 'production') {
-  const install: Function = require('offline-plugin/runtime').install;
+  const install: () => {} = require('offline-plugin/runtime').install; // tslint:disable-line
   install();
   enableProdMode();
 }

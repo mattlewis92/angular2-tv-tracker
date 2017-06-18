@@ -11,7 +11,9 @@ import { Episode, ShowWithEpisodes } from '../../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-const padNumber: Function = (number: number): string => number < 10 ? `0${number}` : number + '';
+function padNumber(number: number): string {
+  return number < 10 ? `0${number}` : number + '';
+}
 
 @Component({
   template: `
@@ -81,15 +83,15 @@ const padNumber: Function = (number: number): string => number < 10 ? `0${number
 })
 export class ScheduleCalendarComponent {
 
-  view: string = 'month';
+  view = 'month';
   viewDate: Date = new Date();
-  activeDayIsOpen: boolean = false;
+  activeDayIsOpen = false;
   events: Observable<{}>;
 
   constructor(route: ActivatedRoute) {
     this.events = route.data.pluck('subscribedShowsWithEpisodes').map((showsWithEpisodes: ShowWithEpisodes[]) => {
 
-      const events: CalendarEvent<{episode: Episode}>[] = [];
+      const events: Array<CalendarEvent<{episode: Episode}>> = [];
 
       showsWithEpisodes.forEach(({episodes, show}: ShowWithEpisodes) => {
         episodes.forEach((episode: Episode) => {
@@ -122,7 +124,7 @@ export class ScheduleCalendarComponent {
     });
   }
 
-  dayClicked({date, events}: {date: Date, events: CalendarEvent<{episode: Episode}>[]}): void {
+  dayClicked({date, events}: {date: Date, events: Array<CalendarEvent<{episode: Episode}>>}): void {
 
     if (isSameMonth(date, this.viewDate)) {
       if (

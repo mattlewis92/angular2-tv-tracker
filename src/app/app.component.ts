@@ -25,7 +25,7 @@ import 'rxjs/add/operator/map';
 })
 export class LoadingSpinnerComponent {}
 
-@Component({
+@Component({ // tslint:disable-line
   selector: 'mwl-app',
   template: `
     <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
@@ -59,7 +59,7 @@ export class LoadingSpinnerComponent {}
 })
 export class AppComponent {
 
-  loading: boolean = true;
+  loading = true;
 
   constructor(router: Router) {
     router.events.map((event: any) => {
