@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "es2015",
+    "rootDir": ".",
+    "baseUrl": ""
+  },
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "debug": true,
+    "skipMetadataEmit" : true,
+    "entryModule": "src/app/app.module#AppModule"
+  }
+}
