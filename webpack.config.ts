@@ -74,6 +74,7 @@ module.exports = environment => {
         template: 'src/index.ejs',
         title: 'Angular 2+ TV tracker'
       }),
+      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(new OfflinePlugin({}))
     ])
   };
