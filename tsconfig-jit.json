@@ -1,9 +1,6 @@
 {
   "extends": "./tsconfig",
   "files": [
-    "src/entry.jit.ts"
-  ],
-  "exclude": [
-    "src/entry.aot.ts"
+    "src/entry.ts"
   ]
 }

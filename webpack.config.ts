@@ -10,24 +10,25 @@ const {CheckerPlugin} = require('awesome-typescript-loader');
 
 module.exports = environment => {
 
-  const {ifProduction} = getIfUtils(environment);
+  const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
   const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
 
   return {
     devtool: ifProduction('source-map', 'eval'),
-    entry: ifProduction('./src/entry.aot.ts', './src/entry.jit.ts'),
+    entry: './src/entry.ts',
     output: {
       filename: `${outputFilename}.js`,
-      publicPath: ifProduction('/angular2-tv-tracker/', '/')
+      publicPath: ifProduction('/angular2-tv-tracker/', '/'),
+      path: path.join(__dirname, 'dist')
     },
     module: {
-      rules: [{
+      rules: removeEmpty([ifDevelopment({
         test: /\.ts$/,
         loader: 'tslint-loader?emitErrors=false&failOnHint=false',
         exclude: /node_modules/,
         enforce: 'pre'
-      }, ifProduction({
+      }), ifProduction({
         test: /\.ts$/,
         loader: '@ngtools/webpack'
       }, {
@@ -43,7 +44,7 @@ module.exports = environment => {
       }, {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
-      }]
+      }])
     },
     resolve: {
       extensions: ['.ts', '.js']
