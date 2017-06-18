@@ -7,6 +7,7 @@ import { NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent, LoadingSpinnerComponent } from './app.component';
 
 declare const ENV: string;
@@ -23,6 +24,7 @@ if (ENV === 'production') {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IdlePreloadModule.forRoot(),
     RouterModule.forRoot([
       {path: 'subscribed', loadChildren: './modules/+subscribed/index#SubscribedModule'},

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SearchShowsComponent } from './searchShows.component';
-import { SearchBoxComponent } from './searchBox.component';
+import { SearchShowsComponent } from './search-shows.component';
+import { SearchBoxComponent } from './search-box.component';
 import { SharedModule } from './../shared';
 
 @NgModule({

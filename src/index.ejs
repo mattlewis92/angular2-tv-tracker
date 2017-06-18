@@ -6,13 +6,18 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="<%= webpackConfig.output.publicPath %>">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <style type="text/css">
-      button {
-        cursor: pointer !important;
-      }
-    </style>
   </head>
   <body>
     <mwl-app>Loading...</mwl-app>
+
+    <!--Improve zone.js startup performance-->
+    <script>
+      __Zone_disable_Error = true;
+      __Zone_disable_on_property = true;
+      __Zone_disable_geolocation = true;
+      __Zone_disable_toString = true;
+      __Zone_disable_blocking = true;
+      __Zone_disable_PromiseRejectionEvent = true;
+    </script>
   </body>
 </html>

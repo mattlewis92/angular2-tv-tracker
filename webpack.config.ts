@@ -61,7 +61,7 @@ module.exports = environment => {
       }),
       extractCSS,
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        /angular(\\|\/)core(\\|\/)@angular/,
         __dirname + '/src'
       ),
       new FixDefaultImportPlugin(),
@@ -74,6 +74,7 @@ module.exports = environment => {
         template: 'src/index.ejs',
         title: 'Angular 2+ TV tracker'
       }),
+      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(new OfflinePlugin({}))
     ])
   };

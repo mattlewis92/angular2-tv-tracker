@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
 import { ScheduleCalendarComponent } from './schedule.component';
-import { SubscribedShowsEpisodesResolver } from './subscribedShowsEpisodes.resolver';
+import { SubscribedShowsEpisodesResolver } from './subscribed-shows-episodes.resolver';
 import { SharedModule } from './../shared';
 
 @NgModule({

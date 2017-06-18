@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SubscribedShowsComponent } from './subscribedShows.component';
+import { SubscribedShowsComponent } from './subscribed-shows.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared';
 

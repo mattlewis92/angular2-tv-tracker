@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { TVMaze } from './tvMaze.provider';
-import { LocalStorage } from './localStorage.provider';
+import { TVMaze } from './tv-maze.provider';
+import { LocalStorage } from './local-storage.provider';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
