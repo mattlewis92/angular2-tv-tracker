@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/map';
-import randomColor from 'randomcolor';
+import * as randomColor from 'randomcolor';
 import tinycolor from 'tinycolor2';
 import format from 'date-fns/format';
 import isSameDay from 'date-fns/is_same_day';
