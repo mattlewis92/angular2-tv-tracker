@@ -6,6 +6,7 @@ import * as OfflinePlugin from 'offline-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {getIfUtils, removeEmpty} from 'webpack-config-utils';
 import {AotPlugin} from '@ngtools/webpack';
+import {ModuleKind} from 'typescript';
 
 export default environment => {
 
@@ -33,14 +34,7 @@ export default environment => {
         }
       }), ifProduction({
         test: /\.ts$/,
-        loader: '@ngtools/webpack',
-        options: {
-          compilerOptions: {
-            module: 'es2015',
-            rootDir: '.',
-            baseUrl: ''
-          }
-        }
+        loader: '@ngtools/webpack'
       }, {
         test: /\.ts$/,
         use: [{
@@ -79,7 +73,14 @@ export default environment => {
     },
     plugins: removeEmpty([
       ifDevelopment(new ForkTsCheckerWebpackPlugin()),
-      ifProduction(new AotPlugin({tsConfigPath: './tsconfig.json'})),
+      ifProduction(new AotPlugin({
+        tsConfigPath: './tsconfig.json',
+        compilerOptions: {
+          module: ModuleKind.ES2015,
+          rootDir: '.',
+          baseUrl: ''
+        }
+      })),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(environment)
