@@ -19,8 +19,7 @@ module.exports = environment => {
     entry: './src/entry.ts',
     output: {
       filename: `${outputFilename}.js`,
-      publicPath: ifProduction('/angular2-tv-tracker/', '/'),
-      path: path.join(__dirname, 'dist')
+      publicPath: ifProduction('/angular2-tv-tracker/', '/')
     },
     module: {
       rules: removeEmpty([ifDevelopment({
