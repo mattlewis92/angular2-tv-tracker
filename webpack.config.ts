@@ -1,14 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
-const {getIfUtils, removeEmpty} = require('webpack-config-utils');
-const {AotPlugin} = require('@ngtools/webpack');
-const {CheckerPlugin} = require('awesome-typescript-loader');
+import * as path from 'path';
+import * as webpack from 'webpack';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as OfflinePlugin from 'offline-plugin';
+import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import {getIfUtils, removeEmpty} from 'webpack-config-utils';
+import {AotPlugin} from '@ngtools/webpack';
 
-module.exports = environment => {
+export default environment => {
 
   const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
@@ -25,22 +24,47 @@ module.exports = environment => {
     module: {
       rules: removeEmpty([ifDevelopment({
         test: /\.ts$/,
-        loader: 'tslint-loader?emitErrors=false&failOnHint=false',
+        loader: 'tslint-loader',
         exclude: /node_modules/,
-        enforce: 'pre'
+        enforce: 'pre',
+        options: {
+          emitErrors: false,
+          failOnHint: false
+        }
       }), ifProduction({
         test: /\.ts$/,
-        loader: '@ngtools/webpack'
+        loader: '@ngtools/webpack',
+        options: {
+          compilerOptions: {
+            module: 'es2015',
+            rootDir: '.',
+            baseUrl: ''
+          }
+        }
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json!angular-router-loader',
+        use: [{
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+            compilerOptions: {
+              module: 'es2015'
+            }
+          }
+        }, {
+          loader: 'angular-router-loader'
+        }],
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
         loader: extractCSS.extract(['css-loader?minimize', 'sass-loader'])
       }, {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          mimetype: 'application/font-woff'
+        }
       }, {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
@@ -54,8 +78,8 @@ module.exports = environment => {
       inline: true
     },
     plugins: removeEmpty([
-      new CheckerPlugin(),
-      ifProduction(new AotPlugin({tsConfigPath: './tsconfig-aot.json'})),
+      ifDevelopment(new ForkTsCheckerWebpackPlugin()),
+      ifProduction(new AotPlugin({tsConfigPath: './tsconfig.json'})),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(environment)
@@ -65,7 +89,6 @@ module.exports = environment => {
         /angular(\\|\/)core(\\|\/)@angular/,
         __dirname + '/src'
       ),
-      new FixDefaultImportPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'main',
         async: true,
