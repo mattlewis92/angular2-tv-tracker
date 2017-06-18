@@ -23,7 +23,7 @@ module.exports = environment => {
       path: path.join(__dirname, 'dist')
     },
     module: {
-      rules: [ifDevelopment({
+      rules: removeEmpty([ifDevelopment({
         test: /\.ts$/,
         loader: 'tslint-loader?emitErrors=false&failOnHint=false',
         exclude: /node_modules/,
@@ -44,7 +44,7 @@ module.exports = environment => {
       }, {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
-      }]
+      }])
     },
     resolve: {
       extensions: ['.ts', '.js']
