@@ -9,6 +9,7 @@
     "lib": ["ES5", "dom", "es2015"],
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "strictNullChecks": true
   }
 }

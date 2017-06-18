@@ -36,7 +36,7 @@ import { Episode } from '../../interfaces';
 export class EpisodesComponent implements OnInit {
 
   public episodes: Observable<Episode[]>;
-  public sort: {field: string, desc: boolean} = {field: null, desc: false};
+  public sort: {field: string | null, desc: boolean} = {field: null, desc: false};
 
   constructor(private route: ActivatedRoute, private tvMaze: TVMaze) {}
 

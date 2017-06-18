@@ -140,7 +140,7 @@ export class ScheduleCalendarComponent {
   }
 
   openEpisode(event: CalendarEvent<{episode: Episode}>): void {
-    window.open(event.meta.episode.url, '_blank');
+    window.open(event.meta!.episode.url, '_blank');
   }
 
 }

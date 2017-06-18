@@ -68,7 +68,7 @@ export class ShowListComponent implements OnChanges {
   @Input() public shows: Show[];
   @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
   public subscribedShows: Show[];
-  public sort: {field: string, desc: boolean} = {field: null, desc: false};
+  public sort: {field: string | null, desc: boolean} = {field: null, desc: false};
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);
