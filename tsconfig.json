@@ -10,6 +10,7 @@
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "noImplicitAny": true
   }
 }

@@ -7,7 +7,7 @@ import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {getIfUtils, removeEmpty} from 'webpack-config-utils';
 import {AotPlugin} from '@ngtools/webpack';
 
-export default environment => {
+export default (environment: string) => {
 
   const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
