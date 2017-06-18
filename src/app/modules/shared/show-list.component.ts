@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges
+} from '@angular/core';
 import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
 import { Observable } from 'rxjs/Observable';
@@ -64,11 +70,13 @@ import { Show, Episode } from './../../interfaces';
   `
 })
 export class ShowListComponent implements OnChanges {
-
   @Input() public shows: Show[];
   @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
   public subscribedShows: Show[];
-  public sort: {field: string | null, desc: boolean} = {field: null, desc: false};
+  public sort: { field: string | null; desc: boolean } = {
+    field: null,
+    desc: false
+  };
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
     this.subscribedShows = localStorage.getItem('subscribedShows', []);
@@ -80,35 +88,36 @@ export class ShowListComponent implements OnChanges {
   }
 
   isSubscribed(show: Show): boolean {
-    return this.subscribedShows.some((subscribedShow: Show) => subscribedShow.id === show.id);
+    return this.subscribedShows.some(
+      (subscribedShow: Show) => subscribedShow.id === show.id
+    );
   }
 
   unsubscribeFromShow(show: Show): void {
-    this.subscribedShows = this.subscribedShows.filter((subscribedShow: Show) => subscribedShow.id !== show.id);
+    this.subscribedShows = this.subscribedShows.filter(
+      (subscribedShow: Show) => subscribedShow.id !== show.id
+    );
     this.localStorage.setItem('subscribedShows', this.subscribedShows);
     this.unsubscribe.emit(show);
   }
 
   ngOnChanges(changeRecord: any): void {
-
     if (changeRecord.shows && this.shows) {
+      const episodeRequests: Array<
+        Observable<any>
+      > = this.shows.map((show: Show) => this.tvMaze.getEpisodes(show.id));
 
-      const episodeRequests: Array<Observable<any>> = this.shows.map((show: Show) => this.tvMaze.getEpisodes(show.id));
-
-      Observable.forkJoin(episodeRequests).subscribe((showEpisodes: Episode[][]) => {
-
+      Observable.forkJoin(
+        episodeRequests
+      ).subscribe((showEpisodes: Episode[][]) => {
         showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
-
-          this.shows[showIndex].nextEpisode = episodes.find((episode: Episode) => {
+          this.shows[
+            showIndex
+          ].nextEpisode = episodes.find((episode: Episode) => {
             return new Date(episode.airstamp).getTime() > Date.now();
           });
-
         });
-
       });
-
     }
-
   }
-
 }

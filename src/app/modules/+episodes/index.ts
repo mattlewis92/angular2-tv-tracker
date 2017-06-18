@@ -4,13 +4,9 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared';
 
 @NgModule({
-  declarations: [
-    EpisodesComponent
-  ],
+  declarations: [EpisodesComponent],
   imports: [
-    RouterModule.forChild([
-      {path: '', component: EpisodesComponent}
-    ]),
+    RouterModule.forChild([{ path: '', component: EpisodesComponent }]),
     SharedModule
   ]
 })

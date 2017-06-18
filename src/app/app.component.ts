@@ -11,7 +11,8 @@ import 'rxjs/add/operator/map';
       </h1>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .loading {
       height: calc(100vh - 70px);
       display: flex;
@@ -21,11 +22,13 @@ import 'rxjs/add/operator/map';
     .loading i {
       font-size: 80px;
     }
-  `]
+  `
+  ]
 })
 export class LoadingSpinnerComponent {}
 
-@Component({ // tslint:disable-line
+@Component({
+  // tslint:disable-line
   selector: 'mwl-app',
   template: `
     <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
@@ -51,22 +54,26 @@ export class LoadingSpinnerComponent {}
       <router-outlet [hidden]="loading"></router-outlet>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .container.content {
       padding-top: 70px;
     }
-  `]
+  `
+  ]
 })
 export class AppComponent {
-
   loading = true;
 
   constructor(router: Router) {
-    router.events.map((event: any) => {
-      return !!(event instanceof NavigationStart || event instanceof RoutesRecognized);
-    }).subscribe((isRouteLoading: boolean) => {
-      this.loading = isRouteLoading;
-    });
+    router.events
+      .map((event: any) => {
+        return !!(
+          event instanceof NavigationStart || event instanceof RoutesRecognized
+        );
+      })
+      .subscribe((isRouteLoading: boolean) => {
+        this.loading = isRouteLoading;
+      });
   }
-
 }

@@ -18,27 +18,37 @@ if (ENV === 'production') {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoadingSpinnerComponent
-  ],
+  declarations: [AppComponent, LoadingSpinnerComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     IdlePreloadModule.forRoot(),
-    RouterModule.forRoot([
-      {path: 'subscribed', loadChildren: './modules/+subscribed/index#SubscribedModule'},
-      {path: 'episodes/:id', loadChildren: './modules/+episodes/index#EpisodesModule'},
-      {path: 'search', loadChildren: './modules/+search/index#SearchModule'},
-      {path: 'schedule', loadChildren: './modules/+schedule/index#ScheduleModule'},
-      {path: '**', redirectTo: 'subscribed'}
-    ], {
-      useHash: true,
-      preloadingStrategy: IdlePreload
-    })
+    RouterModule.forRoot(
+      [
+        {
+          path: 'subscribed',
+          loadChildren: './modules/+subscribed/index#SubscribedModule'
+        },
+        {
+          path: 'episodes/:id',
+          loadChildren: './modules/+episodes/index#EpisodesModule'
+        },
+        {
+          path: 'search',
+          loadChildren: './modules/+search/index#SearchModule'
+        },
+        {
+          path: 'schedule',
+          loadChildren: './modules/+schedule/index#ScheduleModule'
+        },
+        { path: '**', redirectTo: 'subscribed' }
+      ],
+      {
+        useHash: true,
+        preloadingStrategy: IdlePreload
+      }
+    )
   ],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
