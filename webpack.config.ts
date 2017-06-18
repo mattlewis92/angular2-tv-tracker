@@ -16,7 +16,7 @@ module.exports = environment => {
 
   return {
     devtool: ifProduction('source-map', 'eval'),
-    entry: ifProduction('./src/entry.aot.ts', './src/entry.jit.ts'),
+    entry: './src/entry.ts',
     output: {
       filename: `${outputFilename}.js`,
       publicPath: ifProduction('/angular2-tv-tracker/', '/'),
