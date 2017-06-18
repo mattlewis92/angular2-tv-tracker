@@ -10,7 +10,7 @@ const {CheckerPlugin} = require('awesome-typescript-loader');
 
 module.exports = environment => {
 
-  const {ifProduction} = getIfUtils(environment);
+  const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
   const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
 
@@ -23,12 +23,12 @@ module.exports = environment => {
       path: path.join(__dirname, 'dist')
     },
     module: {
-      rules: [{
+      rules: [ifDevelopment({
         test: /\.ts$/,
         loader: 'tslint-loader?emitErrors=false&failOnHint=false',
         exclude: /node_modules/,
         enforce: 'pre'
-      }, ifProduction({
+      }), ifProduction({
         test: /\.ts$/,
         loader: '@ngtools/webpack'
       }, {
