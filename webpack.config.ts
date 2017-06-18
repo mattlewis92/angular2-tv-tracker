@@ -38,7 +38,7 @@ module.exports = environment => {
         }
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader?configFileName=tsconfig-jit.json&module=es2015!angular-router-loader',
+        loader: 'awesome-typescript-loader?module=es2015!angular-router-loader',
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
@@ -60,7 +60,7 @@ module.exports = environment => {
     },
     plugins: removeEmpty([
       new CheckerPlugin(),
-      ifProduction(new AotPlugin({tsConfigPath: './tsconfig-aot.json'})),
+      ifProduction(new AotPlugin({tsConfigPath: './tsconfig.json'})),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(environment)

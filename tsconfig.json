@@ -11,6 +11,14 @@
     "lib": ["ES5", "dom", "es2015"],
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "baseUrl": "",
+    "rootDir": "."
+  },
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "debug": true,
+    "skipMetadataEmit" : true,
+    "entryModule": "src/app/app.module#AppModule"
   }
 }
