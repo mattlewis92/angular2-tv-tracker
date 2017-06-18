@@ -3,9 +3,9 @@ import * as webpack from 'webpack';
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as OfflinePlugin from 'offline-plugin';
+import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {getIfUtils, removeEmpty} from 'webpack-config-utils';
 import {AotPlugin} from '@ngtools/webpack';
-import {CheckerPlugin} from 'awesome-typescript-loader';
 
 export default environment => {
 
@@ -24,27 +24,47 @@ export default environment => {
     module: {
       rules: removeEmpty([ifDevelopment({
         test: /\.ts$/,
-        loader: 'tslint-loader?emitErrors=false&failOnHint=false',
+        loader: 'tslint-loader',
         exclude: /node_modules/,
-        enforce: 'pre'
+        enforce: 'pre',
+        options: {
+          emitErrors: false,
+          failOnHint: false
+        }
       }), ifProduction({
         test: /\.ts$/,
         loader: '@ngtools/webpack',
         options: {
           compilerOptions: {
-            module: 'es2015'
+            module: 'es2015',
+            rootDir: '.',
+            baseUrl: ''
           }
         }
       }, {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader?module=es2015!angular-router-loader',
+        use: [{
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+            compilerOptions: {
+              module: 'es2015'
+            }
+          }
+        }, {
+          loader: 'angular-router-loader'
+        }],
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
         loader: extractCSS.extract(['css-loader?minimize', 'sass-loader'])
       }, {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          mimetype: 'application/font-woff'
+        }
       }, {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
@@ -58,7 +78,7 @@ export default environment => {
       inline: true
     },
     plugins: removeEmpty([
-      new CheckerPlugin(),
+      ifDevelopment(new ForkTsCheckerWebpackPlugin()),
       ifProduction(new AotPlugin({tsConfigPath: './tsconfig.json'})),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
