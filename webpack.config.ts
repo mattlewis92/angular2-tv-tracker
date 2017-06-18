@@ -6,7 +6,6 @@ import * as OfflinePlugin from 'offline-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {getIfUtils, removeEmpty} from 'webpack-config-utils';
 import {AotPlugin} from '@ngtools/webpack';
-import {ModuleKind} from 'typescript';
 
 export default environment => {
 
