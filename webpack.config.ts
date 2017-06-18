@@ -1,14 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
-const {getIfUtils, removeEmpty} = require('webpack-config-utils');
-const {AotPlugin} = require('@ngtools/webpack');
-const {CheckerPlugin} = require('awesome-typescript-loader');
+import * as path from 'path';
+import * as webpack from 'webpack';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as OfflinePlugin from 'offline-plugin';
+import {getIfUtils, removeEmpty} from 'webpack-config-utils';
+import {AotPlugin} from '@ngtools/webpack';
+import {CheckerPlugin} from 'awesome-typescript-loader';
 
-module.exports = environment => {
+export default environment => {
 
   const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
@@ -70,7 +69,6 @@ module.exports = environment => {
         /angular(\\|\/)core(\\|\/)@angular/,
         __dirname + '/src'
       ),
-      new FixDefaultImportPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'main',
         async: true,

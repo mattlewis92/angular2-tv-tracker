@@ -46,14 +46,14 @@
     "offline-plugin": "^4.5.2",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.18.1",
+    "ts-node": "^3.0.6",
     "tslint": "^5.3.2",
     "tslint-loader": "^3.3.0",
     "typescript": "~2.3.3",
     "url-loader": "^0.5.7",
     "webpack": "^3.0.0-rc.2",
     "webpack-config-utils": "^2.3.0",
-    "webpack-dev-server": "^2.2.0",
-    "webpack-fix-default-import-plugin": "^1.0.1"
+    "webpack-dev-server": "^2.2.0"
   },
   "scripts": {
     "start": "webpack-dev-server --env=development --progress --open",
