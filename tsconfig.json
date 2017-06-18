@@ -10,11 +10,5 @@
     "outDir": "tsc",
     "allowSyntheticDefaultImports": true,
     "importHelpers": true
-  },
-  "angularCompilerOptions": {
-    "genDir": "aot",
-    "debug": true,
-    "skipMetadataEmit" : true,
-    "entryModule": "src/app/app.module#AppModule"
   }
 }

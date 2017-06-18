@@ -74,12 +74,7 @@ export default environment => {
     plugins: removeEmpty([
       ifDevelopment(new ForkTsCheckerWebpackPlugin()),
       ifProduction(new AotPlugin({
-        tsConfigPath: './tsconfig.json',
-        compilerOptions: {
-          module: ModuleKind.ES2015,
-          rootDir: '.',
-          baseUrl: ''
-        }
+        tsConfigPath: './tsconfig-aot.json'
       })),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
       new webpack.DefinePlugin({
