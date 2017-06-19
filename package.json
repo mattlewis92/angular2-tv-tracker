@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.0.0",
-    "@types/node": "^7.0.0",
+    "@types/node": "^8.0.0",
     "@types/tinycolor2": "^1.1.0",
     "angular-router-loader": "^0.6.0",
     "codelyzer": "^3.0.1",

@@ -83,9 +83,9 @@
     magic-string "^0.19.0"
     source-map "^0.5.6"
 
-"@types/node@^7.0.0":
-  version "7.0.32"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.32.tgz#6afe6c66520a4c316623a14aef123908d01b4bba"
+"@types/node@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.0.tgz#acaa89247afddc7967e9902fd11761dadea1a555"
 
 "@types/tinycolor2@^1.1.0":
   version "1.1.1"
