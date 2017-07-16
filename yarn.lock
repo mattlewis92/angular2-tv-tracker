@@ -156,13 +156,13 @@ angular-async-cache@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.1.tgz#7ccf8322fefb9ce650db48ffb947bf14db401598"
 
-angular-calendar@^0.17.1:
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.17.4.tgz#df288db97d5f25431fb38a642d5a83d770cb77f8"
+angular-calendar@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.19.0.tgz#bd2c2b2bb5223a357f376a7d502c01620fde929b"
   dependencies:
     angular-draggable-droppable "^1.0.1"
     angular-resizable-element "^1.1.1"
-    calendar-utils "0.0.53"
+    calendar-utils "0.0.56"
     date-fns "^1.28.5"
     positioning "^1.0.4"
 
@@ -310,7 +310,7 @@ async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.1.2, async@^2.1.5:
+async@^2.1.2, async@^2.1.5, async@^2.4.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
@@ -524,9 +524,9 @@ bytes@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.5.0.tgz#4c9423ea2d252c270c41b2bdefeff9bb6b62c06a"
 
-calendar-utils@0.0.53:
-  version "0.0.53"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.53.tgz#64284dfc2d01d8e58d672ab0d8fb13ba38bb6f88"
+calendar-utils@0.0.56:
+  version "0.0.56"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.56.tgz#db6dbbbca8eceeb2107d86e0fd1f80c55a3abfa4"
 
 camel-case@3.0.x:
   version "3.0.0"
@@ -1355,12 +1355,12 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-text-webpack-plugin@^2.0.0:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.1.2.tgz#756ef4efa8155c3681833fbc34da53b941746d6c"
+extract-text-webpack-plugin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.0.tgz#90caa7907bc449f335005e3ac7532b41b00de612"
   dependencies:
-    async "^2.1.2"
-    loader-utils "^1.0.2"
+    async "^2.4.1"
+    loader-utils "^1.1.0"
     schema-utils "^0.3.0"
     webpack-sources "^1.0.1"
 
@@ -3832,9 +3832,9 @@ type-is@~1.6.15:
     media-typer "0.3.0"
     mime-types "~2.1.15"
 
-typescript@~2.3.3:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.4.tgz#3d38321828231e434f287514959c37a82b629f42"
+typescript@~2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.1.tgz#c3ccb16ddaa0b2314de031e7e6fee89e5ba346bc"
 
 uglify-js@3.0.x:
   version "3.0.25"
