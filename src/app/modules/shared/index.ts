@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AsyncCacheModule, LocalStorageDriver, AsyncCacheOptions } from 'angular-async-cache';
 import { OrderBy } from './order-by.pipe';
@@ -26,7 +26,7 @@ export function asyncCacheOptionsFactory(): AsyncCacheOptions {
       confirmButtonType: 'danger',
       cancelButtonType: 'secondary'
     }),
-    HttpModule,
+    HttpClientModule,
     AsyncCacheModule.forRoot({
       provide: AsyncCacheOptions,
       useFactory: asyncCacheOptionsFactory

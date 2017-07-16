@@ -40,12 +40,6 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/http@^4.0.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.3.0.tgz#dfb73310a840a6ad8050ac51f0e55c4984db0926"
-  dependencies:
-    tslib "^1.7.1"
-
 "@angular/platform-browser-dynamic@^4.0.0":
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.3.0.tgz#551fb18851b27ee8f3e4b0ee25aad10bd7b312e3"
@@ -152,9 +146,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-async-cache@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-0.4.1.tgz#7ccf8322fefb9ce650db48ffb947bf14db401598"
+angular-async-cache@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-async-cache/-/angular-async-cache-1.0.0.tgz#ba4ee277ca45c9d1573d94f91607d830ceefbd36"
 
 angular-calendar@^0.19.0:
   version "0.19.0"
