@@ -6,6 +6,7 @@ import * as OfflinePlugin from 'offline-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import { AngularCompilerPlugin } from '@ngtools/webpack';
+import { PurifyPlugin } from '@angular-devkit/build-optimizer';
 
 export default (environment: string) => {
 
@@ -61,7 +62,13 @@ export default (environment: string) => {
       }, {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
-      }])
+      }, ifProduction({
+        test: /node_modules\/@angular\/.+\.js$/,
+        loader: '@angular-devkit/build-optimizer/webpack-loader',
+        options: {
+          sourceMap: true
+        }
+      })])
     },
     resolve: {
       extensions: ['.ts', '.js']
@@ -72,6 +79,8 @@ export default (environment: string) => {
     },
     plugins: removeEmpty([
       ifDevelopment(new ForkTsCheckerWebpackPlugin()),
+      ifProduction(new PurifyPlugin()),
+      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(new AngularCompilerPlugin({
         tsConfigPath: './tsconfig-aot.json'
       })),
