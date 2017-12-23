@@ -81,7 +81,7 @@ export default (environment: string) => {
       }),
       extractCSS,
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)@angular/,
+        /angular(\\|\/)core(\\|\/)esm5/,
         __dirname + '/src'
       ),
       new webpack.optimize.CommonsChunkPlugin({
