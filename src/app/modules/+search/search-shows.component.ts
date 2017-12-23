@@ -18,7 +18,6 @@ import { Show } from '../../interfaces';
   `
 })
 export class SearchShowsComponent {
-
   public shows: Show[] | null;
   public error: string | null;
 
@@ -30,17 +29,13 @@ export class SearchShowsComponent {
   }
 
   searchShows(text: string): void {
-
     this.resetSearch();
 
-    this
-      .tvMaze
+    this.tvMaze
       .search(text)
       .subscribe(
-        (data: Show[]) => this.shows = data,
-        (err: string) => this.error = err
+        (data: Show[]) => (this.shows = data),
+        (err: string) => (this.error = err)
       );
-
   }
-
 }
