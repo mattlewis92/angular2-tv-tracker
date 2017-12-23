@@ -4,8 +4,8 @@ import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as OfflinePlugin from 'offline-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import {getIfUtils, removeEmpty} from 'webpack-config-utils';
-import {AotPlugin} from '@ngtools/webpack';
+import { getIfUtils, removeEmpty } from 'webpack-config-utils';
+import { AngularCompilerPlugin } from '@ngtools/webpack';
 
 export default (environment: string) => {
 
@@ -72,7 +72,7 @@ export default (environment: string) => {
     },
     plugins: removeEmpty([
       ifDevelopment(new ForkTsCheckerWebpackPlugin()),
-      ifProduction(new AotPlugin({
+      ifProduction(new AngularCompilerPlugin({
         tsConfigPath: './tsconfig-aot.json'
       })),
       ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
