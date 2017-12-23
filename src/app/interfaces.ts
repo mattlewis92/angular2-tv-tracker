@@ -1,7 +1,7 @@
 export interface Show {
   id: number;
   name: string;
-  nextEpisode?: Object;
+  nextEpisode?: object;
   image: {
     medium: string;
   };
