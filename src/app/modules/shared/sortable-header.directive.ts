@@ -10,17 +10,18 @@ import { Component, Input } from '@angular/core';
       <ng-content></ng-content>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     div {
       cursor: pointer;
       width: 80px;
     }
-  `]
+  `
+  ]
 })
 export class SortableHeaderComponent {
-
   @Input('mwlSortableHeader') fieldName: string; // tslint:disable-line
-  @Input() sort: {field: string | null, desc: boolean};
+  @Input() sort: { field: string | null; desc: boolean };
 
   headerClicked(): void {
     if (this.sort.field === this.fieldName) {
@@ -35,5 +36,4 @@ export class SortableHeaderComponent {
       this.sort.desc = false;
     }
   }
-
 }
