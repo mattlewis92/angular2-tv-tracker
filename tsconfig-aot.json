@@ -6,8 +6,7 @@
     "baseUrl": ""
   },
   "angularCompilerOptions": {
-    "genDir": "aot",
-    "debug": true,
+    "trace": true,
     "skipMetadataEmit" : true,
     "entryModule": "src/app/app.module#AppModule"
   }
