@@ -5,7 +5,7 @@ export class LocalStorage {
 
   getItem(key: string, defaultValue?: any): any {
     if (localStorage.getItem(key)) {
-      return JSON.parse(localStorage.getItem(key));
+      return JSON.parse(localStorage.getItem(key) as string);
     } else {
       return defaultValue;
     }

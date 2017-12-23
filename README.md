@@ -15,11 +15,11 @@ _Feedback welcome!_
 ### Demo
 https://mattlewis92.github.io/angular2-tv-tracker/
 
-### Run locally (assuming node + yarn are installed)
+### Run locally (assuming node + npm 5 are installed)
 
 ```
 git clone https://github.com/mattlewis92/angular2-tv-tracker.git
 cd angular2-tv-tracker
-yarn
-yarn start
+npm i
+npm start
 ```

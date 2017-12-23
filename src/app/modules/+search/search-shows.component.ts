@@ -19,8 +19,8 @@ import { Show } from '../../interfaces';
 })
 export class SearchShowsComponent {
 
-  public shows: Show[];
-  public error: string;
+  public shows: Show[] | null;
+  public error: string | null;
 
   constructor(private tvMaze: TVMaze) {}
 

@@ -17,7 +17,7 @@ export class SubscribedShowsEpisodesResolver implements Resolve<ShowWithEpisodes
 
   resolve(): Observable<ShowWithEpisodes[]> {
 
-    const episodeRequests: Observable<ShowWithEpisodes>[] = this.subscribedShows.map((show: Show) => {
+    const episodeRequests: Array<Observable<ShowWithEpisodes>> = this.subscribedShows.map((show: Show) => {
       return this.tvMaze.getEpisodes(show.id).map((episodes: Episode[]): ShowWithEpisodes => {
         return {episodes, show};
       });

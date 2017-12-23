@@ -11,11 +11,9 @@ import { Episode, ShowWithEpisodes } from '../../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-interface EpisodeCalendarEvent extends CalendarEvent {
-  episode: Episode;
+function padNumber(number: number): string {
+  return number < 10 ? `0${number}` : number + '';
 }
-
-const padNumber: Function = (number: number): string => number < 10 ? `0${number}` : number + '';
 
 @Component({
   template: `
@@ -85,15 +83,15 @@ const padNumber: Function = (number: number): string => number < 10 ? `0${number
 })
 export class ScheduleCalendarComponent {
 
-  view: string = 'month';
+  view = 'month';
   viewDate: Date = new Date();
-  activeDayIsOpen: boolean = false;
+  activeDayIsOpen = false;
   events: Observable<{}>;
 
   constructor(route: ActivatedRoute) {
     this.events = route.data.pluck('subscribedShowsWithEpisodes').map((showsWithEpisodes: ShowWithEpisodes[]) => {
 
-      const events: EpisodeCalendarEvent[] = [];
+      const events: Array<CalendarEvent<{episode: Episode}>> = [];
 
       showsWithEpisodes.forEach(({episodes, show}: ShowWithEpisodes) => {
         episodes.forEach((episode: Episode) => {
@@ -112,7 +110,9 @@ export class ScheduleCalendarComponent {
             `,
             start: new Date(episode.airstamp),
             color,
-            episode
+            meta: {
+              episode
+            }
           });
 
         });
@@ -124,7 +124,7 @@ export class ScheduleCalendarComponent {
     });
   }
 
-  dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
+  dayClicked({date, events}: {date: Date, events: Array<CalendarEvent<{episode: Episode}>>}): void {
 
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -139,8 +139,8 @@ export class ScheduleCalendarComponent {
     }
   }
 
-  openEpisode(event: EpisodeCalendarEvent): void {
-    window.open(event.episode.url, '_blank');
+  openEpisode(event: CalendarEvent<{episode: Episode}>): void {
+    window.open(event.meta!.episode.url, '_blank');
   }
 
 }

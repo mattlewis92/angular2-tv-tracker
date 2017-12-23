@@ -6,9 +6,8 @@ import * as OfflinePlugin from 'offline-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {getIfUtils, removeEmpty} from 'webpack-config-utils';
 import {AotPlugin} from '@ngtools/webpack';
-import {ModuleKind} from 'typescript';
 
-export default environment => {
+export default (environment: string) => {
 
   const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
@@ -82,7 +81,7 @@ export default environment => {
       }),
       extractCSS,
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)@angular/,
+        /angular(\\|\/)core(\\|\/)esm5/,
         __dirname + '/src'
       ),
       new webpack.optimize.CommonsChunkPlugin({

@@ -20,7 +20,7 @@ import { Component, Input } from '@angular/core';
 export class SortableHeaderComponent {
 
   @Input('mwlSortableHeader') fieldName: string; // tslint:disable-line
-  @Input() sort: {field: string, desc: boolean};
+  @Input() sort: {field: string | null, desc: boolean};
 
   headerClicked(): void {
     if (this.sort.field === this.fieldName) {
