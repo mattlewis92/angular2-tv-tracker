@@ -55,8 +55,8 @@ import { Show, Episode } from './../../interfaces';
               class="btn btn-danger"
               [hidden]="!isSubscribed(show)"
               mwlConfirmationPopover
-              title="Unsubscribe"
-              message="Are you sure you would like to unsubscribe from this show?"
+              popoverTitle="Unsubscribe"
+              popoverMessage="Are you sure you would like to unsubscribe from this show?"
               (confirm)="unsubscribeFromShow(show)">
               Unsubscribe
             </button>
