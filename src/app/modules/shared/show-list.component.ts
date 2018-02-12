@@ -3,13 +3,16 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { Show, Episode } from './../../interfaces';
+import { SortableHeader } from './sortable-header.directive';
+import { OrderByDirection } from './order-by.pipe';
 
 @Component({
   selector: 'mwl-show-list',
@@ -27,7 +30,7 @@ import { Show, Episode } from './../../interfaces';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let show of shows | mwlOrderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
+        <tr *ngFor="let show of shows | mwlOrderBy:sort.field:sort.direction" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium | mwlReplace:'http://':'https://'" width="60">
@@ -70,11 +73,14 @@ import { Show, Episode } from './../../interfaces';
 })
 export class ShowListComponent implements OnChanges {
   @Input() public shows: Show[];
+
   @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
+
   public subscribedShows: Show[];
-  public sort: { field: string | null; desc: boolean } = {
+
+  public sort: SortableHeader = {
     field: null,
-    desc: false
+    direction: OrderByDirection.Asc
   };
 
   constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
@@ -100,7 +106,7 @@ export class ShowListComponent implements OnChanges {
     this.unsubscribe.emit(show);
   }
 
-  ngOnChanges(changeRecord: any): void {
+  ngOnChanges(changeRecord: SimpleChanges): void {
     if (changeRecord.shows && this.shows) {
       const episodeRequests: Array<Observable<any>> = this.shows.map(
         (show: Show) => this.tvMaze.getEpisodes(show.id)

@@ -5,6 +5,8 @@ import { TVMaze } from './../shared/tv-maze.provider';
 import { Episode } from '../../interfaces';
 import { map } from 'rxjs/operators/map';
 import { mergeMap } from 'rxjs/operators/mergeMap';
+import { SortableHeader } from '../shared/sortable-header.directive';
+import { OrderByDirection } from '../shared/order-by.pipe';
 
 @Component({
   template: `
@@ -21,7 +23,7 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let episode of episodes | async | mwlOrderBy:sort.field:sort.desc">
+        <tr *ngFor="let episode of episodes | async | mwlOrderBy:sort.field:sort.direction">
           <td>{{ episode.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
@@ -35,9 +37,10 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
 })
 export class EpisodesComponent implements OnInit {
   public episodes: Observable<Episode[]>;
-  public sort: { field: string | null; desc: boolean } = {
+
+  public sort: SortableHeader = {
     field: null,
-    desc: false
+    direction: OrderByDirection.Asc
   };
 
   constructor(private route: ActivatedRoute, private tvMaze: TVMaze) {}
