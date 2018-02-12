@@ -72,13 +72,13 @@ import { OrderByDirection } from './order-by.pipe';
   `
 })
 export class ShowListComponent implements OnChanges {
-  @Input() public shows: Show[];
+  @Input() shows: Show[];
 
-  @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
+  @Output() unsubscribe = new EventEmitter<Show>();
 
-  public subscribedShows: Show[];
+  subscribedShows: Show[];
 
-  public sort: SortableHeader = {
+  sort: SortableHeader = {
     field: null,
     direction: OrderByDirection.Asc
   };
