@@ -108,17 +108,15 @@ export class ShowListComponent implements OnChanges {
 
   ngOnChanges(changeRecord: SimpleChanges): void {
     if (changeRecord.shows && this.shows) {
-      const episodeRequests: Array<Observable<any>> = this.shows.map(
-        (show: Show) => this.tvMaze.getEpisodes(show.id)
+      const episodeRequests = this.shows.map(show =>
+        this.tvMaze.getEpisodes(show.id)
       );
 
-      forkJoin(episodeRequests).subscribe((showEpisodes: Episode[][]) => {
-        showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
-          this.shows[showIndex].nextEpisode = episodes.find(
-            (episode: Episode) => {
-              return new Date(episode.airstamp).getTime() > Date.now();
-            }
-          );
+      forkJoin(episodeRequests).subscribe(showEpisodes => {
+        showEpisodes.forEach((episodes, showIndex) => {
+          this.shows[showIndex].nextEpisode = episodes.find(episode => {
+            return new Date(episode.airstamp).getTime() > Date.now();
+          });
         });
       });
     }
