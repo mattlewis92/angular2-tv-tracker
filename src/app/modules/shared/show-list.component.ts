@@ -8,11 +8,14 @@ import {
 } from '@angular/core';
 import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
-import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
-import { Show, Episode } from './../../interfaces';
+import { Episode, Show } from './../../interfaces';
 import { SortableHeader } from './sortable-header.directive';
 import { OrderByDirection } from './order-by.pipe';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { mergeMap } from 'rxjs/operators/mergeMap';
+import { map } from 'rxjs/operators/map';
+import { share } from 'rxjs/operators/share';
 
 @Component({
   selector: 'mwl-show-list',
@@ -30,7 +33,7 @@ import { OrderByDirection } from './order-by.pipe';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let show of shows | mwlOrderBy:sort.field:sort.direction" [hidden]="!show.image?.medium">
+        <tr *ngFor="let show of showsWithLatestEpisodes$ | async | mwlOrderBy:sort.field:sort.direction" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium | mwlReplace:'http://':'https://'" width="60">
@@ -76,6 +79,28 @@ export class ShowListComponent implements OnChanges {
 
   @Output() unsubscribe = new EventEmitter<Show>();
 
+  shows$ = new ReplaySubject<Show[]>();
+
+  showsWithLatestEpisodes$ = this.shows$.pipe(
+    mergeMap(shows => {
+      const episodeRequests = shows.map(show =>
+        this.tvMaze.getEpisodes(show.id)
+      );
+
+      return forkJoin(episodeRequests).pipe(
+        map(showEpisodes => {
+          return showEpisodes.map((episodes, showIndex) => {
+            const nextEpisode = episodes.find(episode => {
+              return new Date(episode.airstamp).getTime() > Date.now();
+            });
+            return { ...this.shows[showIndex], nextEpisode };
+          });
+        })
+      );
+    }),
+    share()
+  );
+
   subscribedShows: Show[];
 
   sort: SortableHeader = {
@@ -108,17 +133,7 @@ export class ShowListComponent implements OnChanges {
 
   ngOnChanges(changeRecord: SimpleChanges): void {
     if (changeRecord.shows && this.shows) {
-      const episodeRequests = this.shows.map(show =>
-        this.tvMaze.getEpisodes(show.id)
-      );
-
-      forkJoin(episodeRequests).subscribe(showEpisodes => {
-        showEpisodes.forEach((episodes, showIndex) => {
-          this.shows[showIndex].nextEpisode = episodes.find(episode => {
-            return new Date(episode.airstamp).getTime() > Date.now();
-          });
-        });
-      });
+      this.shows$.next(this.shows);
     }
   }
 }
