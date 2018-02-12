@@ -18,7 +18,7 @@
     "@angularclass/idle-preload": "^2.0.1",
     "@ngtools/webpack": "^1.9.8",
     "angular-async-cache": "^1.0.1",
-    "angular-calendar": "^0.22.3",
+    "angular-calendar": "^0.23.6",
     "angular-confirmation-popover": "^4.1.0",
     "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.4.1",
