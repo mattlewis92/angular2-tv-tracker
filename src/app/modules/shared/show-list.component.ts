@@ -8,8 +8,7 @@ import {
 import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/forkJoin';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { Show, Episode } from './../../interfaces';
 
 @Component({
@@ -107,17 +106,15 @@ export class ShowListComponent implements OnChanges {
         (show: Show) => this.tvMaze.getEpisodes(show.id)
       );
 
-      Observable.forkJoin(episodeRequests).subscribe(
-        (showEpisodes: Episode[][]) => {
-          showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
-            this.shows[showIndex].nextEpisode = episodes.find(
-              (episode: Episode) => {
-                return new Date(episode.airstamp).getTime() > Date.now();
-              }
-            );
-          });
-        }
-      );
+      forkJoin(episodeRequests).subscribe((showEpisodes: Episode[][]) => {
+        showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
+          this.shows[showIndex].nextEpisode = episodes.find(
+            (episode: Episode) => {
+              return new Date(episode.airstamp).getTime() > Date.now();
+            }
+          );
+        });
+      });
     }
   }
 }

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import 'rxjs/add/operator/pluck';
-import 'rxjs/add/operator/map';
 import * as randomColor from 'randomcolor';
 import tinycolor from 'tinycolor2';
 import format from 'date-fns/format';
@@ -10,6 +8,8 @@ import isSameMonth from 'date-fns/is_same_month';
 import { Episode, ShowWithEpisodes } from '../../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
+import { pluck } from 'rxjs/operators/pluck';
 
 function padNumber(number: number): string {
   return number < 10 ? `0${number}` : number + '';
@@ -88,9 +88,9 @@ export class ScheduleCalendarComponent {
   events: Observable<{}>;
 
   constructor(route: ActivatedRoute) {
-    this.events = route.data
-      .pluck<any, ShowWithEpisodes[]>('subscribedShowsWithEpisodes')
-      .map((showsWithEpisodes: ShowWithEpisodes[]) => {
+    this.events = route.data.pipe(
+      pluck<any, ShowWithEpisodes[]>('subscribedShowsWithEpisodes'),
+      map((showsWithEpisodes: ShowWithEpisodes[]) => {
         const events: Array<CalendarEvent<{ episode: Episode }>> = [];
 
         showsWithEpisodes.forEach(({ episodes, show }: ShowWithEpisodes) => {
@@ -121,7 +121,8 @@ export class ScheduleCalendarComponent {
         });
 
         return events;
-      });
+      })
+    );
   }
 
   dayClicked({

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
 import { TVMaze } from './../shared/tv-maze.provider';
 import { Episode } from '../../interfaces';
+import { map } from 'rxjs/operators/map';
+import { mergeMap } from 'rxjs/operators/mergeMap';
 
 @Component({
   template: `
@@ -43,8 +43,9 @@ export class EpisodesComponent implements OnInit {
   constructor(private route: ActivatedRoute, private tvMaze: TVMaze) {}
 
   ngOnInit(): void {
-    this.episodes = this.route.params
-      .map((params: any) => +params.id)
-      .flatMap((id: number) => this.tvMaze.getEpisodes(id));
+    this.episodes = this.route.params.pipe(
+      map((params: any) => +params.id),
+      mergeMap((id: number) => this.tvMaze.getEpisodes(id))
+    );
   }
 }
