@@ -4,18 +4,21 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  OnInit
 } from '@angular/core';
 import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
 import { forkJoin } from 'rxjs/observable/forkJoin';
-import { Episode, Show } from './../../interfaces';
+import { Show } from './../../interfaces';
 import { SortableHeader } from './sortable-header.directive';
 import { OrderByDirection } from './order-by.pipe';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { mergeMap } from 'rxjs/operators/mergeMap';
 import { map } from 'rxjs/operators/map';
 import { share } from 'rxjs/operators/share';
+
+const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
 
 @Component({
   selector: 'mwl-show-list',
@@ -53,12 +56,12 @@ import { share } from 'rxjs/operators/share';
             <span [hidden]="show?.nextEpisode?.airstamp">Unknown</span>
           </td>
           <td style="width: 270px">
-            <button class="btn btn-success" (click)="subscribe(show)" [hidden]="isSubscribed(show)">
+            <button class="btn btn-success" (click)="subscribeToShow(show)" [hidden]="show.isSubscribed">
               Subscribe
             </button>
             <button
               class="btn btn-danger"
-              [hidden]="!isSubscribed(show)"
+              [hidden]="!show.isSubscribed"
               mwlConfirmationPopover
               popoverTitle="Unsubscribe"
               popoverMessage="Are you sure you would like to unsubscribe from this show?"
@@ -74,7 +77,7 @@ import { share } from 'rxjs/operators/share';
     </table>
   `
 })
-export class ShowListComponent implements OnChanges {
+export class ShowListComponent implements OnChanges, OnInit {
   @Input() shows: Show[];
 
   @Output() unsubscribe = new EventEmitter<Show>();
@@ -93,47 +96,62 @@ export class ShowListComponent implements OnChanges {
             const nextEpisode = episodes.find(episode => {
               return new Date(episode.airstamp).getTime() > Date.now();
             });
-            return { ...this.shows[showIndex], nextEpisode };
+            return { ...shows[showIndex], nextEpisode };
           });
         })
       );
     }),
-    share()
+    share(),
+    mergeMap(shows => {
+      return this.subscribedShows$.pipe(
+        map(subscribedShows => {
+          return shows.map(show => {
+            return {
+              ...show,
+              isSubscribed: subscribedShows.some(iShow => iShow.id === show.id)
+            };
+          });
+        })
+      );
+    })
   );
 
-  subscribedShows: Show[];
+  subscribedShows$ = new ReplaySubject<Show[]>();
 
   sort: SortableHeader = {
     field: null,
     direction: OrderByDirection.Asc
   };
 
-  constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
-    this.subscribedShows = localStorage.getItem('subscribedShows', []);
-  }
+  constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {}
 
-  subscribe(show: Show): void {
-    this.subscribedShows.push(show);
-    this.localStorage.setItem('subscribedShows', this.subscribedShows);
-  }
-
-  isSubscribed(show: Show): boolean {
-    return this.subscribedShows.some(
-      (subscribedShow: Show) => subscribedShow.id === show.id
-    );
-  }
-
-  unsubscribeFromShow(show: Show): void {
-    this.subscribedShows = this.subscribedShows.filter(
-      (subscribedShow: Show) => subscribedShow.id !== show.id
-    );
-    this.localStorage.setItem('subscribedShows', this.subscribedShows);
-    this.unsubscribe.emit(show);
+  ngOnInit() {
+    this.subscribedShows$.next(this.getSubscribedShows());
   }
 
   ngOnChanges(changeRecord: SimpleChanges): void {
     if (changeRecord.shows && this.shows) {
       this.shows$.next(this.shows);
     }
+  }
+
+  subscribeToShow(show: Show): void {
+    this.setSubscribedShows([...this.getSubscribedShows(), show]);
+  }
+
+  unsubscribeFromShow(show: Show): void {
+    this.setSubscribedShows(
+      this.getSubscribedShows().filter(iShow => iShow.id !== show.id)
+    );
+    this.unsubscribe.emit(show);
+  }
+
+  private getSubscribedShows(): Show[] {
+    return this.localStorage.getItem(SUBSCRIBED_SHOWS_LS_KEY, []);
+  }
+
+  private setSubscribedShows(shows: Show[]) {
+    this.localStorage.setItem(SUBSCRIBED_SHOWS_LS_KEY, shows);
+    this.subscribedShows$.next(shows);
   }
 }
