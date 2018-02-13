@@ -4,12 +4,18 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
 import { LocalStorage } from './local-storage.provider';
 import { Show } from './../../interfaces';
 import { SortableHeader } from './sortable-header.directive';
 import { OrderByDirection } from './order-by.pipe';
+import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { takeUntil } from 'rxjs/operators/takeUntil';
+import get from 'lodash.get';
 
 const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
 
@@ -18,6 +24,15 @@ const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
   template: `
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
+        <tr>
+          <th colspan="6">
+            <input 
+              class="form-control" 
+              type="search" 
+              placeholder="Filter shows..." 
+              [formControl]="searchTextControl">
+          </th>
+        </tr>
         <tr>
           <th mwlSortableHeader="name" [sort]="sort">Name</th>
           <th>Image</th>
@@ -62,27 +77,48 @@ const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
           </td>
         </tr>
       </tbody>
+      <tfoot *ngIf="filteredShowsList.length === 0 && searchTextControl.value">
+        <tr>
+          <th colspan="6">
+            <div class="alert alert-info">No shows were found for your search</div>
+          </th>
+        </tr>
+      </tfoot>
     </table>
   `
 })
-export class ShowListComponent implements OnChanges {
+export class ShowListComponent implements OnChanges, OnDestroy, OnInit {
   @Input() shows: Show[];
 
   @Output() unsubscribe = new EventEmitter<Show>();
 
-  filteredShowsList: Show[];
+  filteredShowsList: Show[] = [];
 
   sort: SortableHeader = {
     field: null,
     direction: OrderByDirection.Asc
   };
 
+  searchTextControl = new FormControl('');
+
+  destroy$ = new Subject();
+
   constructor(private localStorage: LocalStorage) {}
+
+  ngOnInit() {
+    this.searchTextControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.updateFilteredShowsList());
+  }
 
   ngOnChanges(changeRecord: SimpleChanges): void {
     if (changeRecord.shows && this.shows) {
       this.updateFilteredShowsList();
     }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
   }
 
   subscribeToShow(show: Show): void {
@@ -107,9 +143,30 @@ export class ShowListComponent implements OnChanges {
 
   private updateFilteredShowsList() {
     const subscribedShows = this.getSubscribedShows();
-    this.filteredShowsList = this.shows.map(show => {
-      const isSubscribed = subscribedShows.some(iShow => iShow.id === show.id);
-      return { ...show, isSubscribed };
-    });
+
+    const filterByFields = ['name', 'network.name', 'summary'];
+
+    this.filteredShowsList = this.shows
+      .map(show => {
+        const isSubscribed = subscribedShows.some(
+          iShow => iShow.id === show.id
+        );
+        return { ...show, isSubscribed };
+      })
+      .filter(show => {
+        if (!this.searchTextControl.value) {
+          return true;
+        } else {
+          return filterByFields.some(field => {
+            const fieldValue = get(show, field);
+            return (
+              fieldValue &&
+              fieldValue
+                .toLowerCase()
+                .includes(this.searchTextControl.value.toLowerCase())
+            );
+          });
+        }
+      });
   }
 }
