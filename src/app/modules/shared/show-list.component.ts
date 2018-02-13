@@ -4,19 +4,12 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges,
-  OnInit
+  SimpleChanges
 } from '@angular/core';
-import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
-import { forkJoin } from 'rxjs/observable/forkJoin';
 import { Show } from './../../interfaces';
 import { SortableHeader } from './sortable-header.directive';
 import { OrderByDirection } from './order-by.pipe';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { mergeMap } from 'rxjs/operators/mergeMap';
-import { map } from 'rxjs/operators/map';
-import { share } from 'rxjs/operators/share';
 
 const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
 
@@ -72,7 +65,7 @@ const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
     </table>
   `
 })
-export class ShowListComponent implements OnChanges, OnInit {
+export class ShowListComponent implements OnChanges {
   @Input() shows: Show[];
 
   @Output() unsubscribe = new EventEmitter<Show>();
