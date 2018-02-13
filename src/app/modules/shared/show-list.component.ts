@@ -31,12 +31,11 @@ const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
           <th mwlSortableHeader="network.name" [sort]="sort">Network</th>
           <th>Summary</th>
           <th mwlSortableHeader="status" [sort]="sort">Status</th>
-          <th mwlSortableHeader="nextEpisode.airstamp" [sort]="sort">Next episode</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let show of showsWithLatestEpisodes$ | async | mwlOrderBy:sort.field:sort.direction" [hidden]="!show.image?.medium">
+        <tr *ngFor="let show of filteredShowsList | mwlOrderBy:sort.field:sort.direction" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium | mwlReplace:'http://':'https://'" width="60">
@@ -50,10 +49,6 @@ const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
               [class.badge-danger]="show.status !== 'Running'">
                {{ show.status }}
              </span>
-          </td>
-          <td>
-            <span [hidden]="!show?.nextEpisode?.airstamp">{{ show?.nextEpisode?.airstamp | date:'fullDate' }}</span>
-            <span [hidden]="show?.nextEpisode?.airstamp">Unknown</span>
           </td>
           <td style="width: 270px">
             <button class="btn btn-success" (click)="subscribeToShow(show)" [hidden]="show.isSubscribed">
@@ -82,56 +77,18 @@ export class ShowListComponent implements OnChanges, OnInit {
 
   @Output() unsubscribe = new EventEmitter<Show>();
 
-  shows$ = new ReplaySubject<Show[]>();
-
-  showsWithLatestEpisodes$ = this.shows$.pipe(
-    mergeMap(shows => {
-      const episodeRequests = shows.map(show =>
-        this.tvMaze.getEpisodes(show.id)
-      );
-
-      return forkJoin(episodeRequests).pipe(
-        map(showEpisodes => {
-          return showEpisodes.map((episodes, showIndex) => {
-            const nextEpisode = episodes.find(episode => {
-              return new Date(episode.airstamp).getTime() > Date.now();
-            });
-            return { ...shows[showIndex], nextEpisode };
-          });
-        })
-      );
-    }),
-    share(),
-    mergeMap(shows => {
-      return this.subscribedShows$.pipe(
-        map(subscribedShows => {
-          return shows.map(show => {
-            return {
-              ...show,
-              isSubscribed: subscribedShows.some(iShow => iShow.id === show.id)
-            };
-          });
-        })
-      );
-    })
-  );
-
-  subscribedShows$ = new ReplaySubject<Show[]>();
+  filteredShowsList: Show[];
 
   sort: SortableHeader = {
     field: null,
     direction: OrderByDirection.Asc
   };
 
-  constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {}
-
-  ngOnInit() {
-    this.subscribedShows$.next(this.getSubscribedShows());
-  }
+  constructor(private localStorage: LocalStorage) {}
 
   ngOnChanges(changeRecord: SimpleChanges): void {
     if (changeRecord.shows && this.shows) {
-      this.shows$.next(this.shows);
+      this.updateFilteredShowsList();
     }
   }
 
@@ -152,6 +109,14 @@ export class ShowListComponent implements OnChanges, OnInit {
 
   private setSubscribedShows(shows: Show[]) {
     this.localStorage.setItem(SUBSCRIBED_SHOWS_LS_KEY, shows);
-    this.subscribedShows$.next(shows);
+    this.updateFilteredShowsList();
+  }
+
+  private updateFilteredShowsList() {
+    const subscribedShows = this.getSubscribedShows();
+    this.filteredShowsList = this.shows.map(show => {
+      const isSubscribed = subscribedShows.some(iShow => iShow.id === show.id);
+      return { ...show, isSubscribed };
+    });
   }
 }
