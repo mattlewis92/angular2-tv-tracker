@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators/map';
 
 @Component({
   selector: 'mwl-loading-spinner',
@@ -67,11 +67,14 @@ export class AppComponent {
 
   constructor(router: Router) {
     router.events
-      .map((event: any) => {
-        return !!(
-          event instanceof NavigationStart || event instanceof RoutesRecognized
-        );
-      })
+      .pipe(
+        map((event: any) => {
+          return !!(
+            event instanceof NavigationStart ||
+            event instanceof RoutesRecognized
+          );
+        })
+      )
       .subscribe((isRouteLoading: boolean) => {
         this.loading = isRouteLoading;
       });

@@ -3,14 +3,21 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges
+  OnChanges,
+  SimpleChanges,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
-import { TVMaze } from './tv-maze.provider';
 import { LocalStorage } from './local-storage.provider';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/forkJoin';
-import { Show, Episode } from './../../interfaces';
+import { Show } from './../../interfaces';
+import { SortableHeader } from './sortable-header.directive';
+import { OrderByDirection } from './order-by.pipe';
+import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { takeUntil } from 'rxjs/operators/takeUntil';
+import get from 'lodash.get';
+
+const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
 
 @Component({
   selector: 'mwl-show-list',
@@ -18,17 +25,25 @@ import { Show, Episode } from './../../interfaces';
     <table class="table" [hidden]="!shows || shows.length === 0">
       <thead>
         <tr>
+          <th colspan="6">
+            <input 
+              class="form-control" 
+              type="search" 
+              placeholder="Filter shows..." 
+              [formControl]="searchTextControl">
+          </th>
+        </tr>
+        <tr>
           <th mwlSortableHeader="name" [sort]="sort">Name</th>
           <th>Image</th>
           <th mwlSortableHeader="network.name" [sort]="sort">Network</th>
           <th>Summary</th>
           <th mwlSortableHeader="status" [sort]="sort">Status</th>
-          <th mwlSortableHeader="nextEpisode.airstamp" [sort]="sort">Next episode</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let show of shows | mwlOrderBy:sort.field:sort.desc" [hidden]="!show.image?.medium">
+        <tr *ngFor="let show of filteredShowsList | mwlOrderBy:sort.field:sort.direction" [hidden]="!show.image?.medium">
           <td>{{ show.name }}</td>
           <td>
             <img [src]="show.image?.medium | mwlReplace:'http://':'https://'" width="60">
@@ -43,17 +58,13 @@ import { Show, Episode } from './../../interfaces';
                {{ show.status }}
              </span>
           </td>
-          <td>
-            <span [hidden]="!show?.nextEpisode?.airstamp">{{ show?.nextEpisode?.airstamp | date:'fullDate' }}</span>
-            <span [hidden]="show?.nextEpisode?.airstamp">Unknown</span>
-          </td>
           <td style="width: 270px">
-            <button class="btn btn-success" (click)="subscribe(show)" [hidden]="isSubscribed(show)">
+            <button class="btn btn-success" (click)="subscribeToShow(show)" [hidden]="show.isSubscribed">
               Subscribe
             </button>
             <button
               class="btn btn-danger"
-              [hidden]="!isSubscribed(show)"
+              [hidden]="!show.isSubscribed"
               mwlConfirmationPopover
               popoverTitle="Unsubscribe"
               popoverMessage="Are you sure you would like to unsubscribe from this show?"
@@ -66,58 +77,96 @@ import { Show, Episode } from './../../interfaces';
           </td>
         </tr>
       </tbody>
+      <tfoot *ngIf="filteredShowsList.length === 0 && searchTextControl.value">
+        <tr>
+          <th colspan="6">
+            <div class="alert alert-info">No shows were found for your search</div>
+          </th>
+        </tr>
+      </tfoot>
     </table>
   `
 })
-export class ShowListComponent implements OnChanges {
-  @Input() public shows: Show[];
-  @Output() public unsubscribe: EventEmitter<any> = new EventEmitter();
-  public subscribedShows: Show[];
-  public sort: { field: string | null; desc: boolean } = {
+export class ShowListComponent implements OnChanges, OnDestroy, OnInit {
+  @Input() shows: Show[];
+
+  @Output() unsubscribe = new EventEmitter<Show>();
+
+  filteredShowsList: Show[] = [];
+
+  sort: SortableHeader = {
     field: null,
-    desc: false
+    direction: OrderByDirection.Asc
   };
 
-  constructor(private localStorage: LocalStorage, private tvMaze: TVMaze) {
-    this.subscribedShows = localStorage.getItem('subscribedShows', []);
+  searchTextControl = new FormControl('');
+
+  destroy$ = new Subject();
+
+  constructor(private localStorage: LocalStorage) {}
+
+  ngOnInit() {
+    this.searchTextControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.updateFilteredShowsList());
   }
 
-  subscribe(show: Show): void {
-    this.subscribedShows.push(show);
-    this.localStorage.setItem('subscribedShows', this.subscribedShows);
+  ngOnChanges(changeRecord: SimpleChanges): void {
+    if (changeRecord.shows && this.shows) {
+      this.updateFilteredShowsList();
+    }
   }
 
-  isSubscribed(show: Show): boolean {
-    return this.subscribedShows.some(
-      (subscribedShow: Show) => subscribedShow.id === show.id
-    );
+  ngOnDestroy() {
+    this.destroy$.next();
+  }
+
+  subscribeToShow(show: Show): void {
+    this.setSubscribedShows([...this.getSubscribedShows(), show]);
   }
 
   unsubscribeFromShow(show: Show): void {
-    this.subscribedShows = this.subscribedShows.filter(
-      (subscribedShow: Show) => subscribedShow.id !== show.id
+    this.setSubscribedShows(
+      this.getSubscribedShows().filter(iShow => iShow.id !== show.id)
     );
-    this.localStorage.setItem('subscribedShows', this.subscribedShows);
     this.unsubscribe.emit(show);
   }
 
-  ngOnChanges(changeRecord: any): void {
-    if (changeRecord.shows && this.shows) {
-      const episodeRequests: Array<Observable<any>> = this.shows.map(
-        (show: Show) => this.tvMaze.getEpisodes(show.id)
-      );
+  private getSubscribedShows(): Show[] {
+    return this.localStorage.getItem(SUBSCRIBED_SHOWS_LS_KEY, []);
+  }
 
-      Observable.forkJoin(episodeRequests).subscribe(
-        (showEpisodes: Episode[][]) => {
-          showEpisodes.forEach((episodes: Episode[], showIndex: number) => {
-            this.shows[showIndex].nextEpisode = episodes.find(
-              (episode: Episode) => {
-                return new Date(episode.airstamp).getTime() > Date.now();
-              }
+  private setSubscribedShows(shows: Show[]) {
+    this.localStorage.setItem(SUBSCRIBED_SHOWS_LS_KEY, shows);
+    this.updateFilteredShowsList();
+  }
+
+  private updateFilteredShowsList() {
+    const subscribedShows = this.getSubscribedShows();
+
+    const filterByFields = ['name', 'network.name', 'summary'];
+
+    this.filteredShowsList = this.shows
+      .map(show => {
+        const isSubscribed = subscribedShows.some(
+          iShow => iShow.id === show.id
+        );
+        return { ...show, isSubscribed };
+      })
+      .filter(show => {
+        if (!this.searchTextControl.value) {
+          return true;
+        } else {
+          return filterByFields.some(field => {
+            const fieldValue = get(show, field);
+            return (
+              fieldValue &&
+              fieldValue
+                .toLowerCase()
+                .includes(this.searchTextControl.value.toLowerCase())
             );
           });
         }
-      );
-    }
+      });
   }
 }

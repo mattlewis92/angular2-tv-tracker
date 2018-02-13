@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
 import { TVMaze } from './../shared/tv-maze.provider';
 import { Episode } from '../../interfaces';
+import { map } from 'rxjs/operators/map';
+import { mergeMap } from 'rxjs/operators/mergeMap';
+import { SortableHeader } from '../shared/sortable-header.directive';
+import { OrderByDirection } from '../shared/order-by.pipe';
 
 @Component({
   template: `
@@ -21,7 +23,7 @@ import { Episode } from '../../interfaces';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let episode of episodes | async | mwlOrderBy:sort.field:sort.desc">
+        <tr *ngFor="let episode of episodes | async | mwlOrderBy:sort.field:sort.direction">
           <td>{{ episode.name }}</td>
           <td>{{ episode.season }}</td>
           <td>{{ episode.number }}</td>
@@ -35,16 +37,18 @@ import { Episode } from '../../interfaces';
 })
 export class EpisodesComponent implements OnInit {
   public episodes: Observable<Episode[]>;
-  public sort: { field: string | null; desc: boolean } = {
+
+  public sort: SortableHeader = {
     field: null,
-    desc: false
+    direction: OrderByDirection.Asc
   };
 
   constructor(private route: ActivatedRoute, private tvMaze: TVMaze) {}
 
   ngOnInit(): void {
-    this.episodes = this.route.params
-      .map((params: any) => +params.id)
-      .flatMap((id: number) => this.tvMaze.getEpisodes(id));
+    this.episodes = this.route.params.pipe(
+      map((params: any) => +params.id),
+      mergeMap((id: number) => this.tvMaze.getEpisodes(id))
+    );
   }
 }

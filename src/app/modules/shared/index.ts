@@ -14,6 +14,7 @@ import { SortableHeaderComponent } from './sortable-header.directive';
 import { LocalStorage } from './local-storage.provider';
 import { TVMaze } from './tv-maze.provider';
 import { ShowListComponent } from './show-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function asyncCacheOptionsFactory(): AsyncCacheOptions {
   return new AsyncCacheOptions({
@@ -34,7 +35,8 @@ export function asyncCacheOptionsFactory(): AsyncCacheOptions {
     AsyncCacheModule.forRoot({
       provide: AsyncCacheOptions,
       useFactory: asyncCacheOptionsFactory
-    })
+    }),
+    ReactiveFormsModule
   ],
   declarations: [OrderBy, Replace, SortableHeaderComponent, ShowListComponent],
   exports: [
