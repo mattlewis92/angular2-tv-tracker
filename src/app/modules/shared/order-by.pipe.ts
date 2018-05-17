@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import orderBy from 'lodash.orderby';
+import { orderBy } from 'lodash-es';
 
 export enum OrderByDirection {
   Asc = 'asc',
