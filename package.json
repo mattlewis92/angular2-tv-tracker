@@ -16,7 +16,6 @@
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/router": "^5.2.11",
     "@angularclass/idle-preload": "^2.0.1",
-    "@ngtools/webpack": "^1.10.2",
     "angular-async-cache": "^1.0.1",
     "angular-calendar": "^0.23.7",
     "angular-confirmation-popover": "^4.1.0",
@@ -33,6 +32,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^5.2.11",
+    "@ngtools/webpack": "^1.10.2",
     "@types/lodash.get": "^4.4.3",
     "@types/lodash.orderby": "^4.6.3",
     "@types/node": "^10.1.1",
