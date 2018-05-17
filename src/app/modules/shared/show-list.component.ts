@@ -13,9 +13,9 @@ import { Show } from './../../interfaces';
 import { SortableHeader } from './sortable-header.directive';
 import { OrderByDirection } from './order-by.pipe';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-import { takeUntil } from 'rxjs/operators/takeUntil';
-import get from 'lodash.get';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { get } from 'lodash-es';
 
 const SUBSCRIBED_SHOWS_LS_KEY = 'subscribedShows';
 

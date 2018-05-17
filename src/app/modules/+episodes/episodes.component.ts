@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { TVMaze } from './../shared/tv-maze.provider';
 import { Episode } from '../../interfaces';
-import { map } from 'rxjs/operators/map';
-import { mergeMap } from 'rxjs/operators/mergeMap';
+import { map, mergeMap } from 'rxjs/operators';
 import { SortableHeader } from '../shared/sortable-header.directive';
 import { OrderByDirection } from '../shared/order-by.pipe';
 
