@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as OfflinePlugin from 'offline-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -11,13 +11,13 @@ export default (environment: string) => {
 
   const {ifProduction, ifDevelopment} = getIfUtils(environment);
   const outputFilename = ifProduction('[name]-[chunkhash]', '[name]');
-  const extractCSS = new ExtractTextPlugin(`${outputFilename}.css`);
   const PROD_PUBLIC_PATH = '/angular2-tv-tracker/';
 
   return {
-    devtool: ifProduction('source-map', 'eval'),
+    mode: environment,
     entry: './src/entry.ts',
     output: {
+      path: __dirname,
       filename: `${outputFilename}.js`,
       publicPath: ifProduction(PROD_PUBLIC_PATH, '/')
     },
@@ -50,7 +50,11 @@ export default (environment: string) => {
         exclude: path.resolve(__dirname, 'node_modules')
       }), {
         test: /\.scss$/,
-        loader: extractCSS.extract(['css-loader?minimize', 'sass-loader'])
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader?minimize',
+          'sass-loader'
+        ]
       }, {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url-loader',
@@ -61,6 +65,11 @@ export default (environment: string) => {
       }, {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
+      }, {
+        test: /node_modules\/@angular\/core\/.+\/core\.js$/,
+        parser: {
+          system: true // disable `System.import() is deprecated and will be removed soon. Use import() instead.` warning
+        }
       }])
     },
     resolve: {
@@ -75,31 +84,32 @@ export default (environment: string) => {
       ifProduction(new AngularCompilerPlugin({
         tsConfigPath: './tsconfig-aot.json'
       })),
-      ifProduction(new webpack.optimize.UglifyJsPlugin({sourceMap: true})),
-      new webpack.DefinePlugin({
-        ENV: JSON.stringify(environment)
+      new MiniCssExtractPlugin({
+        filename: `${outputFilename}.css`
       }),
-      extractCSS,
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)esm5/,
         __dirname + '/src'
       ),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'main',
-        async: true,
-        minChunks: 2
-      }),
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         title: 'Angular 2+ TV tracker'
       }),
-      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(new OfflinePlugin({
         ServiceWorker: {
           navigateFallbackURL: PROD_PUBLIC_PATH
         }
       }))
-    ])
+    ]),
+    optimization: {
+      splitChunks: ifProduction({
+        chunks: 'all',
+        automaticNameDelimiter: '.'
+      }, false),
+      runtimeChunk: ifProduction(true, false),
+      removeAvailableModules: ifProduction(true, false), // disable tree shaking in dev mode for faster rebuilds
+      removeEmptyChunks: ifProduction(true, false)
+    }
   };
 
 };
