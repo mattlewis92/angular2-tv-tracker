@@ -10,8 +10,7 @@ import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent, LoadingSpinnerComponent } from './app.component';
 
-declare const ENV: string;
-if (ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   const install: () => {} = require('offline-plugin/runtime').install; // tslint:disable-line
   install();
   enableProdMode();
