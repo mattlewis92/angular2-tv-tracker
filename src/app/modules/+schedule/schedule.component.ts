@@ -7,9 +7,8 @@ import isSameDay from 'date-fns/is_same_day';
 import isSameMonth from 'date-fns/is_same_month';
 import { Episode, ShowWithEpisodes } from '../../interfaces';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
-import { pluck } from 'rxjs/operators/pluck';
+import { Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
 function padNumber(number: number): string {
   return number < 10 ? `0${number}` : number + '';

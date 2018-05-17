@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
-import { map } from 'rxjs/operators/map';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'mwl-loading-spinner',

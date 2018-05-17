@@ -2,11 +2,9 @@ import 'bootstrap/scss/bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'angular-calendar/scss/angular-calendar.scss';
 import 'zone.js/dist/zone';
-import 'rxjs/Observable';
 import { NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent, LoadingSpinnerComponent } from './app.component';
 
@@ -21,7 +19,6 @@ if (process.env.NODE_ENV === 'production') {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    IdlePreloadModule.forRoot(),
     RouterModule.forRoot(
       [
         {
@@ -44,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
       ],
       {
         useHash: true,
-        preloadingStrategy: IdlePreload
+        preloadingStrategy: PreloadAllModules
       }
     )
   ],

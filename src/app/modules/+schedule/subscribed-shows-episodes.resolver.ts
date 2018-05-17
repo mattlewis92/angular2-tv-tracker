@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable, forkJoin } from 'rxjs';
 import { LocalStorage } from '../shared/local-storage.provider';
 import { TVMaze } from '../shared/tv-maze.provider';
 import { Show, Episode, ShowWithEpisodes } from '../../interfaces';
-import { forkJoin } from 'rxjs/observable/forkJoin';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SubscribedShowsEpisodesResolver
@@ -19,11 +19,11 @@ export class SubscribedShowsEpisodesResolver
     const episodeRequests: Array<
       Observable<ShowWithEpisodes>
     > = this.subscribedShows.map((show: Show) => {
-      return this.tvMaze
-        .getEpisodes(show.id)
-        .map((episodes: Episode[]): ShowWithEpisodes => {
+      return this.tvMaze.getEpisodes(show.id).pipe(
+        map((episodes: Episode[]): ShowWithEpisodes => {
           return { episodes, show };
-        });
+        })
+      );
     });
 
     return forkJoin(episodeRequests);

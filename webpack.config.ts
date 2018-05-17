@@ -102,7 +102,7 @@ export default (environment: string) => {
         filename: `${outputFilename}.css`
       }),
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)esm5/,
+        /angular(\\|\/)core(\\|\/)fesm5/,
         __dirname + '/src'
       ),
       new HtmlWebpackPlugin({
