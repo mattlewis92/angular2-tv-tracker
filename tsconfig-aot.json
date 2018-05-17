@@ -8,6 +8,8 @@
   "angularCompilerOptions": {
     "trace": true,
     "skipMetadataEmit" : true,
-    "entryModule": "src/app/app.module#AppModule"
+    "entryModule": "src/app/app.module#AppModule",
+    "strictInjectionParameters": true,
+    "preserveWhitespaces": true
   }
 }
