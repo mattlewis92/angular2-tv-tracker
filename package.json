@@ -21,7 +21,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.5.6",
     "font-awesome": "^4.6.3",
-    "lodash-es": "^4.17.10",
+    "lodash-es": "^4.17.14",
     "randomcolor": "^0.5.2",
     "rxjs": "^6.1.0",
     "tinycolor2": "^1.4.1",
