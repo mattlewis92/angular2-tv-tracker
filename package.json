@@ -16,7 +16,7 @@
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
     "angular-async-cache": "^2.0.1",
-    "angular-calendar": "^0.25.2",
+    "angular-calendar": "^0.28.7",
     "angular-confirmation-popover": "^4.1.0",
     "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.5.6",

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ScheduleCalendarComponent } from './schedule.component';
 import { SubscribedShowsEpisodesResolver } from './subscribed-shows-episodes.resolver';
 import { SharedModule } from './../shared';
@@ -11,7 +12,10 @@ import { SharedModule } from './../shared';
   imports: [
     CommonModule,
     SharedModule,
-    CalendarModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     RouterModule.forChild([
       {
         path: '',
